@@ -25,11 +25,8 @@ SKÖRD is an artisan cannabis producer and a Bored + Buzzed vendor partner. See 
 - Age gate: Yes — requires clicking "Yes" to enter
 - Key pages: /flower, /drops, /pheno-hunts, /pho, /cartridges, /sho
 
-## Assets Downloaded
-Located in `Social Media/SKORD-Drop/`:
-- `skord-logo-black.png` — black wordmark, transparent bg (from site)
-- `skord-logo-tan.png` — tan/cream wordmark, transparent bg (from site)
-- `divine-sugar-cane.png` — product photo of Divine Sugar Cane jar (provided by Trevor)
+## SKÖRD Drop Post Status
+Trevor made the Divine Sugar Cane drop post by hand. All local assets (`Social Media/SKORD-Drop/`) deleted. Trevor will upload the finished post file — hold until then before building any more SKÖRD content.
 
 ## Divine Sugar Cane
 - New strain, NOT yet on SKÖRD's website as of 2026-05-06

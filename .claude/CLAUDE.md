@@ -155,6 +155,60 @@ Installed in `.claude/skills/` alongside infrastructure skills. These are the cr
 
 ---
 
+## SEO Skills (claude-seo v1.9.0)
+
+Installed 2026-05-06 from `https://github.com/AgriciDaniel/claude-seo`. Located at `~/.claude/skills/seo/`. Entry point: `/seo audit <url>`.
+
+### seo (master)
+- **Trigger:** Any SEO task — audits, strategy, local optimization, content
+- **Entry point:** `/seo audit https://borednbuzzed.com`
+
+### seo-local
+- **Trigger:** Google Business Profile, local pack rankings, "near me" queries
+- **B&B play:** Highest-ROI SEO work — own every Eastside cannabis search query
+
+### seo-maps
+- **Trigger:** Google Maps ranking optimization
+- **B&B play:** Get into the Maps 3-pack for Kirkland, Redmond, Bothell, Woodinville cannabis searches
+
+### seo-schema
+- **Trigger:** Structured data, LocalBusiness markup, Product schema
+- **B&B play:** Schema tells Google exactly what B&B is — boosts rich results and local pack
+
+### seo-technical
+- **Trigger:** Crawlability, page speed, site structure, indexation issues
+- **B&B play:** Find and fix anything blocking Google from ranking the B&B website
+
+### seo-content
+- **Trigger:** Blog posts, product page copy, landing page briefs
+- **B&B play:** Keyword-targeted content for strain guides, education, Eastside local intent
+
+### seo-cluster
+- **Trigger:** Topic cluster architecture, internal linking strategy
+- **B&B play:** Build topical authority around Eastside cannabis — strain guides, education, local
+
+### seo-plan
+- **Trigger:** Starting a new SEO sprint or strategy session
+- **B&B play:** Full roadmap — sequences audit → technical → local → content → authority
+
+### seo-google
+- **Trigger:** Google Search Console, rank tracking, impressions/clicks analysis
+- **B&B play:** Measure search performance, catch ranking drops, identify keyword opportunities
+
+### seo-geo
+- **Trigger:** Multi-location targeting, city-specific landing pages
+- **B&B play:** Kirkland + Redmond + Bothell + Woodinville landing pages for local coverage
+
+### seo-backlinks
+- **Trigger:** Link building, local citations, directory submissions
+- **B&B play:** Local cannabis directories, Eastside press, neighborhood sites — authority building
+
+### seo-firecrawl
+- **Trigger:** Deep technical crawl of B&B site or competitor sites
+- **B&B play:** Full site audit via Firecrawl — structured SEO extraction at scale
+
+---
+
 ## Session Start Protocol
 
 At the start of every new session:

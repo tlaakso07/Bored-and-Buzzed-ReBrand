@@ -184,6 +184,18 @@ Every decision, every asset, every word of copy lives or dies by this standard: 
 | **web-prototype** | Design Skill | Browser-ready web mockups | Website redesign prototypes, digital menu layouts — same-session client alignment |
 | **webgpu-threejs-tsl** | Design Skill | GPU-accelerated 3D graphics + shaders in the browser | Website hero FX, in-store display loops, cinematic social visuals — competitor-proof premium web experiences |
 | **ui-ux-pro-max** | Design Skill | Searchable design intelligence database — 67 UI styles, 161 UX reasoning rules, typography pairings, color palettes, landing page structures | Design System Generator for any B&B brief; style selection, typography/color decisions, UX pattern library — structured intelligence for every digital asset |
+| **seo** | SEO Skill | Master SEO skill — `/seo audit <url>` entry point | Full SEO audit, local optimization, technical fixes, content strategy |
+| **seo-local** | SEO Skill | Local search + Google Business Profile optimization | Own "dispensary near me" and Eastside-specific queries — the highest-ROI SEO work for B&B |
+| **seo-maps** | SEO Skill | Google Maps ranking optimization | Get B&B to the top of the Maps pack for cannabis searches in Kirkland/Redmond/Bothell/Woodinville |
+| **seo-schema** | SEO Skill | LocalBusiness + Product structured data | Schema markup tells Google exactly what B&B is — boosts local pack ranking and rich results |
+| **seo-technical** | SEO Skill | Technical SEO audit (crawlability, speed, structure) | Identify and fix anything blocking Google from properly indexing the B&B website |
+| **seo-content** | SEO Skill | Content briefs + on-page optimization | Keyword-targeted copy for product pages, blog posts, and landing pages |
+| **seo-cluster** | SEO Skill | Topic cluster and internal link architecture | Build topical authority around Eastside cannabis — strain guides, education, local content |
+| **seo-plan** | SEO Skill | Full SEO strategy + roadmap | Sprint planning for search dominance — sequences audit → technical → local → content |
+| **seo-google** | SEO Skill | Google Search Console workflow | Track rankings, clicks, impressions — measure what's working |
+| **seo-backlinks** | SEO Skill | Backlink acquisition strategy | Local citations, cannabis directories, Eastside press — authority building |
+| **seo-firecrawl** | SEO Skill | Firecrawl-powered site crawl + SEO extraction | Deep technical audit of B&B website and competitor sites |
+| **seo-geo** | SEO Skill | Geo-targeted SEO (multi-location, city pages) | Kirkland + Redmond + Bothell + Woodinville landing pages for local search coverage |
 
 ---
 
@@ -212,7 +224,8 @@ Every decision, every asset, every word of copy lives or dies by this standard: 
 
 | Date | Work Completed | Next Steps |
 |---|---|---|
-| 2026-05-06 | Session 15: First social content session. SKÖRD × Divine Sugar Cane vendor drop shoutout. Scraped SKÖRD site — brand intel, drops cadence, logo assets downloaded. Multiple post iterations attempted (HTML layouts, pixel manipulation, CSS overlays, wordmark-as-element approach) — all deleted. No final post shipped. Key learning: need visual reference from Trevor before building. Assets preserved in `Social Media/SKORD-Drop/`. | Get visual direction from Trevor first, then rebuild SKÖRD posts OR pivot to platform audits (Weedmaps/Leafly/Google/Yelp) |
+| 2026-05-06 | Session 16: claude-seo skill suite installed (seo, seo-local, seo-maps, seo-schema, seo-technical, seo-content, seo-cluster, seo-plan, seo-google, seo-backlinks, seo-firecrawl, seo-geo + more). SKÖRD drop post: Trevor made it by hand — all Session 15 assets deleted. Post file upload pending from Trevor. | Upload SKÖRD post file · Begin platform audits (Weedmaps/Leafly/Google/Yelp) · WSLCB compliance research |
+| 2026-05-06 | Session 15: First social content session. SKÖRD × Divine Sugar Cane vendor drop shoutout. Scraped SKÖRD site — brand intel, drops cadence, logo assets downloaded. Multiple post iterations attempted — all deleted. Trevor made the post by hand. | — |
 | 2026-05-06 | Session 14: **Phase 1 brand identity sprint COMPLETE.** Full 34-page site audit (Firecrawl). NotebookLM synthesis → core insight "The Culture's Outpost in the Suburbs." SkillUI current design system extraction. Brand voice, brand pillars, logo system + usage guide, DESIGN.md, 3-layer token architecture (JSON + CSS), Design-System.md, BnB-Brand-Kit.html. 17 files total. Brand Identity section of CLAUDE.md filled in. | Platform audits (Weedmaps, Leafly, Google, Yelp) · WSLCB compliance research · Target audience deep-dive · Phase 2 website redesign planning |
 | 2026-05-05 | Session 13: ui-ux-pro-max skill installed (67 UI styles, 161 UX rules, Design System Generator). All CLAUDE.md files, .claude/CLAUDE.md, and memory aligned. Mainframe build complete. | Phase 1 brand identity sprint — start now. |
 | 2026-05-05 | Session 12: Full alignment pass — all CLAUDE.md files, memory, Home.md, Brand Identity.md, and Obsidian graph updated. Reference Brands color group added to graph. Everything connected and aligned. | Phase 1 brand identity sprint — start now. |
@@ -230,4 +243,4 @@ Every decision, every asset, every word of copy lives or dies by this standard: 
 
 ---
 
-*Antigravity x Bored and Buzzed · Last updated: 2026-05-06 · Session 15 · 20 design skills + 4 craft docs + 70 brand DESIGN.md references · Phase 1 brand identity sprint COMPLETE · Phase 1 remaining: platform audits + compliance · Social content: SKÖRD drop post in progress (no ship yet)*
+*Antigravity x Bored and Buzzed · Last updated: 2026-05-06 · Session 16 · 20 design skills + SEO suite (14 skills) + 4 craft docs + 70 brand DESIGN.md references · Phase 1 brand identity sprint COMPLETE · Phase 1 remaining: platform audits + compliance · SKÖRD post: made by hand, upload pending*

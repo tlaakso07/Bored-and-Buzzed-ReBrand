@@ -12,7 +12,8 @@ Claude's persistent memory for the Bored and Buzzed engagement. Every file here 
 - [Brand Identity](brand_identity.md) — Phase 1 sprint COMPLETE (2026-05-06): positioning, tokens, voice, pillars, logo system, tagline — apply to every asset
 - [Project Setup](project_setup.md) — Infra 🟢; Phase 1 brand sprint done; Phase 1 remaining: platform audits + WSLCB compliance; Phase 2 next
 - [Ruflo AI Plugins](tools_ruflo.md) — Lite mode; swarm/goals/intelligence slash commands; upgrade path in Notes/
+- [SEO Skill Suite](tools_seo.md) — claude-seo v1.9.0 installed 2026-05-06; seo-local + seo-maps + seo-schema are the core trio for local search
 - [Trevor Laakso](user_trevor.md) — Principal at Antigravity; working style, preferences, collaboration notes
 - [NotebookLM](tools_notebooklm.md) — CLI v0.3.4, authenticated; existing notebooks are off-limits, all B&B work built fresh
-- [[skord_intel|SKÖRD Vendor Intel]] — Artisan cannabis partner; Divine Sugar Cane new drop; brand voice, assets, drop cadence, website intel
-- [[feedback_social_posts|Social Post Feedback]] — Get visual reference BEFORE building posts; one draft for direction check before 3 full versions
+- [SKÖRD Vendor Intel](skord_intel.md) — Artisan cannabis partner; Divine Sugar Cane drop post made by hand by Trevor; upload pending — hold on SKÖRD content until then
+- [Social Post Feedback](feedback_social_posts.md) — Get visual reference BEFORE building posts; one draft for direction check before 3 full versions
