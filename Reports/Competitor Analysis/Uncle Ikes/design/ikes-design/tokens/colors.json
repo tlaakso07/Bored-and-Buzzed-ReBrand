@@ -1,0 +1,103 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "core": {
+    "surface": {
+      "value": "#f1f1f1",
+      "role": "surface",
+      "name": "color-frost"
+    },
+    "background": {
+      "value": "#ffffff",
+      "role": "background",
+      "name": "toastify-color-light"
+    },
+    "text-primary": {
+      "value": "#121212",
+      "role": "text-primary",
+      "name": "toastify-color-dark"
+    },
+    "text-muted": {
+      "value": "#bfc7ad",
+      "role": "text-muted",
+      "name": "color-sage"
+    },
+    "border": {
+      "value": "#353b41",
+      "role": "border"
+    }
+  },
+  "status": {
+    "danger": {
+      "value": "#f88240",
+      "role": "danger",
+      "name": "color-salmon"
+    }
+  },
+  "extended": {
+    "color-slate": {
+      "value": "#1d222c",
+      "role": "unknown",
+      "name": "color-slate"
+    },
+    "tw-ring-color": {
+      "value": "#5a6b70",
+      "role": "unknown",
+      "name": "tw-ring-color"
+    },
+    "color-canopy": {
+      "value": "#2f4257",
+      "role": "unknown",
+      "name": "color-canopy"
+    },
+    "color-black": {
+      "value": "#000000",
+      "role": "unknown",
+      "name": "color-black"
+    },
+    "color-4a5565": {
+      "value": "#4a5565",
+      "role": "unknown"
+    },
+    "toastify-spinner-color": {
+      "value": "#616161",
+      "role": "unknown",
+      "name": "toastify-spinner-color"
+    },
+    "color-primary-500": {
+      "value": "#9fa791",
+      "role": "unknown",
+      "name": "color-primary-500"
+    },
+    "toastify-color-error": {
+      "value": "#e74d3c",
+      "role": "unknown",
+      "name": "toastify-color-error"
+    },
+    "color-primary-200": {
+      "value": "#d0d6c5",
+      "role": "unknown",
+      "name": "color-primary-200"
+    },
+    "color-768a8b": {
+      "value": "#768a8b",
+      "role": "unknown"
+    },
+    "color-2a2a2a": {
+      "value": "#2a2a2a",
+      "role": "unknown"
+    },
+    "color-d1d5db": {
+      "value": "#d1d5db",
+      "role": "unknown"
+    },
+    "toastify-text-color-light": {
+      "value": "#757575",
+      "role": "unknown",
+      "name": "toastify-text-color-light"
+    }
+  },
+  "meta": {
+    "theme": "light",
+    "extracted": "2026-05-07"
+  }
+}

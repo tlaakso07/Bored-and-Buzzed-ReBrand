@@ -160,7 +160,7 @@ This is a **light-themed** interface with a neutral, approachable feel. The ligh
 ## 5. Layout Principles
 
 - **Base spacing unit:** 4px
-- **Spacing scale:** 4, 6, 8, 12, 14, 16, 20, 24, 32, 80
+- **Spacing scale:** 4, 6, 8, 12, 14, 16, 20, 24, 32, 40, 64, 80
 - **Border radius:** initial, .25rem, .75rem, 1rem, 2rem, 2px, 5%, 6px, 24px, 28px, 100%
 - **Max content width:** 96rem
 
@@ -192,6 +192,11 @@ This is a **light-themed** interface with a neutral, approachable feel. The ligh
 
 - `0 10px 15px -3px #0000004d,0 4px 6px -2px #0003`
 - `0 10px 15px -3px color-mix(in srgb,var(--color-black) 30%,transparent),0 4px 6px -2px color-mix(in srgb,var(--color-black) 20%,transparent)`
+
+### Overlay — full-screen overlays, top-level dialogs
+
+- `rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px`
+- `rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.25) 0px 25px 50px -12px`
 
 ### Z-Index Scale
 
