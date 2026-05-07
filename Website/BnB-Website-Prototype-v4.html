@@ -335,40 +335,9 @@
       border-radius: 9999px !important
     }
 
-    /* ── Hero 3D Ape System ──────────────────────────────────── */
-    #hero-ape-scene { will-change: transform; display: flex; align-items: center; justify-content: center; }
-    #hero-ape-wrapper { display: inline-block; animation: hero-float 10s ease-in-out infinite; }
-    #hero-ape-card {
-      position: relative; display: inline-block;
-      transform-style: preserve-3d; will-change: transform; cursor: default;
-    }
-    #hero-3d-canvas {
-      display: block;
-      box-shadow: 0 40px 80px -20px rgba(201,168,76,.28),
-                  0 20px 45px -10px rgba(201,168,76,.12);
-    }
-    #hero-ape-card img { display:none; }
-    #hero-ape-shine { display: none; }
-    #hero-ape-glow { display: none; }
     #hero-mouse-glow { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
     #hero-particles  { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
     #hero-text { will-change: transform; }
-    @keyframes hero-float {
-      0%,100% { transform: translateY(0px); }
-      50%      { transform: translateY(-8px); }
-    }
-    @keyframes aura-pulse {
-      0%,100% {
-        box-shadow: 0 0 55px 12px rgba(201,168,76,.28),
-                    0 0 110px 35px rgba(201,168,76,.10);
-        opacity: .72;
-      }
-      50% {
-        box-shadow: 0 0 72px 18px rgba(201,168,76,.38),
-                    0 0 150px 55px rgba(201,168,76,.14);
-        opacity: .88;
-      }
-    }
   </style>
 </head>
 
@@ -468,20 +437,24 @@
   </nav>
 
   <!-- ─── HERO ──────────────────────────────────────────────────── -->
-  <section id="hero-section" class="relative flex flex-col overflow-hidden bg-bg">
+  <section id="hero-section" class="relative flex flex-col overflow-hidden bg-bg min-h-[clamp(520px,56vw,780px)]">
+
+    <!-- Hero background photo — full bleed -->
+    <img src="bnb-hero-bg.jpg" alt=""
+         class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+         style="z-index:0;" aria-hidden="true">
+
+    <!-- Left fade — keeps tagline + CTAs readable -->
+    <div class="absolute inset-0 pointer-events-none"
+         style="z-index:0;background:linear-gradient(to right,rgba(13,13,11,.82) 0%,rgba(13,13,11,.45) 42%,transparent 72%);"></div>
+
+    <!-- Bottom fade — blends hero into site -->
+    <div class="absolute bottom-0 left-0 right-0 h-52 pointer-events-none"
+         style="z-index:0;background:linear-gradient(to top,rgba(13,13,11,1) 0%,transparent 100%);"></div>
 
     <!-- Texture layers -->
     <div class="halftone-overlay"></div>
     <div class="grain-overlay"></div>
-
-    <!-- Mood gradients (below grain, z-index 0) -->
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_100%_80%_at_100%_0%,rgba(15,38,64,0.75),transparent)] z-0">
-    </div>
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_0%_100%,rgba(15,38,64,0.4),transparent)] z-0">
-    </div>
-    <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-bg to-transparent z-0 pointer-events-none">
-    </div>
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_72%_50%,rgba(201,168,76,0.028),transparent)] z-0 pointer-events-none"></div>
 
     <!-- Full-bleed overlays — must be section children, not inside max-w-wrap -->
     <div id="hero-mouse-glow" class="absolute inset-0 pointer-events-none z-[3]" aria-hidden="true"></div>
@@ -491,7 +464,7 @@
     <div class="relative z-10 flex-1 max-w-wrap mx-auto px-6 w-full pt-14 pb-4">
 
       <!-- Sub content row: tagline + ape -->
-      <div class="d5 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center pt-8 pb-10">
+      <div class="d5 pt-8 pb-10">
 
         <!-- Left: tagline + CTAs + location -->
         <div id="hero-text">
@@ -529,18 +502,6 @@
           </div>
         </div>
 
-        <!-- Right: 3D ape -->
-        <div class="hidden lg:flex items-center justify-center">
-          <div id="hero-ape-scene">
-            <div id="hero-ape-wrapper">
-              <div id="hero-ape-card">
-                <canvas id="hero-3d-canvas" style="height:clamp(280px,34vw,460px);width:clamp(280px,34vw,460px);max-width:100%;display:block;"></canvas>
-                <div id="hero-ape-shine"></div>
-                <div id="hero-ape-glow"></div>
-              </div>
-            </div>
-          </div>
-        </div>
 
       </div>
     </div>
@@ -1995,50 +1956,30 @@
       });
     });
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script>
-  /* ── Hero 3D Interactive System ─────────────────────────────── */
+  /* ── Hero Atmosphere System ──────────────────────────────── */
   (function(){
     'use strict';
-
-    /* Spring physics */
-    function Spring(k,d){
-      this.k=k;this.d=d;
-      this.x=this.y=this.vx=this.vy=this.tx=this.ty=0;
-    }
-    Spring.prototype.tick=function(){
-      this.vx+=(this.tx-this.x)*this.k; this.vy+=(this.ty-this.y)*this.k;
-      this.vx*=this.d; this.vy*=this.d;
-      this.x+=this.vx; this.y+=this.vy;
-    };
-
-    var tilt  = new Spring(.025,.95);
-    var drift = new Spring(.014,.97);
-    var mouse = {x:.5,y:.5,inside:false};
-    var W=1,H=1,raf=null;
-    var heroEl,card,textEl,bgEl,canvas2d,ctx2d;
+    var mouse={x:.5,y:.5};
+    var W=1,H=1;
+    var heroEl,textEl,bgEl,canvas2d,ctx2d;
     var particles=[];
-
-    /* Particle system */
     var GOLD='rgba(201,168,76,';
+
     function Particle(){ this.reset(); }
     Particle.prototype.reset=function(){
       this.x=Math.random()*W;
       this.y=H*(.25+Math.random()*.75);
       this.vx=(Math.random()-.5)*.38;
       this.vy=-(0.08+Math.random()*.28);
-      this.life=0;
-      this.max=90+Math.random()*210;
-      this.r=.7+Math.random()*2.1;
+      this.life=0;this.max=90+Math.random()*210;this.r=.7+Math.random()*2.1;
     };
     Particle.prototype.tick=function(){
-      this.x+=this.vx+(mouse.x-.5)*.03; this.y+=this.vy;
-      this.life++;
-      if(this.life>this.max) this.reset();
+      this.x+=this.vx+(mouse.x-.5)*.03;this.y+=this.vy;
+      this.life++;if(this.life>this.max)this.reset();
     };
     Particle.prototype.draw=function(c){
-      var t=this.life/this.max;
-      var a=t<.2?t/.2:t>.78?(1-t)/.22:1;
+      var t=this.life/this.max,a=t<.2?t/.2:t>.78?(1-t)/.22:1;
       c.beginPath();c.arc(this.x,this.y,this.r*(1-t*.5),0,Math.PI*2);
       c.fillStyle=GOLD+(a*.28)+')';c.fill();
     };
@@ -2046,7 +1987,7 @@
     function resize(){
       if(!heroEl)return;
       var r=heroEl.getBoundingClientRect();
-      W=r.width||innerWidth; H=r.height||600;
+      W=r.width||innerWidth;H=r.height||600;
       if(canvas2d){canvas2d.width=W;canvas2d.height=H;}
     }
 
@@ -2055,175 +1996,38 @@
       var r=heroEl.getBoundingClientRect();
       mouse.x=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
       mouse.y=Math.max(0,Math.min(1,(e.clientY-r.top)/r.height));
-      tilt.tx=drift.tx=mouse.x;
-      tilt.ty=drift.ty=mouse.y;
-    }
-    function onEnter(){ mouse.inside=true; }
-    function onLeave(){
-      mouse.inside=false;
-      tilt.tx=drift.tx=.5;
-      tilt.ty=drift.ty=.5;
     }
 
-    function tick(ts){
-      raf=requestAnimationFrame(tick);
-      var t=(ts||performance.now())/1000;
-
-      /* Ambient oscillation when mouse is idle */
-      if(!mouse.inside){
-        tilt.tx=0.5+Math.sin(t*.22)*.32;
-        tilt.ty=0.5+Math.sin(t*.35)*.22;
-        drift.tx=tilt.tx; drift.ty=tilt.ty;
-      }
-      tilt.tick(); drift.tick();
-
-      var rx=(tilt.y-.5)*6, ry=(tilt.x-.5)*-6;
-      var sc=mouse.inside?1.01:1;
-
-      /* CSS 3D tilt on card — stacks with Three.js internal 3D */
-      if(card){
-        card.style.transform=
-          'perspective(750px) rotateX('+rx+'deg) rotateY('+ry+'deg) translateZ(20px) scale('+sc+')';
-      }
-
-      /* Background glow follows mouse */
+    function tick(){
+      requestAnimationFrame(tick);
       if(bgEl){
         bgEl.style.background=
-          'radial-gradient(ellipse 65% 65% at '+(tilt.x*100)+'% '+(tilt.y*100)+'%,'+
+          'radial-gradient(ellipse 65% 65% at '+(mouse.x*100)+'% '+(mouse.y*100)+'%,'+
           'rgba(201,168,76,.06),transparent 100%)';
       }
-
-      /* Text parallax */
       if(textEl){
-        var dx=(drift.x-.5)*-5, dy=(drift.y-.5)*-3;
+        var dx=(mouse.x-.5)*-5,dy=(mouse.y-.5)*-3;
         textEl.style.transform='translate3d('+dx+'px,'+dy+'px,0)';
       }
-
-      /* Particles */
       if(ctx2d&&canvas2d&&canvas2d.width){
         ctx2d.clearRect(0,0,canvas2d.width,canvas2d.height);
-        for(var i=0;i<particles.length;i++){
-          particles[i].tick(); particles[i].draw(ctx2d);
-        }
+        for(var i=0;i<particles.length;i++){particles[i].tick();particles[i].draw(ctx2d);}
       }
-    }
-
-    /* ── Three.js 3D Image Renderer ── */
-    function initThree(){
-      var canvasEl = document.getElementById('hero-3d-canvas');
-      if(!canvasEl || typeof THREE === 'undefined') return;
-
-      var cw = canvasEl.offsetWidth  || 420;
-      var ch = canvasEl.offsetHeight || 420;
-
-      var scene    = new THREE.Scene();
-      var camera   = new THREE.PerspectiveCamera(
-        2*Math.atan(1/2.9)*(180/Math.PI), cw/ch, 0.1, 50
-      );
-      camera.position.z = 2.9;
-
-      var renderer = new THREE.WebGLRenderer({
-        canvas: canvasEl, alpha: true, antialias: true
-      });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setSize(cw, ch);
-      renderer.setClearColor(0x000000, 0);
-      renderer.outputEncoding = THREE.sRGBEncoding || 3001;
-
-      /* Plane with subdivision for vertex wave */
-      var geo = new THREE.PlaneGeometry(2, 2, 52, 52);
-
-      /* Texture load */
-      new THREE.TextureLoader().load('bnb-hero-ape.png', function(tex){
-        tex.minFilter = THREE.LinearMipmapLinearFilter;
-        tex.generateMipmaps = true;
-        tex.encoding = THREE.sRGBEncoding || 3001;
-
-        var mat = new THREE.MeshStandardMaterial({
-          map: tex, roughness: 0.5, metalness: 0.08
-        });
-
-        var mesh = new THREE.Mesh(geo, mat);
-        scene.add(mesh);
-
-        /* Ambient fill — warm white */
-        scene.add(new THREE.AmbientLight(0xfff8f0, 0.82));
-
-        /* Gold neon glow — simulates the ape's neon as real light */
-        var neonLight = new THREE.PointLight(0xC9A84C, 2.2, 5);
-        neonLight.position.set(0.1, 0.15, 1.1);
-        scene.add(neonLight);
-
-        /* Rim / cool backlight — depth separator */
-        var rimLight = new THREE.PointLight(0x1a3050, 1.2, 4);
-        rimLight.position.set(0, -1.2, -0.8);
-        scene.add(rimLight);
-
-        /* Mouse accent light — follows cursor */
-        var mouseLight = new THREE.PointLight(0xC9A84C, 0.7, 4);
-        mouseLight.position.set(0, 0, 1.5);
-        scene.add(mouseLight);
-
-        function threeLoop(ts){
-          var t = (ts||0) / 1000;
-
-          /* Vertex wave — subtle, alive */
-          var pos = geo.attributes.position;
-          for(var j=0; j<pos.count; j++){
-            var px = pos.getX(j);
-            var py = pos.getY(j);
-            var wave = Math.sin(px*2.6 + t*.50)*.014
-                     + Math.cos(py*2.1 + t*.38)*.010;
-            pos.setZ(j, wave);
-          }
-          pos.needsUpdate = true;
-          geo.computeVertexNormals();
-
-          /* Mouse light follows cursor */
-          mouseLight.position.set(
-            (mouse.x-.5)*2.2,
-            -(mouse.y-.5)*1.8,
-            1.3
-          );
-
-          /* Neon light gentle pulse */
-          neonLight.intensity = 2.2 + Math.sin(t*1.1)*0.18;
-
-          renderer.render(scene, camera);
-          requestAnimationFrame(threeLoop);
-        }
-        requestAnimationFrame(threeLoop);
-      });
-
-      /* Resize */
-      window.addEventListener('resize', function(){
-        var nc = canvasEl.offsetWidth||cw;
-        var nh = canvasEl.offsetHeight||ch;
-        camera.aspect = nc/nh;
-        camera.updateProjectionMatrix();
-        renderer.setSize(nc, nh);
-      },{passive:true});
     }
 
     function init(){
-      heroEl  = document.getElementById('hero-section');
-      card    = document.getElementById('hero-ape-card');
-      textEl  = document.getElementById('hero-text');
-      bgEl    = document.getElementById('hero-mouse-glow');
-      canvas2d= document.getElementById('hero-particles');
-      ctx2d   = canvas2d ? canvas2d.getContext('2d') : null;
-      if(!heroEl) return;
+      heroEl  =document.getElementById('hero-section');
+      textEl  =document.getElementById('hero-text');
+      bgEl    =document.getElementById('hero-mouse-glow');
+      canvas2d=document.getElementById('hero-particles');
+      ctx2d   =canvas2d?canvas2d.getContext('2d'):null;
+      if(!heroEl)return;
       resize();
-      for(var i=0;i<22;i++){
-        var p=new Particle(); p.life=Math.random()*p.max; particles.push(p);
-      }
-      heroEl.addEventListener('pointermove', onMove,  {passive:true});
-      heroEl.addEventListener('pointerenter',onEnter, {passive:true});
-      heroEl.addEventListener('pointerleave',onLeave, {passive:true});
-      window.addEventListener('resize', resize, {passive:true});
+      for(var i=0;i<22;i++){var p=new Particle();p.life=Math.random()*p.max;particles.push(p);}
+      heroEl.addEventListener('pointermove',onMove,{passive:true});
+      window.addEventListener('resize',resize,{passive:true});
       if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches)
-        raf=requestAnimationFrame(tick);
-      initThree();
+        requestAnimationFrame(tick);
     }
 
     if(document.readyState==='loading')
