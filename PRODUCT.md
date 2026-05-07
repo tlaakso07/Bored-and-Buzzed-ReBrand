@@ -48,3 +48,8 @@ Emotions to evoke: **pride** (this is our store), **discovery** (something real 
 - Touch targets: 44×44px minimum (dispensary visitors on mobile in a parking lot).
 - Age gate must be clearly operable via keyboard (cannabis law requires explicit consent).
 - Reduced motion: use `prefers-reduced-motion` for any CSS transitions.
+
+
+
+---
+*[[CLAUDE]] — master document · [[Website/Website|Website Section]]*

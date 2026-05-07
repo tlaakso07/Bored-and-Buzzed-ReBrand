@@ -11,6 +11,9 @@ tags: [handoff, sessions]
 
 | Session | Date | Status | Summary |
 |---|---|---|---|
+| [[Handoff/Session-18-2026-05-07\|Session 18]] | 2026-05-07 | ✅ Complete | **v4 iteration.** Apple design pass. Wyld Relaxing Collection (4 cards). Jim Jones photo strip in Culture/Events. Hero cleaned (no eyebrow, no logo). `bnb-interior.png` ready. **Next: implement interior photo as hero background.** |
+| [[Handoff/Session-17-2026-05-07\|Session 17]] | 2026-05-07 | ✅ Complete | **Phase 2 website prototype sprint.** v1→v4. Tailwind CDN, streetwear hero, dual marquee, grain/halftone, all 4 logos. Current: `Website/BnB-Website-Prototype-v4.html`. |
+| [[Handoff/Session-16-2026-05-06\|Session 16]] | 2026-05-06 | ✅ Complete | **SEO skill suite installed** (14 skills). SKÖRD drop post: Trevor made it by hand — upload pending. |
 | [[Handoff/Session-15-2026-05-06\|Session 15]] | 2026-05-06 | ✅ Complete | **SKÖRD × Divine Sugar Cane drop post.** Research complete. Multiple post iterations deleted. No final post shipped. SKÖRD intel + logos saved. Next: visual reference before rebuilding. |
 | [[Handoff/Session-14-2026-05-06\|Session 14]] | 2026-05-06 | ✅ Complete | **Phase 1 brand identity sprint COMPLETE.** 17 files: site audit, brand voice, pillars, logo system, DESIGN.md, 3-layer tokens, design system, brand kit. CLAUDE.md + memory fully updated. |
 | [[Handoff/Session-13-2026-05-05\|Session 13]] | 2026-05-05 | ✅ Complete | ui-ux-pro-max installed (67 styles, 161 rules, Design System Generator). All CLAUDE.md + memory aligned. Mainframe build complete. |

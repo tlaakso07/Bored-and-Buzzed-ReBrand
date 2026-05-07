@@ -22,3 +22,8 @@ tags: [todo, phase-1]
 ## Planning & Strategy
 - [ ] Deep-dive on target audience
 - [ ] Phase 2 website redesign planning
+
+
+
+---
+*[[CLAUDE]] — master document*

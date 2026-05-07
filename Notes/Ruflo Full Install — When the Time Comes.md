@@ -99,3 +99,8 @@ After running the install, the key files to reconcile:
 - Web UI: [flo.ruv.io](https://flo.ruv.io)
 - Goal planner: [goal.ruv.io](https://goal.ruv.io)
 - Related: [[MCP/MCP]], [[Skills/Skills]], [[CLAUDE]]
+
+
+
+---
+*[[CLAUDE]] — master document*

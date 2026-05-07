@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "ed1dd68ac840e7bf",
+        "id": "0f70ead50524054f",
         "type": "tabs",
         "children": [
           {
-            "id": "e1e3d187f275e8b5",
+            "id": "461046965cbd304f",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -176,8 +176,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "e1e3d187f275e8b5",
+  "active": "461046965cbd304f",
   "lastOpenFiles": [
+    "Website/Website.md",
+    "Handoff/Session-18-2026-05-07.md",
+    "Handoff/Session-17-2026-05-07.md",
+    "Handoff/Session-16-2026-05-06.md",
     "Website/Hero-Concepts/hero_jungle_money_v3_1778149872229.png",
     "Website/Hero-Concepts/hero_jungle_money_v2_1778149859621.png",
     "Website/Hero-Concepts/hero_jungle_money_v1_1778149847696.png",
@@ -213,16 +217,12 @@
     "Reports/Competitor Analysis/Uncle Ikes/design/ikes-design/screens/states/button-2-default.png",
     "Reports/Competitor Analysis/Uncle Ikes/design/ikes-design/screens/states/button-1-focus.png",
     "Reports/Competitor Analysis/Uncle Ikes/design/ikes-design/screens/states/button-1-hover.png",
-    "Reports/Competitor Analysis/Uncle Ikes/design/ikes-design/screens/states/button-1-default.png",
     "Reports/Competitor Design/Ikes/ikes-design/screens/INDEX.md",
     "Reports/Competitor Design/Ikes/ikes-design/references/VISUAL_GUIDE.md",
     "Reports/Competitor Design/Ikes/ikes-design/references/COMPONENTS.md",
     "Reports/Competitor Design/Ikes/ikes-design/references/INTERACTIONS.md",
     "Reports/Competitor Design/Ikes/ikes-design/references/LAYOUT.md",
     "Reports/Competitor Design/Ikes/ikes-design/references/ANIMATIONS.md",
-    "Reports/Competitor Design/Ikes/ikes-design/CLAUDE.md",
-    "Reports/Competitor Design/Ikes/ikes-design/SKILL.md",
-    "Reports/Competitor Design/Ikes/ikes-design/references/DESIGN.md",
-    "Reports/Competitor Design/Ikes/ikes-design/DESIGN.md"
+    "Reports/Competitor Design/Ikes/ikes-design/CLAUDE.md"
   ]
 }
