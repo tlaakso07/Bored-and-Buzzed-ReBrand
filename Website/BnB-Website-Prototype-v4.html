@@ -342,10 +342,12 @@
       position: relative; display: inline-block;
       transform-style: preserve-3d; will-change: transform; cursor: default;
     }
-    #hero-ape-card img {
-      display: block; position: relative; z-index: 1;
-      box-shadow: none;
+    #hero-3d-canvas {
+      display: block;
+      box-shadow: 0 40px 80px -20px rgba(201,168,76,.28),
+                  0 20px 45px -10px rgba(201,168,76,.12);
     }
+    #hero-ape-card img { display:none; }
     #hero-ape-shine { display: none; }
     #hero-ape-glow { display: none; }
     #hero-mouse-glow { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
@@ -488,19 +490,6 @@
     <!-- ── MAIN HERO BODY ── -->
     <div class="relative z-10 flex-1 max-w-wrap mx-auto px-6 w-full pt-14 pb-4">
 
-      <!-- Coaster badge (desktop only, top right) -->
-      <div class="hidden lg:flex absolute top-10 right-6 z-20 items-center justify-center flex-shrink-0">
-        <div class="relative w-48 h-48 flex items-center justify-center">
-          <div
-            class="absolute w-44 h-44 rounded-full bg-[radial-gradient(circle,rgba(201,168,76,0.18),transparent_70%)]">
-          </div>
-          <img src="../Brand Identity/BnB Logos/BNB Coaster front.png" alt=""
-            class="relative w-36 h-36 object-cover rounded-full"
-            style="filter:drop-shadow(0 0 32px rgba(201,168,76,0.35))" loading="lazy">
-        </div>
-      </div>
-
-
       <!-- Sub content row: tagline + ape -->
       <div class="d5 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center pt-8 pb-10">
 
@@ -545,10 +534,7 @@
           <div id="hero-ape-scene">
             <div id="hero-ape-wrapper">
               <div id="hero-ape-card">
-                <img src="bnb-hero-ape.png" id="hero-ape-img"
-                     alt="Bored and Buzzed Mascot"
-                     style="height:clamp(280px,34vw,460px);width:auto;max-width:100%;object-fit:contain;"
-                     loading="eager">
+                <canvas id="hero-3d-canvas" style="height:clamp(280px,34vw,460px);width:clamp(280px,34vw,460px);max-width:100%;display:block;"></canvas>
                 <div id="hero-ape-shine"></div>
                 <div id="hero-ape-glow"></div>
               </div>
@@ -2009,6 +1995,7 @@
       });
     });
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script>
   /* ── Hero 3D Interactive System ─────────────────────────────── */
   (function(){
@@ -2026,15 +2013,14 @@
     };
 
     var tilt  = new Spring(.025,.95);
-    var glow  = new Spring(.018,.97);
     var drift = new Spring(.014,.97);
     var mouse = {x:.5,y:.5,inside:false};
     var W=1,H=1,raf=null;
-    var heroEl,card,shine,glowEl,textEl,bgEl,canvas,ctx;
-    var GOLD='rgba(201,168,76,';
+    var heroEl,card,textEl,bgEl,canvas2d,ctx2d;
     var particles=[];
 
     /* Particle system */
+    var GOLD='rgba(201,168,76,';
     function Particle(){ this.reset(); }
     Particle.prototype.reset=function(){
       this.x=Math.random()*W;
@@ -2046,25 +2032,22 @@
       this.r=.7+Math.random()*2.1;
     };
     Particle.prototype.tick=function(){
-      var push=(mouse.x-.5)*.03;
-      this.x+=this.vx+push; this.y+=this.vy;
+      this.x+=this.vx+(mouse.x-.5)*.03; this.y+=this.vy;
       this.life++;
       if(this.life>this.max) this.reset();
     };
     Particle.prototype.draw=function(c){
       var t=this.life/this.max;
       var a=t<.2?t/.2:t>.78?(1-t)/.22:1;
-      c.beginPath();
-      c.arc(this.x,this.y,this.r*(1-t*.5),0,Math.PI*2);
-      c.fillStyle=GOLD+(a*.28)+')';
-      c.fill();
+      c.beginPath();c.arc(this.x,this.y,this.r*(1-t*.5),0,Math.PI*2);
+      c.fillStyle=GOLD+(a*.28)+')';c.fill();
     };
 
     function resize(){
       if(!heroEl)return;
       var r=heroEl.getBoundingClientRect();
       W=r.width||innerWidth; H=r.height||600;
-      if(canvas){canvas.width=W;canvas.height=H;}
+      if(canvas2d){canvas2d.width=W;canvas2d.height=H;}
     }
 
     function onMove(e){
@@ -2072,75 +2055,167 @@
       var r=heroEl.getBoundingClientRect();
       mouse.x=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
       mouse.y=Math.max(0,Math.min(1,(e.clientY-r.top)/r.height));
-      tilt.tx=glow.tx=drift.tx=mouse.x;
-      tilt.ty=glow.ty=drift.ty=mouse.y;
+      tilt.tx=drift.tx=mouse.x;
+      tilt.ty=drift.ty=mouse.y;
     }
     function onEnter(){ mouse.inside=true; }
     function onLeave(){
       mouse.inside=false;
-      tilt.tx=glow.tx=drift.tx=.5;
-      tilt.ty=glow.ty=drift.ty=.5;
+      tilt.tx=drift.tx=.5;
+      tilt.ty=drift.ty=.5;
     }
 
-    function tick(){
+    function tick(ts){
       raf=requestAnimationFrame(tick);
-      tilt.tick(); glow.tick(); drift.tick();
+      var t=(ts||performance.now())/1000;
 
-      /* 3D card tilt */
+      /* Ambient oscillation when mouse is idle */
+      if(!mouse.inside){
+        tilt.tx=0.5+Math.sin(t*.22)*.32;
+        tilt.ty=0.5+Math.sin(t*.35)*.22;
+        drift.tx=tilt.tx; drift.ty=tilt.ty;
+      }
+      tilt.tick(); drift.tick();
+
+      var rx=(tilt.y-.5)*6, ry=(tilt.x-.5)*-6;
+      var sc=mouse.inside?1.01:1;
+
+      /* CSS 3D tilt on card — stacks with Three.js internal 3D */
       if(card){
-        var rx=(tilt.y-.5)*6,  ry=(tilt.x-.5)*-6;
-        var sc=mouse.inside?1.01:1;
         card.style.transform=
-          'perspective(1100px) rotateX('+rx+'deg) rotateY('+ry+'deg) scale('+sc+')';
+          'perspective(750px) rotateX('+rx+'deg) rotateY('+ry+'deg) translateZ(20px) scale('+sc+')';
       }
 
-      /* Moving shine / glare */
-      if(shine){
-        var sx=glow.x*100, sy=glow.y*100;
-        shine.style.background=
-          'radial-gradient(circle at '+sx+'% '+sy+'%,'+
-          'rgba(201,168,76,.10) 0%,rgba(201,168,76,.03) 40%,transparent 65%)';
-      }
-
-      /* Ambient hero background glow follows mouse */
+      /* Background glow follows mouse */
       if(bgEl){
-        var bx=glow.x*100, by=glow.y*100;
         bgEl.style.background=
-          'radial-gradient(ellipse 65% 65% at '+bx+'% '+by+'%,'+
+          'radial-gradient(ellipse 65% 65% at '+(tilt.x*100)+'% '+(tilt.y*100)+'%,'+
           'rgba(201,168,76,.06),transparent 100%)';
       }
 
-      /* Subtle text parallax */
+      /* Text parallax */
       if(textEl){
-        var dx=(drift.x-.5)*-5,  dy=(drift.y-.5)*-3;
+        var dx=(drift.x-.5)*-5, dy=(drift.y-.5)*-3;
         textEl.style.transform='translate3d('+dx+'px,'+dy+'px,0)';
       }
 
-      /* Particle canvas */
-      if(ctx&&canvas.width){
-        ctx.clearRect(0,0,canvas.width,canvas.height);
+      /* Particles */
+      if(ctx2d&&canvas2d&&canvas2d.width){
+        ctx2d.clearRect(0,0,canvas2d.width,canvas2d.height);
         for(var i=0;i<particles.length;i++){
-          particles[i].tick();
-          particles[i].draw(ctx);
+          particles[i].tick(); particles[i].draw(ctx2d);
         }
       }
     }
 
+    /* ── Three.js 3D Image Renderer ── */
+    function initThree(){
+      var canvasEl = document.getElementById('hero-3d-canvas');
+      if(!canvasEl || typeof THREE === 'undefined') return;
+
+      var cw = canvasEl.offsetWidth  || 420;
+      var ch = canvasEl.offsetHeight || 420;
+
+      var scene    = new THREE.Scene();
+      var camera   = new THREE.PerspectiveCamera(
+        2*Math.atan(1/2.9)*(180/Math.PI), cw/ch, 0.1, 50
+      );
+      camera.position.z = 2.9;
+
+      var renderer = new THREE.WebGLRenderer({
+        canvas: canvasEl, alpha: true, antialias: true
+      });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(cw, ch);
+      renderer.setClearColor(0x000000, 0);
+      renderer.outputEncoding = THREE.sRGBEncoding || 3001;
+
+      /* Plane with subdivision for vertex wave */
+      var geo = new THREE.PlaneGeometry(2, 2, 52, 52);
+
+      /* Texture load */
+      new THREE.TextureLoader().load('bnb-hero-ape.png', function(tex){
+        tex.minFilter = THREE.LinearMipmapLinearFilter;
+        tex.generateMipmaps = true;
+        tex.encoding = THREE.sRGBEncoding || 3001;
+
+        var mat = new THREE.MeshStandardMaterial({
+          map: tex, roughness: 0.5, metalness: 0.08
+        });
+
+        var mesh = new THREE.Mesh(geo, mat);
+        scene.add(mesh);
+
+        /* Ambient fill — warm white */
+        scene.add(new THREE.AmbientLight(0xfff8f0, 0.82));
+
+        /* Gold neon glow — simulates the ape's neon as real light */
+        var neonLight = new THREE.PointLight(0xC9A84C, 2.2, 5);
+        neonLight.position.set(0.1, 0.15, 1.1);
+        scene.add(neonLight);
+
+        /* Rim / cool backlight — depth separator */
+        var rimLight = new THREE.PointLight(0x1a3050, 1.2, 4);
+        rimLight.position.set(0, -1.2, -0.8);
+        scene.add(rimLight);
+
+        /* Mouse accent light — follows cursor */
+        var mouseLight = new THREE.PointLight(0xC9A84C, 0.7, 4);
+        mouseLight.position.set(0, 0, 1.5);
+        scene.add(mouseLight);
+
+        function threeLoop(ts){
+          var t = (ts||0) / 1000;
+
+          /* Vertex wave — subtle, alive */
+          var pos = geo.attributes.position;
+          for(var j=0; j<pos.count; j++){
+            var px = pos.getX(j);
+            var py = pos.getY(j);
+            var wave = Math.sin(px*2.6 + t*.50)*.014
+                     + Math.cos(py*2.1 + t*.38)*.010;
+            pos.setZ(j, wave);
+          }
+          pos.needsUpdate = true;
+          geo.computeVertexNormals();
+
+          /* Mouse light follows cursor */
+          mouseLight.position.set(
+            (mouse.x-.5)*2.2,
+            -(mouse.y-.5)*1.8,
+            1.3
+          );
+
+          /* Neon light gentle pulse */
+          neonLight.intensity = 2.2 + Math.sin(t*1.1)*0.18;
+
+          renderer.render(scene, camera);
+          requestAnimationFrame(threeLoop);
+        }
+        requestAnimationFrame(threeLoop);
+      });
+
+      /* Resize */
+      window.addEventListener('resize', function(){
+        var nc = canvasEl.offsetWidth||cw;
+        var nh = canvasEl.offsetHeight||ch;
+        camera.aspect = nc/nh;
+        camera.updateProjectionMatrix();
+        renderer.setSize(nc, nh);
+      },{passive:true});
+    }
+
     function init(){
-      heroEl = document.getElementById('hero-section');
-      card   = document.getElementById('hero-ape-card');
-      shine  = document.getElementById('hero-ape-shine');
-      glowEl = document.getElementById('hero-ape-glow');
-      textEl = document.getElementById('hero-text');
-      bgEl   = document.getElementById('hero-mouse-glow');
-      canvas = document.getElementById('hero-particles');
-      ctx    = canvas ? canvas.getContext('2d') : null;
+      heroEl  = document.getElementById('hero-section');
+      card    = document.getElementById('hero-ape-card');
+      textEl  = document.getElementById('hero-text');
+      bgEl    = document.getElementById('hero-mouse-glow');
+      canvas2d= document.getElementById('hero-particles');
+      ctx2d   = canvas2d ? canvas2d.getContext('2d') : null;
       if(!heroEl) return;
       resize();
       for(var i=0;i<22;i++){
-        var p=new Particle();
-        p.life=Math.random()*p.max; /* stagger */
-        particles.push(p);
+        var p=new Particle(); p.life=Math.random()*p.max; particles.push(p);
       }
       heroEl.addEventListener('pointermove', onMove,  {passive:true});
       heroEl.addEventListener('pointerenter',onEnter, {passive:true});
@@ -2148,6 +2223,7 @@
       window.addEventListener('resize', resize, {passive:true});
       if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches)
         raf=requestAnimationFrame(tick);
+      initThree();
     }
 
     if(document.readyState==='loading')
@@ -2156,5 +2232,3 @@
   })();
   </script>
 </body>
-
-</html>
