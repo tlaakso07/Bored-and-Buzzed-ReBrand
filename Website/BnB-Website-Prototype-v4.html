@@ -481,6 +481,10 @@
     </div>
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_72%_50%,rgba(201,168,76,0.028),transparent)] z-0 pointer-events-none"></div>
 
+    <!-- Full-bleed overlays — must be section children, not inside max-w-wrap -->
+    <div id="hero-mouse-glow" class="absolute inset-0 pointer-events-none z-[3]" aria-hidden="true"></div>
+    <canvas id="hero-particles" class="absolute inset-0 pointer-events-none z-[3]" aria-hidden="true"></canvas>
+
     <!-- ── MAIN HERO BODY ── -->
     <div class="relative z-10 flex-1 max-w-wrap mx-auto px-6 w-full pt-14 pb-4">
 
