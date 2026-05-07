@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bored N Buzzed — Eastside Premium Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0D0D0B;
+      --color-surface: #161612;
+      --color-surface-raised: #1F1F19;
+      --color-border: #2A2A24;
+      --color-text-primary: #F4EFE6;
+      --color-text-secondary: #8D867A;
+      --color-text-muted: #5A544E;
+      --color-accent: #C9A84C;
+      --color-accent-hover: #B8963C;
+      --color-accent-subtle: rgba(201, 168, 76, 0.10);
+      --color-accent-border: rgba(201, 168, 76, 0.25);
+      --color-navy: #0F2640;
+      --color-navy-muted: #1A3D5C;
+      --font-display: 'Clash Display', sans-serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ── Header ─────────────────────────────────────── */
+    .ds-header {
+      border-bottom: 1px solid var(--color-border);
+      padding: 56px 0 48px;
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--color-accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .ds-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--color-text-primary);
+      margin-bottom: 20px;
+    }
+
+    .ds-header h1 span {
+      color: var(--color-accent);
+    }
+
+    .ds-header .subtitle {
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      max-width: 62ch;
+      line-height: 1.65;
+    }
+
+    .header-meta {
+      display: flex;
+      gap: 48px;
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--color-border);
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-item .meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .meta-item .meta-value {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+    }
+
+    /* ── Sections ────────────────────────────────────── */
+    .ds-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 48px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    /* ── Core Insight ─────────────────────────────────── */
+    .insight-block {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-accent);
+      border-radius: 0 4px 4px 0;
+      padding: 40px;
+      margin: 64px 0;
+    }
+
+    .insight-label {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .insight-quote {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--color-text-primary);
+      margin-bottom: 16px;
+    }
+
+    .insight-sub {
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      max-width: 65ch;
+      line-height: 1.65;
+    }
+
+    /* ── Colors ──────────────────────────────────────── */
+    .color-group-title {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+      margin-top: 48px;
+    }
+
+    .color-group-title:first-of-type { margin-top: 0; }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 16px;
+    }
+
+    .color-swatch { display: flex; flex-direction: column; gap: 12px; }
+
+    .swatch-block {
+      height: 80px;
+      border-radius: 4px;
+      border: 1px solid var(--color-border);
+      position: relative;
+    }
+
+    .swatch-retired {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .swatch-retired-line {
+      width: 100%;
+      height: 1px;
+      background: rgba(90, 84, 78, 0.6);
+      transform: rotate(-18deg);
+    }
+
+    .swatch-role {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+    }
+
+    .swatch-hex {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      color: var(--color-text-muted);
+    }
+
+    /* ── Typography ──────────────────────────────────── */
+    .type-specimens { display: flex; flex-direction: column; gap: 56px; }
+
+    .type-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .type-meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .type-specs {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      line-height: 2;
+    }
+
+    .sample-display {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--color-text-primary);
+    }
+
+    .sample-body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--color-text-secondary);
+      max-width: 60ch;
+    }
+
+    .sample-mono {
+      font-family: var(--font-mono);
+      font-weight: 400;
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--color-accent);
+    }
+
+    .type-divider {
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    /* ── Spacing ─────────────────────────────────────── */
+    .spacing-items { display: flex; flex-direction: column; gap: 16px; }
+
+    .spacing-row {
+      display: grid;
+      grid-template-columns: 140px 1fr 64px;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .spacing-label {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--color-text-muted);
+    }
+
+    .spacing-bar {
+      height: 6px;
+      background: var(--color-accent);
+      border-radius: 1px;
+    }
+
+    .spacing-value {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--color-text-secondary);
+      text-align: right;
+    }
+
+    /* ── Components ──────────────────────────────────── */
+    .component-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .component-block { display: flex; flex-direction: column; gap: 20px; }
+
+    .component-title {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease, border-color 0.15s ease;
+      text-decoration: none;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0) scale(0.98); }
+
+    .btn-primary {
+      background: var(--color-accent);
+      color: #0D0D0B;
+      border-color: var(--color-accent);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-accent);
+      border-color: var(--color-accent-border);
+    }
+
+    .btn-secondary:hover { border-color: var(--color-accent); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-text-secondary);
+      border-color: var(--color-border);
+    }
+
+    .btn-ghost:hover { color: var(--color-text-primary); }
+
+    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+    /* Tags */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: var(--color-accent-subtle);
+      border: 1px solid var(--color-accent-border);
+      border-radius: 2px;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .tag-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: var(--color-surface-raised);
+      border: 1px solid var(--color-border);
+      border-radius: 2px;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* Product card */
+    .card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 32px;
+    }
+
+    .card-eyebrow { margin-bottom: 20px; }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.5rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+
+    .card-body {
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .card-price {
+      font-family: var(--font-mono);
+      font-size: 1.375rem;
+      font-weight: 400;
+      color: var(--color-text-primary);
+    }
+
+    .card-meta-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .card-strain {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Input */
+    .input-group { display: flex; flex-direction: column; gap: 8px; }
+
+    .input-label {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+    }
+
+    .input-field {
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--color-border);
+      border-radius: 3px;
+      padding: 12px 16px;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      color: var(--color-text-primary);
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    .input-field::placeholder { color: var(--color-text-muted); }
+    .input-field:focus { border-color: var(--color-accent); }
+
+    .input-helper {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Comparison bar */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+    }
+
+    .comparison-side {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .comparison-before { background: #131310; }
+    .comparison-after { background: var(--color-surface); }
+
+    .comparison-label {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .comparison-before .comparison-label { color: var(--color-text-muted); }
+    .comparison-after .comparison-label { color: var(--color-accent); }
+
+    .comparison-color-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .comparison-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    .comparison-text {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--color-text-muted);
+    }
+
+    .comparison-text strong {
+      color: var(--color-text-secondary);
+      font-weight: 400;
+    }
+
+    /* ── Footer ──────────────────────────────────────── */
+    .ds-footer {
+      padding: 40px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .ds-footer p {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--color-text-muted);
+    }
+
+    /* ── Responsive ──────────────────────────────────── */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .type-item { grid-template-columns: 1fr; gap: 16px; }
+      .component-grid { grid-template-columns: 1fr; }
+      .comparison { grid-template-columns: 1fr; }
+      .header-meta { gap: 24px; }
+      .spacing-row { grid-template-columns: 120px 1fr 52px; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header class="ds-header">
+      <p class="eyebrow">Antigravity Agency &times; Bored N Buzzed &middot; Phase 1 Brand Sprint &middot; 2026</p>
+      <h1>Eastside <span>Premium.</span></h1>
+      <p class="subtitle">New brand identity system for Bored N Buzzed Dispensary, Kirkland WA. Upgrading from deal-forward mid-market to the undeniable cannabis destination of the Eastside — Kirkland, Redmond, Bothell, Woodinville.</p>
+      <div class="header-meta">
+        <div class="meta-item">
+          <span class="meta-label">Mood</span>
+          <span class="meta-value">Editorial</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Palette</span>
+          <span class="meta-value">Warm Dark + Elevated Gold</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Display</span>
+          <span class="meta-value">Clash Display</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Body</span>
+          <span class="meta-value">DM Sans</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Data</span>
+          <span class="meta-value">JetBrains Mono</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Version</span>
+          <span class="meta-value">1.0 &middot; Draft</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Core Insight -->
+    <div class="insight-block">
+      <p class="insight-label">Core Brand Insight &mdash; NotebookLM Synthesis</p>
+      <p class="insight-quote">"The Culture's Outpost in the Suburbs."</p>
+      <p class="insight-sub">The Eastside is affluent and polished, but often feels culturally isolated. Bored N Buzzed is the only destination that brings genuine cannabis culture and high-end craft directly to the tech-wealth of Kirkland, Redmond, Woodinville, and Bothell. The bridge between suburban sophistication and urban authenticity.</p>
+    </div>
+
+    <!-- Section 1: Color -->
+    <section class="ds-section">
+      <p class="section-label">01 &mdash; Color System</p>
+
+      <!-- Before / After comparison -->
+      <p class="color-group-title">Before &rarr; After: The Evolution</p>
+      <div class="comparison" style="margin-bottom: 48px;">
+        <div class="comparison-side comparison-before">
+          <p class="comparison-label">Retiring</p>
+          <div class="comparison-color-row">
+            <div class="comparison-dot" style="background: #FFD10B;"></div>
+            <span class="comparison-text"><strong>#FFD10B</strong> &mdash; Neon yellow. Generic, budget-signaling.</span>
+          </div>
+          <div class="comparison-color-row">
+            <div class="comparison-dot" style="background: #0274BE;"></div>
+            <span class="comparison-text"><strong>#0274BE</strong> &mdash; Flat blue. Corporate, undifferentiated.</span>
+          </div>
+          <div class="comparison-color-row">
+            <div class="comparison-dot" style="background: #FFFFFF; border: 1px solid #2A2A24;"></div>
+            <span class="comparison-text"><strong>#FFFFFF</strong> &mdash; White ground. No atmosphere.</span>
+          </div>
+        </div>
+        <div class="comparison-side comparison-after">
+          <p class="comparison-label">Introducing</p>
+          <div class="comparison-color-row">
+            <div class="comparison-dot" style="background: #C9A84C;"></div>
+            <span class="comparison-text"><strong>#C9A84C</strong> &mdash; Aged gold. Spirit retained, budget removed.</span>
+          </div>
+          <div class="comparison-color-row">
+            <div class="comparison-dot" style="background: #0F2640;"></div>
+            <span class="comparison-text"><strong>#0F2640</strong> &mdash; Deep navy. Depth and anchor.</span>
+          </div>
+          <div class="comparison-color-row">
+            <div class="comparison-dot" style="background: #0D0D0B;"></div>
+            <span class="comparison-text"><strong>#0D0D0B</strong> &mdash; Warm dark. Atmospheric, premium.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Core palette -->
+      <p class="color-group-title">Core Palette</p>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="swatch-block" style="background: #0D0D0B;"></div>
+          <div>
+            <p class="swatch-role">Background</p>
+            <p class="swatch-hex">#0D0D0B</p>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background: #161612;"></div>
+          <div>
+            <p class="swatch-role">Surface</p>
+            <p class="swatch-hex">#161612</p>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background: #1F1F19;"></div>
+          <div>
+            <p class="swatch-role">Surface Raised</p>
+            <p class="swatch-hex">#1F1F19</p>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background: #2A2A24; border-color: #3a3a34;"></div>
+          <div>
+            <p class="swatch-role">Border</p>
+            <p class="swatch-hex">#2A2A24</p>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background: #F4EFE6;"></div>
+          <div>
+            <p class="swatch-role">Text Primary</p>
+            <p class="swatch-hex">#F4EFE6</p>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background: #8D867A;"></div>
+          <div>
+            <p class="swatch-role">Text Secondary</p>
+            <p class="swatch-hex">#8D867A</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accent -->
+      <p class="color-group-title">Accent &mdash; Elevated Gold</p>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="swatch-block" style="background: #C9A84C;"></div>
+          <div>
+            <p class="swatch-role">Accent</p>
+            <p class="swatch-hex">#C9A84C</p>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background: #B8963C;"></div>
+          <div>
+            <p class="swatch-role">Accent Hover</p>
+            <p class="swatch-hex">#B8963C</p>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background: rgba(201,168,76,0.10); border-color: rgba(201,168,76,0.25);"></div>
+          <div>
+            <p class="swatch-role">Accent Subtle</p>
+            <p class="swatch-hex">rgba(201,168,76,0.10)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navy -->
+      <p class="color-group-title">Depth &mdash; Deep Navy</p>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="swatch-block" style="background: #0F2640;"></div>
+          <div>
+            <p class="swatch-role">Navy</p>
+            <p class="swatch-hex">#0F2640</p>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background: #1A3D5C;"></div>
+          <div>
+            <p class="swatch-role">Navy Elevated</p>
+            <p class="swatch-hex">#1A3D5C</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Typography -->
+    <section class="ds-section">
+      <p class="section-label">02 &mdash; Typography</p>
+
+      <div class="type-specimens">
+        <div class="type-item">
+          <div>
+            <p class="type-meta-label">Display</p>
+            <p class="type-specs">
+              Clash Display<br>
+              Weight 700<br>
+              clamp(2.5rem, 6vw, 5rem)<br>
+              Leading 1.05<br>
+              Tracking &minus;0.02em
+            </p>
+          </div>
+          <p class="sample-display">The Eastside<br>Outpost.</p>
+        </div>
+
+        <div class="type-divider"></div>
+
+        <div class="type-item">
+          <div>
+            <p class="type-meta-label">Body</p>
+            <p class="type-specs">
+              DM Sans<br>
+              Weight 400<br>
+              1rem / 1.65<br>
+              Max measure 65ch
+            </p>
+          </div>
+          <p class="sample-body">We hand-pick every strain, edible, and concentrate that lands on our shelf. Not because it's cheap, not because the margin is good — because it's the best available and our team actually stands behind it. That's the standard.</p>
+        </div>
+
+        <div class="type-divider"></div>
+
+        <div class="type-item">
+          <div>
+            <p class="type-meta-label">Mono</p>
+            <p class="type-specs">
+              JetBrains Mono<br>
+              Weight 400<br>
+              0.875rem / 1.5<br>
+              Use: prices, THC%, data
+            </p>
+          </div>
+          <p class="sample-mono">
+            Sky High Gardens &middot; Pineapple Chunk<br>
+            THC 27.4% &middot; CBD 0.08% &middot; Indica Hybrid<br>
+            Indoor &middot; Hand-trimmed &middot; LED &middot; $38 / 3.5g
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Spacing -->
+    <section class="ds-section">
+      <p class="section-label">03 &mdash; Spacing System</p>
+
+      <div class="spacing-items">
+        <div class="spacing-row">
+          <span class="spacing-label">Section gap</span>
+          <div class="spacing-bar" style="width: 100%; opacity: 0.8;"></div>
+          <span class="spacing-value">80px</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">Content pad</span>
+          <div class="spacing-bar" style="width: 50%; opacity: 0.65;"></div>
+          <span class="spacing-value">40px</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">Card padding</span>
+          <div class="spacing-bar" style="width: 40%; opacity: 0.55;"></div>
+          <span class="spacing-value">32px</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">Component gap</span>
+          <div class="spacing-bar" style="width: 30%; opacity: 0.45;"></div>
+          <span class="spacing-value">24px</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">Element gap</span>
+          <div class="spacing-bar" style="width: 20%; opacity: 0.35;"></div>
+          <span class="spacing-value">16px</span>
+        </div>
+        <div class="spacing-row">
+          <span class="spacing-label">Tight</span>
+          <div class="spacing-bar" style="width: 10%; opacity: 0.25;"></div>
+          <span class="spacing-value">8px</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Components -->
+    <section class="ds-section">
+      <p class="section-label">04 &mdash; Components</p>
+
+      <div class="component-grid">
+
+        <!-- Buttons -->
+        <div class="component-block">
+          <span class="component-title">Buttons</span>
+          <div class="btn-row">
+            <button class="btn btn-primary">Shop the Menu</button>
+            <button class="btn btn-secondary">Events</button>
+            <button class="btn btn-ghost">Learn More</button>
+          </div>
+          <div style="margin-top: 4px;">
+            <div class="tag" style="display: inline-flex;">
+              <span class="tag-dot"></span>Kirkland &middot; Open Now
+            </div>
+          </div>
+        </div>
+
+        <!-- Product card -->
+        <div class="component-block">
+          <span class="component-title">Product Card</span>
+          <div class="card">
+            <div class="card-eyebrow">
+              <div class="tag"><span class="tag-dot"></span>Top Shelf &middot; Flower</div>
+            </div>
+            <h3 class="card-title">Pineapple Chunk</h3>
+            <p class="card-body">Pesticide-free, hand-trimmed, LED-grown. Sky High Gardens' flagship — earthy-sweet with a dense, resinous structure.</p>
+            <div class="card-footer">
+              <span class="card-price">$38</span>
+              <div class="card-meta-right">
+                <span class="card-strain">3.5g</span>
+                <span class="card-strain">THC 27.4%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Input -->
+        <div class="component-block">
+          <span class="component-title">Form Input</span>
+          <div class="input-group">
+            <label class="input-label">Your email</label>
+            <input class="input-field" type="email" placeholder="you@domain.com">
+            <span class="input-helper">Join rewards. First visit: 30% off. No sign-up fees.</span>
+          </div>
+        </div>
+
+        <!-- Tags & Badges -->
+        <div class="component-block">
+          <span class="component-title">Tags &amp; Badges</span>
+          <div class="tag-row">
+            <div class="tag"><span class="tag-dot"></span>Top Shelf</div>
+            <div class="badge">Vendor Day &middot; Fri</div>
+            <div class="badge">Hand-Trimmed</div>
+            <div class="tag">Indoor</div>
+            <div class="badge">21+</div>
+            <div class="badge">Kirkland</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="ds-footer">
+      <p>Antigravity Agency &times; Bored N Buzzed &middot; Eastside Premium Design System &middot; Phase 1 &middot; 2026-05-06</p>
+      <p>v1.0 &middot; Draft &middot; Confidential</p>
+    </div>
+
+  </div>
+</body>
+</html>

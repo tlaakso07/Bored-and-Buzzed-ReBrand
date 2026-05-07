@@ -1,0 +1,266 @@
+{
+  "_meta": {
+    "project": "Bored N Buzzed — Eastside Premium",
+    "version": "1.0.0",
+    "date": "2026-05-06",
+    "agency": "Antigravity",
+    "note": "Three-layer token architecture: Primitive → Semantic → Component. Use $primitive / $semantic references to trace lineage."
+  },
+
+  "primitive": {
+    "color": {
+      "warm-black":       "#0D0D0B",
+      "surface-1":        "#161612",
+      "surface-2":        "#1F1F19",
+      "border-dark":      "#2A2A24",
+      "cream":            "#F4EFE6",
+      "stone-400":        "#8D867A",
+      "stone-600":        "#5A544E",
+      "gold-alpha-10":    "rgba(201, 168, 76, 0.10)",
+      "gold-alpha-25":    "rgba(201, 168, 76, 0.25)",
+      "gold-400":         "#C9A84C",
+      "gold-500":         "#B8963C",
+      "navy-900":         "#0F2640",
+      "navy-800":         "#1A3D5C",
+      "pure-black":       "#000000",
+      "white":            "#FFFFFF"
+    },
+
+    "typography": {
+      "family-display":   "'Clash Display', sans-serif",
+      "family-body":      "'DM Sans', system-ui, sans-serif",
+      "family-mono":      "'JetBrains Mono', monospace",
+
+      "weight-regular":   400,
+      "weight-medium":    500,
+      "weight-semibold":  600,
+      "weight-bold":      700,
+
+      "size-2xs":         "0.6875rem",
+      "size-xs":          "0.75rem",
+      "size-sm":          "0.8125rem",
+      "size-data":        "0.875rem",
+      "size-ui":          "0.9375rem",
+      "size-base":        "1rem",
+      "size-h3":          "clamp(1.125rem, 2.5vw, 1.5rem)",
+      "size-h2":          "clamp(1.75rem, 4vw, 3rem)",
+      "size-h1":          "clamp(2.5rem, 6vw, 5rem)",
+
+      "leading-display":  1.05,
+      "leading-h2":       1.1,
+      "leading-h3":       1.2,
+      "leading-label":    1.4,
+      "leading-body":     1.65,
+
+      "tracking-tightest": "-0.02em",
+      "tracking-tight":    "-0.01em",
+      "tracking-normal":   "0",
+      "tracking-wide":     "0.01em",
+      "tracking-widest":   "0.08em"
+    },
+
+    "spacing": {
+      "1":   "4px",
+      "2":   "8px",
+      "3":   "12px",
+      "4":   "16px",
+      "5":   "20px",
+      "6":   "24px",
+      "8":   "32px",
+      "10":  "40px",
+      "12":  "48px",
+      "16":  "64px",
+      "20":  "80px",
+      "24":  "96px",
+      "32":  "128px"
+    },
+
+    "radius": {
+      "none":   "0",
+      "sharp":  "2px",
+      "sm":     "3px",
+      "md":     "4px"
+    },
+
+    "shadow": {
+      "none":       "none",
+      "floating":   "0 8px 32px rgba(0, 0, 0, 0.5)",
+      "gold-glow":  "0 0 24px rgba(201, 168, 76, 0.15)"
+    },
+
+    "transition": {
+      "fast":   "0.15s ease",
+      "normal": "0.25s ease",
+      "slow":   "0.4s ease"
+    },
+
+    "breakpoint": {
+      "sm":  "640px",
+      "md":  "768px",
+      "lg":  "1024px",
+      "xl":  "1280px"
+    },
+
+    "zIndex": {
+      "nav":    10,
+      "dropdown": 50,
+      "modal":  100,
+      "toast":  999
+    }
+  },
+
+  "semantic": {
+    "color": {
+      "bg":              { "$ref": "primitive.color.warm-black",   "usage": "Page background — never pure #000" },
+      "surface":         { "$ref": "primitive.color.surface-1",    "usage": "Card and section surfaces" },
+      "surface-raised":  { "$ref": "primitive.color.surface-2",    "usage": "Elevated cards, hover states" },
+      "border":          { "$ref": "primitive.color.border-dark",  "usage": "Dividers, card outlines — no box-shadow" },
+
+      "text-primary":    { "$ref": "primitive.color.cream",        "usage": "Primary text — warm cream, not clinical white" },
+      "text-secondary":  { "$ref": "primitive.color.stone-400",    "usage": "Secondary text, captions, nav links" },
+      "text-muted":      { "$ref": "primitive.color.stone-600",    "usage": "Placeholder, disabled states" },
+
+      "accent":          { "$ref": "primitive.color.gold-400",     "usage": "CTAs, active states, highlights — max 3× per viewport" },
+      "accent-hover":    { "$ref": "primitive.color.gold-500",     "usage": "Hover state — deeper not lighter" },
+      "accent-subtle":   { "$ref": "primitive.color.gold-alpha-10","usage": "Tag backgrounds, light fills" },
+      "accent-border":   { "$ref": "primitive.color.gold-alpha-25","usage": "Gold-tinted borders" },
+
+      "depth":           { "$ref": "primitive.color.navy-900",     "usage": "Section backgrounds, event cards — not primary UI" },
+      "depth-muted":     { "$ref": "primitive.color.navy-800",     "usage": "Secondary navy surfaces" }
+    },
+
+    "typography": {
+      "display":     { "family": "$primitive.typography.family-display", "weight": 700, "usage": "H1, H2 headings ONLY — never nav or body" },
+      "body":        { "family": "$primitive.typography.family-body",    "weight": 400, "usage": "All prose, UI copy, navigation, labels" },
+      "body-medium": { "family": "$primitive.typography.family-body",    "weight": 500, "usage": "Labels, navigation links, secondary headings" },
+      "body-semi":   { "family": "$primitive.typography.family-body",    "weight": 600, "usage": "Button text, eyebrow headings, strong emphasis" },
+      "mono":        { "family": "$primitive.typography.family-mono",    "weight": 400, "usage": "THC/CBD%, prices, specs, dates — never for prose" }
+    }
+  },
+
+  "component": {
+    "button": {
+      "primary": {
+        "bg":          { "$ref": "semantic.color.accent" },
+        "bg-hover":    { "$ref": "semantic.color.accent-hover" },
+        "text":        { "$ref": "primitive.color.warm-black" },
+        "radius":      { "$ref": "primitive.radius.sm" },
+        "padding":     "12px 28px",
+        "font":        { "$ref": "semantic.typography.body-semi" },
+        "font-size":   { "$ref": "primitive.typography.size-ui" },
+        "transform-hover":  "translateY(-1px)",
+        "opacity-hover":    0.92,
+        "transform-active": "scale(0.98)"
+      },
+      "secondary": {
+        "bg":          "transparent",
+        "text":        { "$ref": "semantic.color.accent" },
+        "border":      { "$ref": "semantic.color.accent-border" },
+        "border-hover":{ "$ref": "semantic.color.accent" },
+        "radius":      { "$ref": "primitive.radius.sm" }
+      },
+      "ghost": {
+        "bg":     "transparent",
+        "text":   { "$ref": "semantic.color.text-secondary" },
+        "border": { "$ref": "semantic.color.border" },
+        "radius": { "$ref": "primitive.radius.sm" }
+      }
+    },
+
+    "card": {
+      "default": {
+        "bg":          { "$ref": "semantic.color.surface" },
+        "border":      { "$ref": "semantic.color.border" },
+        "border-hover":{ "$ref": "semantic.color.accent-border" },
+        "bg-hover":    { "$ref": "semantic.color.surface-raised" },
+        "radius":      { "$ref": "primitive.radius.md" },
+        "padding":     { "$ref": "primitive.spacing.8" }
+      },
+      "navy": {
+        "bg":     { "$ref": "semantic.color.depth" },
+        "border": { "$ref": "primitive.color.navy-800" },
+        "radius": { "$ref": "primitive.radius.md" }
+      }
+    },
+
+    "nav": {
+      "bg":           "rgba(13, 13, 11, 0.85)",
+      "backdrop":     "blur(12px)",
+      "border":       { "$ref": "semantic.color.border" },
+      "height":       "64px",
+      "link-default": { "$ref": "semantic.color.text-secondary" },
+      "link-hover":   { "$ref": "semantic.color.text-primary" },
+      "link-active":  { "$ref": "semantic.color.accent" },
+      "font":         { "$ref": "semantic.typography.body-medium" },
+      "font-size":    { "$ref": "primitive.typography.size-ui" }
+    },
+
+    "tag": {
+      "bg":             { "$ref": "semantic.color.accent-subtle" },
+      "border":         { "$ref": "semantic.color.accent-border" },
+      "text":           { "$ref": "semantic.color.accent" },
+      "radius":         { "$ref": "primitive.radius.sharp" },
+      "padding":        "4px 10px",
+      "font":           { "$ref": "semantic.typography.mono" },
+      "font-size":      { "$ref": "primitive.typography.size-2xs" },
+      "letter-spacing": { "$ref": "primitive.typography.tracking-widest" },
+      "text-transform": "uppercase"
+    },
+
+    "input": {
+      "bg":           "transparent",
+      "border":       { "$ref": "semantic.color.border" },
+      "border-focus": { "$ref": "semantic.color.accent" },
+      "text":         { "$ref": "semantic.color.text-primary" },
+      "placeholder":  { "$ref": "semantic.color.text-muted" },
+      "radius":       { "$ref": "primitive.radius.sm" },
+      "padding":      "12px 16px",
+      "font":         { "$ref": "semantic.typography.body" },
+      "font-size":    { "$ref": "primitive.typography.size-ui" }
+    },
+
+    "label": {
+      "font":         { "$ref": "semantic.typography.body-medium" },
+      "font-size":    { "$ref": "primitive.typography.size-sm" },
+      "color":        { "$ref": "semantic.color.text-secondary" },
+      "margin-bottom":"8px",
+      "display":      "block"
+    },
+
+    "price-card": {
+      "bg":          { "$ref": "semantic.color.surface" },
+      "border":      { "$ref": "semantic.color.border" },
+      "header-bg":   { "$ref": "semantic.color.bg" },
+      "accent-bar":  { "$ref": "semantic.color.accent" },
+      "price-font":  { "$ref": "semantic.typography.mono" },
+      "price-color": { "$ref": "semantic.color.text-primary" },
+      "label-color": { "$ref": "semantic.color.text-secondary" },
+      "spec-font":   { "$ref": "semantic.typography.mono" },
+      "spec-color":  { "$ref": "semantic.color.accent" }
+    },
+
+    "section": {
+      "spacing":          { "$ref": "primitive.spacing.20" },
+      "max-width":        "1280px",
+      "padding-x":        { "$ref": "primitive.spacing.10" },
+      "padding-x-mobile": { "$ref": "primitive.spacing.5" },
+      "column-gap":       { "$ref": "primitive.spacing.10" },
+      "grid-default":     "3fr 2fr"
+    },
+
+    "divider": {
+      "color":     { "$ref": "semantic.color.border" },
+      "thickness": "1px",
+      "accent-bar-thickness": "1px",
+      "accent-bar-color": { "$ref": "semantic.color.accent" }
+    },
+
+    "modal": {
+      "bg":      { "$ref": "semantic.color.surface" },
+      "border":  { "$ref": "semantic.color.border" },
+      "shadow":  { "$ref": "primitive.shadow.floating" },
+      "z-index": { "$ref": "primitive.zIndex.modal" },
+      "radius":  { "$ref": "primitive.radius.md" }
+    }
+  }
+}

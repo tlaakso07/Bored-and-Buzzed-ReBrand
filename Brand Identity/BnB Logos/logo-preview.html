@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BnB Logo System — Keep + Extend Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #0D0D0B;
+      --surface:  #161612;
+      --raised:   #1F1F19;
+      --border:   #2A2A24;
+      --cream:    #F4EFE6;
+      --grey:     #8D867A;
+      --muted:    #5A544E;
+      --gold:     #C9A84C;
+      --gold-sub: rgba(201,168,76,0.15);
+      --gold-bdr: rgba(201,168,76,0.30);
+      --navy:     #0F2640;
+      --navy2:    #1A3D5C;
+      --font-d:   'Clash Display', sans-serif;
+      --font-b:   'DM Sans', system-ui, sans-serif;
+      --font-m:   'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--font-b);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Page header ─────────────────────────── */
+    .page-header {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 56px 48px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-eyebrow {
+      font-family: var(--font-m);
+      font-size: 0.6875rem;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .page-title {
+      font-family: var(--font-d);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .page-sub {
+      font-size: 0.9375rem;
+      color: var(--grey);
+      max-width: 58ch;
+      line-height: 1.65;
+    }
+
+    /* ── Section wrapper ─────────────────────── */
+    .section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 72px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-family: var(--font-m);
+      font-size: 0.6875rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 48px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Grid layouts ────────────────────────── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+    /* ── Swatch card ─────────────────────────── */
+    .swatch {
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .swatch-bg {
+      width: 100%;
+      padding: 40px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+      position: relative;
+    }
+
+    .swatch-bg img {
+      max-height: 80px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    /* invert filter for white-on-dark treatment */
+    .filter-white { filter: brightness(0) invert(1); }
+
+    /* gold treatment */
+    .filter-gold {
+      filter: brightness(0) saturate(100%) invert(68%) sepia(48%)
+              saturate(500%) hue-rotate(5deg) brightness(95%);
+    }
+
+    /* keep original (no filter) */
+    .filter-natural { filter: none; }
+
+    /* invert for black-on-light */
+    .filter-black { filter: brightness(0); }
+
+    .swatch-info {
+      background: var(--surface);
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .swatch-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+
+    .swatch-desc {
+      font-family: var(--font-m);
+      font-size: 0.6875rem;
+      color: var(--muted);
+    }
+
+    /* ── Badge swatches (circular) ───────────── */
+    .badge-swatch {
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .badge-bg {
+      width: 100%;
+      padding: 40px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    }
+
+    .badge-bg img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .badge-bg-gold-ring img {
+      box-shadow: 0 0 0 4px var(--gold);
+      border-radius: 50%;
+    }
+
+    /* ── Context previews ────────────────────── */
+    .context-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    /* Website header preview */
+    .preview-header {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+    }
+
+    .preview-header img {
+      height: 28px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .preview-nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    .preview-nav span {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--grey);
+    }
+
+    .preview-nav span.active {
+      color: var(--gold);
+    }
+
+    .preview-nav span.cta {
+      color: var(--bg);
+      background: var(--gold);
+      padding: 6px 16px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    .preview-body {
+      background: var(--bg);
+      padding: 48px 32px;
+    }
+
+    .preview-hero-eyebrow {
+      font-family: var(--font-m);
+      font-size: 0.6875rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .preview-hero-h1 {
+      font-family: var(--font-d);
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .preview-hero-p {
+      font-size: 0.9375rem;
+      color: var(--grey);
+      max-width: 48ch;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    .preview-hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: var(--bg);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      padding: 12px 24px;
+      border-radius: 3px;
+    }
+
+    /* Social avatar preview */
+    .avatar-preview {
+      background: var(--surface);
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .avatar-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid var(--border);
+    }
+
+    .avatar-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .avatar-info { display: flex; flex-direction: column; gap: 4px; }
+
+    .avatar-name {
+      font-weight: 600;
+      font-size: 0.9375rem;
+    }
+
+    .avatar-handle {
+      font-family: var(--font-m);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .avatar-bio {
+      font-size: 0.8125rem;
+      color: var(--grey);
+      margin-top: 4px;
+    }
+
+    /* Event card preview */
+    .event-card {
+      background: var(--navy);
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .event-logo {
+      margin-bottom: 24px;
+    }
+
+    .event-logo img {
+      height: 40px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .event-badge {
+      position: absolute;
+      top: 32px;
+      right: 32px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(201,168,76,0.4);
+    }
+
+    .event-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .event-eyebrow {
+      font-family: var(--font-m);
+      font-size: 0.6875rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .event-title {
+      font-family: var(--font-d);
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .event-sub {
+      font-size: 0.875rem;
+      color: rgba(244,239,230,0.6);
+    }
+
+    /* Merch preview */
+    .merch-coaster {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px;
+    }
+
+    .merch-coaster img {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      border-radius: 50%;
+      box-shadow: 0 0 0 6px rgba(201,168,76,0.2), 0 16px 48px rgba(0,0,0,0.5);
+    }
+
+    /* Price card preview */
+    .price-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .price-card-header {
+      background: var(--bg);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .price-card-header img {
+      height: 20px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .price-card-tag {
+      font-family: var(--font-m);
+      font-size: 0.625rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: var(--gold-sub);
+      border: 1px solid var(--gold-bdr);
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+
+    .price-card-body { padding: 24px; }
+
+    .price-card-strain {
+      font-family: var(--font-d);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+
+    .price-card-farm {
+      font-size: 0.8125rem;
+      color: var(--grey);
+      margin-bottom: 20px;
+    }
+
+    .price-card-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .price-val {
+      font-family: var(--font-m);
+      font-size: 1.5rem;
+      color: var(--cream);
+    }
+
+    .price-specs {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 3px;
+    }
+
+    .price-spec {
+      font-family: var(--font-m);
+      font-size: 0.6875rem;
+      color: var(--muted);
+    }
+
+    /* ── Color chips ─────────────────────────── */
+    .chip-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+    }
+
+    .chip-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .chip-label {
+      font-family: var(--font-m);
+      font-size: 0.6875rem;
+      color: var(--grey);
+    }
+
+    /* ── Page footer ─────────────────────────── */
+    .page-footer {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .page-footer p {
+      font-family: var(--font-m);
+      font-size: 0.6875rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+      .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
+      .section { padding: 48px 24px; }
+      .page-header { padding: 40px 24px; }
+    }
+
+    @media (max-width: 600px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .preview-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <p class="page-eyebrow">Antigravity &times; Bored N Buzzed &middot; Logo System &middot; Keep + Extend</p>
+    <h1 class="page-title">Logo in Context.</h1>
+    <p class="page-sub">The existing marks deployed across the new Eastside Premium design system. Navy, gold, warm dark, white, grey, black — the full palette in action.</p>
+  </header>
+
+
+  <!-- Section 1: Wordmark Variants -->
+  <section class="section">
+    <p class="section-label">01 &mdash; Wordmark Color Variants</p>
+    <div class="grid-3">
+
+      <div class="swatch">
+        <div class="swatch-bg" style="background: var(--bg);">
+          <img src="BNB LOGO (Facebook Cover).png" class="filter-white" alt="White wordmark on dark">
+        </div>
+        <div class="swatch-info">
+          <p class="swatch-title">White on Warm Dark</p>
+          <p class="swatch-desc">bg #0D0D0B &middot; Primary digital</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-bg" style="background: var(--navy);">
+          <img src="BNB LOGO (Facebook Cover).png" class="filter-white" alt="White wordmark on navy">
+        </div>
+        <div class="swatch-info">
+          <p class="swatch-title">White on Deep Navy</p>
+          <p class="swatch-desc">bg #0F2640 &middot; Events, premium print</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-bg" style="background: var(--gold);">
+          <img src="BNB LOGO.png" class="filter-black" alt="Black wordmark on gold">
+        </div>
+        <div class="swatch-info">
+          <p class="swatch-title">Black on Gold</p>
+          <p class="swatch-desc">bg #C9A84C &middot; Highlight moments, special edition</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-bg" style="background: var(--cream);">
+          <img src="BNB LOGO.png" class="filter-black" alt="Black wordmark on cream">
+        </div>
+        <div class="swatch-info">
+          <p class="swatch-title">Black on Cream</p>
+          <p class="swatch-desc">bg #F4EFE6 &middot; Print, light assets</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-bg" style="background: var(--navy2);">
+          <img src="BNB LOGO (Facebook Cover).png" class="filter-gold" alt="Gold wordmark on navy">
+        </div>
+        <div class="swatch-info">
+          <p class="swatch-title">Gold on Navy</p>
+          <p class="swatch-desc">bg #1A3D5C &middot; Premium accent, merch</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-bg" style="background: #1a1a16;">
+          <img src="BNB LOGO (Facebook Cover).png" class="filter-gold" alt="Gold wordmark on dark">
+        </div>
+        <div class="swatch-info">
+          <p class="swatch-title">Gold on Warm Dark</p>
+          <p class="swatch-desc">Accent moments, social stories</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Section 2: Badge Variants -->
+  <section class="section">
+    <p class="section-label">02 &mdash; Badge / Seal Variants</p>
+    <div class="grid-4">
+
+      <div class="badge-swatch">
+        <div class="badge-bg" style="background: var(--bg);">
+          <img src="BNB Coaster front.png" alt="Badge on warm dark">
+        </div>
+        <div class="swatch-info">
+          <p class="swatch-title">On Warm Dark</p>
+          <p class="swatch-desc">bg #0D0D0B &middot; Digital primary</p>
+        </div>
+      </div>
+
+      <div class="badge-swatch">
+        <div class="badge-bg badge-bg-gold-ring" style="background: var(--bg);">
+          <img src="BNB Coaster front.png" alt="Badge with gold ring">
+        </div>
+        <div class="swatch-info">
+          <p class="swatch-title">Gold Ring Treatment</p>
+          <p class="swatch-desc">Special events, premium merch</p>
+        </div>
+      </div>
+
+      <div class="badge-swatch">
+        <div class="badge-bg" style="background: var(--navy);">
+          <img src="BNB Coaster front.png" alt="Badge on navy">
+        </div>
+        <div class="swatch-info">
+          <p class="swatch-title">On Deep Navy</p>
+          <p class="swatch-desc">bg #0F2640 &middot; Event collateral</p>
+        </div>
+      </div>
+
+      <div class="badge-swatch">
+        <div class="badge-bg" style="background: var(--cream);">
+          <img src="BNB Coaster front.png" alt="Badge natural on cream">
+        </div>
+        <div class="swatch-info">
+          <p class="swatch-title">Natural on Cream</p>
+          <p class="swatch-desc">Print, light lifestyle contexts</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Section 3: Context Mockups -->
+  <section class="section">
+    <p class="section-label">03 &mdash; In Context</p>
+
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+
+      <!-- Website Header -->
+      <div>
+        <p style="font-family: var(--font-m); font-size: 0.6875rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Website Header</p>
+        <div class="context-card">
+          <div class="preview-header">
+            <img src="BNB LOGO (Facebook Cover).png" alt="BnB Logo">
+            <nav class="preview-nav">
+              <span class="active">Menu</span>
+              <span>Events</span>
+              <span>About</span>
+              <span>Rewards</span>
+              <span class="cta">Shop Now</span>
+            </nav>
+          </div>
+          <div class="preview-body">
+            <p class="preview-hero-eyebrow">Kirkland, WA &middot; Open Daily 8am&ndash;11pm</p>
+            <h2 class="preview-hero-h1">The Eastside<br>Standard.</h2>
+            <p class="preview-hero-p">Hand-picked flower, concentrates, and edibles — curated by a team that actually knows the product. Kirkland's cannabis destination.</p>
+            <div class="preview-hero-cta">Shop the Menu &rarr;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Card + Social Avatar row -->
+      <div class="grid-2">
+
+        <!-- Event Card -->
+        <div>
+          <p style="font-family: var(--font-m); font-size: 0.6875rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Event Collateral — Navy</p>
+          <div class="context-card">
+            <div class="event-card">
+              <div class="event-logo">
+                <img src="BNB LOGO (Facebook Cover).png" alt="BnB Logo">
+              </div>
+              <div class="event-badge">
+                <img src="BNB Coaster front.png" alt="BnB Badge">
+              </div>
+              <p class="event-eyebrow">Vendor Day &middot; This Friday</p>
+              <h3 class="event-title">Sky High Gardens<br>in Store.</h3>
+              <p class="event-sub">11516 124th Ave NE, Kirkland &middot; Noon &ndash; 6pm</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social + Price Card -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+
+          <!-- Social Avatar -->
+          <div>
+            <p style="font-family: var(--font-m); font-size: 0.6875rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Social Profile</p>
+            <div class="context-card">
+              <div class="avatar-preview">
+                <div class="avatar-circle">
+                  <img src="BNB Coaster front.png" alt="BnB Avatar">
+                </div>
+                <div class="avatar-info">
+                  <span class="avatar-name">Bored N Buzzed</span>
+                  <span class="avatar-handle">@borednbuzzed</span>
+                  <span class="avatar-bio">Kirkland's cannabis destination. Craft curated. Eastside rooted. 21+</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price Card -->
+          <div>
+            <p style="font-family: var(--font-m); font-size: 0.6875rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">In-Store Price Card</p>
+            <div class="price-card">
+              <div class="price-card-header">
+                <img src="BNB LOGO (Facebook Cover).png" alt="BnB Logo">
+                <span class="price-card-tag">Top Shelf</span>
+              </div>
+              <div class="price-card-body">
+                <h4 class="price-card-strain">Pineapple Chunk</h4>
+                <p class="price-card-farm">Sky High Gardens &middot; Indoor</p>
+                <div class="price-card-row">
+                  <span class="price-val">$38</span>
+                  <div class="price-specs">
+                    <span class="price-spec">3.5g</span>
+                    <span class="price-spec">THC 27.4%</span>
+                    <span class="price-spec">Hand-trimmed</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Merch / Coaster -->
+      <div>
+        <p style="font-family: var(--font-m); font-size: 0.6875rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Merchandise — Coaster / Badge on Dark</p>
+        <div class="context-card">
+          <div style="background: var(--bg); display: flex; align-items: center; justify-content: space-around; padding: 48px; gap: 48px; flex-wrap: wrap;">
+            <div class="merch-coaster">
+              <img src="BNB Coaster front.png" alt="BnB Coaster">
+            </div>
+            <div style="max-width: 340px;">
+              <p style="font-family: var(--font-m); font-size: 0.6875rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px;">Totem Lake &middot; Kirkland</p>
+              <h3 style="font-family: var(--font-d); font-size: 1.75rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 16px;">The badge<br>travels with you.</h3>
+              <p style="font-size: 0.9375rem; color: var(--grey); line-height: 1.65;">Coasters, stickers, sleeves, and community merch. The circular badge with the Bored Ape is the lifestyle anchor — deploy it wherever culture lives.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Section 4: Full Palette Reference -->
+  <section class="section">
+    <p class="section-label">04 &mdash; Full Palette — Logo + System Colors</p>
+
+    <p style="font-size: 0.875rem; color: var(--grey); max-width: 60ch; line-height: 1.65; margin-bottom: 8px;">
+      The complete color vocabulary available for logo deployment. Navy, Gold, White, Grey, Black — plus the warm dark surfaces from the design system.
+    </p>
+
+    <div class="chip-row">
+      <div class="chip"><div class="chip-dot" style="background: #0D0D0B; border: 1px solid #2A2A24;"></div><span class="chip-label">Warm Dark #0D0D0B</span></div>
+      <div class="chip"><div class="chip-dot" style="background: #0F2640;"></div><span class="chip-label">Navy #0F2640</span></div>
+      <div class="chip"><div class="chip-dot" style="background: #1A3D5C;"></div><span class="chip-label">Navy Elevated #1A3D5C</span></div>
+      <div class="chip"><div class="chip-dot" style="background: #C9A84C;"></div><span class="chip-label">Gold #C9A84C</span></div>
+      <div class="chip"><div class="chip-dot" style="background: #F4EFE6; border: 1px solid #2A2A24;"></div><span class="chip-label">Cream #F4EFE6</span></div>
+      <div class="chip"><div class="chip-dot" style="background: #8D867A;"></div><span class="chip-label">Stone Grey #8D867A</span></div>
+      <div class="chip"><div class="chip-dot" style="background: #2A2A24;"></div><span class="chip-label">Border Dark #2A2A24</span></div>
+      <div class="chip"><div class="chip-dot" style="background: #111111;"></div><span class="chip-label">Near Black #111111</span></div>
+      <div class="chip"><div class="chip-dot" style="background: #FFFFFF; border: 1px solid #2A2A24;"></div><span class="chip-label">White #FFFFFF</span></div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <div class="page-footer">
+    <p>Antigravity Agency &times; Bored N Buzzed &middot; Logo System Preview &middot; Keep + Extend &middot; 2026-05-06</p>
+    <p>v1.0 &middot; Draft &middot; Confidential</p>
+  </div>
+
+</body>
+</html>

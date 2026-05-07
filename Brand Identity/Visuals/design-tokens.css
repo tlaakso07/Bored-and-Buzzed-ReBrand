@@ -1,0 +1,602 @@
+/**
+ * Bored N Buzzed — Eastside Premium Design Tokens
+ * Version: 1.0.0 · Antigravity Agency · 2026-05-06
+ *
+ * Import this file at the top of any CSS or HTML stylesheet.
+ * All values reference design-tokens.json — this is the single source of truth
+ * for all digital assets: website, digital displays, email, menus.
+ *
+ * Usage:
+ *   background: var(--color-bg);
+ *   color: var(--color-accent);
+ *   font-family: var(--font-display);
+ *
+ * NEVER hardcode hex values in component CSS. Always use var().
+ */
+
+/* ─────────────────────────────────────────────────────────────
+   FONT IMPORTS
+   ───────────────────────────────────────────────────────────── */
+
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400&display=swap');
+
+
+/* ─────────────────────────────────────────────────────────────
+   PRIMITIVE TOKENS — RAW VALUES
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+
+  /* Color Primitives */
+  --_warm-black:       #0D0D0B;
+  --_surface-1:        #161612;
+  --_surface-2:        #1F1F19;
+  --_border-dark:      #2A2A24;
+  --_cream:            #F4EFE6;
+  --_stone-400:        #8D867A;
+  --_stone-600:        #5A544E;
+  --_gold-alpha-10:    rgba(201, 168, 76, 0.10);
+  --_gold-alpha-25:    rgba(201, 168, 76, 0.25);
+  --_gold-400:         #C9A84C;
+  --_gold-500:         #B8963C;
+  --_navy-900:         #0F2640;
+  --_navy-800:         #1A3D5C;
+
+  /* Typography Primitives */
+  --_font-display:     'Clash Display', sans-serif;
+  --_font-body:        'DM Sans', system-ui, sans-serif;
+  --_font-mono:        'JetBrains Mono', monospace;
+
+  /* Spacing Primitives */
+  --_sp-1:   4px;
+  --_sp-2:   8px;
+  --_sp-3:   12px;
+  --_sp-4:   16px;
+  --_sp-5:   20px;
+  --_sp-6:   24px;
+  --_sp-8:   32px;
+  --_sp-10:  40px;
+  --_sp-12:  48px;
+  --_sp-16:  64px;
+  --_sp-20:  80px;
+  --_sp-24:  96px;
+  --_sp-32:  128px;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   SEMANTIC TOKENS — PURPOSE ALIASES
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+
+  /* Core Backgrounds & Surfaces */
+  --color-bg:             var(--_warm-black);
+  --color-surface:        var(--_surface-1);
+  --color-surface-raised: var(--_surface-2);
+  --color-border:         var(--_border-dark);
+
+  /* Text */
+  --color-text-primary:   var(--_cream);
+  --color-text-secondary: var(--_stone-400);
+  --color-text-muted:     var(--_stone-600);
+
+  /* Accent — Aged Gold */
+  --color-accent:         var(--_gold-400);
+  --color-accent-hover:   var(--_gold-500);
+  --color-accent-subtle:  var(--_gold-alpha-10);
+  --color-accent-border:  var(--_gold-alpha-25);
+
+  /* Depth — Deep Navy */
+  --color-navy:           var(--_navy-900);
+  --color-navy-muted:     var(--_navy-800);
+
+  /* Fonts */
+  --font-display:  var(--_font-display);
+  --font-body:     var(--_font-body);
+  --font-mono:     var(--_font-mono);
+
+  /* Type Scale */
+  --text-2xs:   0.6875rem;   /* tags, chip labels */
+  --text-xs:    0.75rem;     /* eyebrow / uppercase labels */
+  --text-sm:    0.8125rem;   /* captions, field labels */
+  --text-data:  0.875rem;    /* JetBrains Mono — prices, THC%, specs */
+  --text-ui:    0.9375rem;   /* button text, nav links */
+  --text-base:  1rem;        /* body prose */
+  --text-h3:    clamp(1.125rem, 2.5vw, 1.5rem);
+  --text-h2:    clamp(1.75rem, 4vw, 3rem);
+  --text-h1:    clamp(2.5rem, 6vw, 5rem);
+
+  /* Line Heights */
+  --leading-display: 1.05;
+  --leading-h2:      1.1;
+  --leading-h3:      1.2;
+  --leading-label:   1.4;
+  --leading-body:    1.65;
+
+  /* Letter Spacing */
+  --tracking-tightest: -0.02em;
+  --tracking-tight:    -0.01em;
+  --tracking-normal:   0;
+  --tracking-wide:     0.01em;
+  --tracking-widest:   0.08em;
+
+  /* Spacing Aliases */
+  --spacing-section:      var(--_sp-20);   /* 80px between sections */
+  --spacing-content:      var(--_sp-10);   /* 40px content padding */
+  --spacing-gap:          var(--_sp-10);   /* 40px column gap */
+  --spacing-card:         var(--_sp-8);    /* 32px card padding */
+  --spacing-mobile-x:     var(--_sp-5);    /* 20px mobile horizontal */
+
+  /* Layout */
+  --max-width:       1280px;
+  --grid-asymmetric: 3fr 2fr;
+  --nav-height:      64px;
+
+  /* Border Radius */
+  --radius-none:  0;
+  --radius-sharp: 2px;
+  --radius-sm:    3px;
+  --radius-md:    4px;
+
+  /* Shadows */
+  --shadow-none:      none;
+  --shadow-floating:  0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-gold-glow: 0 0 24px rgba(201, 168, 76, 0.15);
+
+  /* Transitions */
+  --transition-fast:   0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow:   0.4s ease;
+
+  /* Z-Index */
+  --z-nav:      10;
+  --z-dropdown: 50;
+  --z-modal:    100;
+  --z-toast:    999;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   COMPONENT TOKENS — COMPONENT-SPECIFIC ALIASES
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+
+  /* Button — Primary */
+  --btn-primary-bg:         var(--color-accent);
+  --btn-primary-bg-hover:   var(--color-accent-hover);
+  --btn-primary-text:       var(--color-bg);
+  --btn-primary-radius:     var(--radius-sm);
+  --btn-primary-padding:    12px 28px;
+
+  /* Button — Secondary */
+  --btn-secondary-bg:           transparent;
+  --btn-secondary-text:         var(--color-accent);
+  --btn-secondary-border:       var(--color-accent-border);
+  --btn-secondary-border-hover: var(--color-accent);
+  --btn-secondary-radius:       var(--radius-sm);
+
+  /* Button — Ghost */
+  --btn-ghost-bg:     transparent;
+  --btn-ghost-text:   var(--color-text-secondary);
+  --btn-ghost-border: var(--color-border);
+  --btn-ghost-radius: var(--radius-sm);
+
+  /* Card */
+  --card-bg:           var(--color-surface);
+  --card-border:       var(--color-border);
+  --card-border-hover: var(--color-accent-border);
+  --card-bg-hover:     var(--color-surface-raised);
+  --card-radius:       var(--radius-md);
+  --card-padding:      var(--spacing-card);
+
+  /* Card — Navy variant */
+  --card-navy-bg:     var(--color-navy);
+  --card-navy-border: var(--color-navy-muted);
+  --card-navy-radius: var(--radius-md);
+
+  /* Navigation */
+  --nav-bg:           rgba(13, 13, 11, 0.85);
+  --nav-backdrop:     blur(12px);
+  --nav-border:       var(--color-border);
+  --nav-height:       64px;
+  --nav-link:         var(--color-text-secondary);
+  --nav-link-hover:   var(--color-text-primary);
+  --nav-link-active:  var(--color-accent);
+
+  /* Tag / Badge */
+  --tag-bg:         var(--color-accent-subtle);
+  --tag-border:     var(--color-accent-border);
+  --tag-text:       var(--color-accent);
+  --tag-radius:     var(--radius-sharp);
+  --tag-padding:    4px 10px;
+  --tag-font:       var(--font-mono);
+  --tag-font-size:  var(--text-2xs);
+  --tag-tracking:   var(--tracking-widest);
+
+  /* Form Input */
+  --input-bg:           transparent;
+  --input-border:       var(--color-border);
+  --input-border-focus: var(--color-accent);
+  --input-text:         var(--color-text-primary);
+  --input-placeholder:  var(--color-text-muted);
+  --input-radius:       var(--radius-sm);
+  --input-padding:      12px 16px;
+
+  /* Price Card (in-store + digital menu) */
+  --price-card-bg:          var(--color-surface);
+  --price-card-border:      var(--color-border);
+  --price-card-header-bg:   var(--color-bg);
+  --price-card-accent-bar:  var(--color-accent);
+  --price-card-price-font:  var(--font-mono);
+  --price-card-price-color: var(--color-text-primary);
+  --price-card-label-color: var(--color-text-secondary);
+  --price-card-spec-color:  var(--color-accent);
+
+  /* Divider */
+  --divider-color:      var(--color-border);
+  --divider-thickness:  1px;
+  --accent-bar-color:   var(--color-accent);
+  --accent-bar-thickness: 1px;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   BASE RESETS & DEFAULTS
+   ───────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg);
+  min-height: 100dvh;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   TYPOGRAPHY BASE
+   ───────────────────────────────────────────────────────────── */
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-h1);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-tightest);
+  color: var(--color-text-primary);
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-h2);
+  line-height: var(--leading-h2);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+}
+
+h3 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-h3);
+  line-height: var(--leading-h3);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-text-primary);
+}
+
+p {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--color-text-primary);
+  max-width: 65ch;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  line-height: var(--leading-label);
+  color: var(--color-text-secondary);
+}
+
+.data, .price, .thc, .spec {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--text-data);
+  line-height: var(--leading-label);
+  color: var(--color-text-primary);
+}
+
+.thc-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-data);
+  color: var(--color-accent);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   COMPONENT CLASSES
+   ───────────────────────────────────────────────────────────── */
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-ui);
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform var(--transition-fast), opacity var(--transition-fast), border-color var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: 0;
+}
+
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border-color: transparent;
+}
+.btn-primary:hover {
+  background: var(--btn-primary-bg-hover);
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+  opacity: 1;
+}
+
+.btn-secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border-color: var(--btn-secondary-border);
+}
+.btn-secondary:hover {
+  border-color: var(--btn-secondary-border-hover);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: var(--btn-ghost-bg);
+  color: var(--btn-ghost-text);
+  border-color: var(--btn-ghost-border);
+}
+.btn-ghost:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-text-secondary);
+}
+
+/* Cards */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+.card:hover {
+  background: var(--card-bg-hover);
+  border-color: var(--card-border-hover);
+}
+
+.card-navy {
+  background: var(--card-navy-bg);
+  border: 1px solid var(--card-navy-border);
+  border-radius: var(--card-navy-radius);
+  padding: var(--card-padding);
+}
+
+/* Tags */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--tag-padding);
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  border-radius: var(--tag-radius);
+  font-family: var(--tag-font);
+  font-size: var(--tag-font-size);
+  font-weight: 400;
+  color: var(--tag-text);
+  text-transform: uppercase;
+  letter-spacing: var(--tag-tracking);
+}
+
+/* Navigation */
+nav, .nav {
+  background: var(--nav-bg);
+  backdrop-filter: var(--nav-backdrop);
+  -webkit-backdrop-filter: var(--nav-backdrop);
+  border-bottom: 1px solid var(--nav-border);
+  height: var(--nav-height);
+}
+
+.nav-link {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-ui);
+  color: var(--nav-link);
+  transition: color var(--transition-fast);
+}
+.nav-link:hover { color: var(--nav-link-hover); }
+.nav-link.active { color: var(--nav-link-active); }
+
+/* Form elements */
+.input-label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.input-field {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  padding: var(--input-padding);
+  font-family: var(--font-body);
+  font-size: var(--text-ui);
+  color: var(--input-text);
+  width: 100%;
+  transition: border-color var(--transition-fast);
+}
+.input-field::placeholder { color: var(--input-placeholder); }
+.input-field:focus {
+  outline: none;
+  border-color: var(--input-border-focus);
+}
+
+/* Dividers */
+hr, .divider {
+  border: none;
+  border-top: var(--divider-thickness) solid var(--divider-color);
+  margin: 0;
+}
+
+.accent-bar {
+  height: var(--accent-bar-thickness);
+  background: var(--accent-bar-color);
+  width: 100%;
+}
+
+/* Price Card */
+.price-card {
+  background: var(--price-card-bg);
+  border: 1px solid var(--price-card-border);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+.price-card-header {
+  background: var(--price-card-header-bg);
+  border-bottom: var(--accent-bar-thickness) solid var(--price-card-accent-bar);
+  padding: var(--_sp-4) var(--_sp-6);
+}
+.price-card-price {
+  font-family: var(--price-card-price-font);
+  font-size: var(--text-h3);
+  color: var(--price-card-price-color);
+}
+.price-card-spec {
+  font-family: var(--price-card-price-font);
+  font-size: var(--text-data);
+  color: var(--price-card-spec-color);
+}
+.price-card-label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--price-card-label-color);
+}
+
+/* Section Layout */
+.section {
+  padding-block: var(--spacing-section);
+  padding-inline: var(--spacing-content);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+}
+
+.grid-asymmetric {
+  display: grid;
+  grid-template-columns: var(--grid-asymmetric);
+  gap: var(--spacing-gap);
+}
+
+/* Navy section background */
+.bg-navy {
+  background: var(--color-navy);
+}
+.bg-surface {
+  background: var(--color-surface);
+}
+
+/* Utility */
+.text-accent     { color: var(--color-accent); }
+.text-primary    { color: var(--color-text-primary); }
+.text-secondary  { color: var(--color-text-secondary); }
+.text-muted      { color: var(--color-text-muted); }
+.font-display    { font-family: var(--font-display); }
+.font-mono       { font-family: var(--font-mono); }
+.font-body       { font-family: var(--font-body); }
+
+
+/* ─────────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .grid-asymmetric {
+    grid-template-columns: 1fr;
+  }
+  .section {
+    padding-inline: var(--spacing-mobile-x);
+  }
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  h1 { letter-spacing: -0.01em; }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   FOCUS STATES (Accessibility)
+   ───────────────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
