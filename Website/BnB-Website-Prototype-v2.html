@@ -655,8 +655,8 @@
       <h2>Are you 21 or older?</h2>
       <p>You must be 21+ to enter this site. By entering, you agree to our Terms of Service and confirm you are of legal cannabis-purchasing age in Washington State.</p>
       <div class="age-gate-btns">
-        <button class="age-gate-yes" onclick="enterSite()">Yes, I'm 21 or older</button>
-        <button class="age-gate-no" onclick="window.location.href='https://google.com'">No, I'm under 21</button>
+        <button type="button" class="age-gate-yes" onclick="enterSite()">Yes, I'm 21 or older</button>
+        <button type="button" class="age-gate-no" onclick="window.location.href='https://google.com'">No, I'm under 21</button>
       </div>
       <p class="age-gate-legal">Keep out of reach of children. Cannabis affects people differently — consume responsibly. For use by adults 21+ only. WA State License #000000.</p>
     </div>
@@ -685,10 +685,10 @@
         </div>
       </nav>
       <div class="nav-icons">
-        <button class="icon-btn" aria-label="Search">
+        <button type="button" class="icon-btn" aria-label="Search">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
         </button>
-        <button class="icon-btn" aria-label="Cart" style="position:relative;">
+        <button type="button" class="icon-btn" aria-label="Cart" style="position:relative;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           <span style="position:absolute;top:4px;right:4px;width:8px;height:8px;background:var(--accent);border-radius:50%;font-size:0;"></span>
         </button>
@@ -729,8 +729,8 @@
             <h1>The Eastside Standard.</h1>
             <p class="lead" style="margin-top:16px;">Curated cannabis for the Eastside. Craft brands, knowledgeable budtenders, and a selection built for people who actually care what they're buying.</p>
             <div class="hero-cta" style="margin-top:32px;">
-              <button class="btn btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Shop the Menu</button>
-              <button class="btn btn-secondary">View Today's Specials</button>
+              <button type="button" class="btn btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Shop the Menu</button>
+              <button type="button" class="btn btn-secondary">View Today's Specials</button>
             </div>
             <div class="row" style="margin-top:32px;gap:20px;flex-wrap:wrap;">
               <div style="display:flex;align-items:center;gap:6px;">
@@ -763,13 +763,13 @@
     <!-- ░░ CATEGORY NAV BAR ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ -->
     <div class="cat-bar" id="menu">
       <div class="container cat-bar-inner">
-        <button class="cat-btn active" onclick="setCat(this)">Flower <span class="cat-count">480</span></button>
-        <button class="cat-btn" onclick="setCat(this)">Edibles <span class="cat-count">271</span></button>
-        <button class="cat-btn" onclick="setCat(this)">Concentrates <span class="cat-count">262</span></button>
-        <button class="cat-btn" onclick="setCat(this)">Vaporizers <span class="cat-count">530</span></button>
-        <button class="cat-btn" onclick="setCat(this)">Pre-Rolls <span class="cat-count">239</span></button>
-        <button class="cat-btn" onclick="setCat(this)">Topicals <span class="cat-count">15</span></button>
-        <button class="cat-btn" onclick="setCat(this)">Accessories</button>
+        <button type="button" class="cat-btn active" onclick="setCat(this)">Flower <span class="cat-count">480</span></button>
+        <button type="button" class="cat-btn" onclick="setCat(this)">Edibles <span class="cat-count">271</span></button>
+        <button type="button" class="cat-btn" onclick="setCat(this)">Concentrates <span class="cat-count">262</span></button>
+        <button type="button" class="cat-btn" onclick="setCat(this)">Vaporizers <span class="cat-count">530</span></button>
+        <button type="button" class="cat-btn" onclick="setCat(this)">Pre-Rolls <span class="cat-count">239</span></button>
+        <button type="button" class="cat-btn" onclick="setCat(this)">Topicals <span class="cat-count">15</span></button>
+        <button type="button" class="cat-btn" onclick="setCat(this)">Accessories</button>
       </div>
     </div>
 
@@ -780,14 +780,14 @@
 
           <!-- SIDEBAR FILTERS -->
           <aside class="filters-sidebar">
-            <button class="filter-toggle" id="filterToggle" onclick="toggleFilters()" aria-expanded="false" aria-controls="filtersBody">
+            <button type="button" class="filter-toggle" id="filterToggle" onclick="toggleFilters()" aria-expanded="false" aria-controls="filtersBody">
               <span>Filters</span>
               <svg class="filter-toggle-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div id="filtersBody" class="filters-body">
             <div class="row-between" style="margin-bottom:20px;">
               <span style="font-family:var(--font-display);font-size:16px;font-weight:600;">Filters</span>
-              <button class="btn-ghost btn" style="font-size:12px;padding:4px 8px;color:var(--muted);">Clear all</button>
+              <button type="button" class="btn-ghost btn" style="font-size:12px;padding:4px 8px;color:var(--muted);">Clear all</button>
             </div>
             <hr class="rule" style="margin-bottom:20px;" />
             <div class="filter-group">
@@ -861,7 +861,7 @@
                       <div class="product-price">$38</div>
                       <div class="product-weight">3.5g · Eighth</div>
                     </div>
-                    <button class="add-btn">+ Add</button>
+                    <button type="button" class="add-btn">+ Add</button>
                   </div>
                 </div>
               </div>
@@ -884,7 +884,7 @@
                       <div class="product-price">$28</div>
                       <div class="product-weight">3.5g · Eighth</div>
                     </div>
-                    <button class="add-btn">+ Add</button>
+                    <button type="button" class="add-btn">+ Add</button>
                   </div>
                 </div>
               </div>
@@ -907,7 +907,7 @@
                       <div class="product-price">$42</div>
                       <div class="product-weight">3.5g · Eighth</div>
                     </div>
-                    <button class="add-btn">+ Add</button>
+                    <button type="button" class="add-btn">+ Add</button>
                   </div>
                 </div>
               </div>
@@ -931,7 +931,7 @@
                       <div class="product-price">$22</div>
                       <div class="product-weight">100mg · 10-Pack</div>
                     </div>
-                    <button class="add-btn">+ Add</button>
+                    <button type="button" class="add-btn">+ Add</button>
                   </div>
                 </div>
               </div>
@@ -954,7 +954,7 @@
                       <div class="product-price">$35</div>
                       <div class="product-weight">1g · 510 Cart</div>
                     </div>
-                    <button class="add-btn">+ Add</button>
+                    <button type="button" class="add-btn">+ Add</button>
                   </div>
                 </div>
               </div>
@@ -977,7 +977,7 @@
                       <div class="product-price">$32</div>
                       <div class="product-weight">3.5g · Eighth</div>
                     </div>
-                    <button class="add-btn">+ Add</button>
+                    <button type="button" class="add-btn">+ Add</button>
                   </div>
                 </div>
               </div>
@@ -1000,7 +1000,7 @@
                       <div class="product-price">$55</div>
                       <div class="product-weight">1g · Live Resin</div>
                     </div>
-                    <button class="add-btn">+ Add</button>
+                    <button type="button" class="add-btn">+ Add</button>
                   </div>
                 </div>
               </div>
@@ -1024,7 +1024,7 @@
                       <div class="product-price">$12</div>
                       <div class="product-weight">1g · Single</div>
                     </div>
-                    <button class="add-btn">+ Add</button>
+                    <button type="button" class="add-btn">+ Add</button>
                   </div>
                 </div>
               </div>
@@ -1032,7 +1032,7 @@
             </div><!-- /product-grid -->
 
             <div style="display:flex;justify-content:center;margin-top:40px;">
-              <button class="btn btn-secondary">Load More Products</button>
+              <button type="button" class="btn btn-secondary">Load More Products</button>
             </div>
           </div>
 
@@ -1048,26 +1048,26 @@
             <p class="eyebrow">Current Deals</p>
             <h2>Today's Specials</h2>
           </div>
-          <button class="btn btn-secondary btn-arrow">View All Deals</button>
+          <button type="button" class="btn btn-secondary btn-arrow">View All Deals</button>
         </div>
         <div class="grid-3">
           <div class="deal-card">
             <div class="deal-discount">40% OFF</div>
             <div class="deal-name">Select Flower Brands</div>
             <div class="deal-desc">Includes Phat Panda, Oleum, and more. In-store and online.</div>
-            <button class="btn btn-primary btn-sm">Shop Now</button>
+            <button type="button" class="btn btn-primary btn-sm">Shop Now</button>
           </div>
           <div class="deal-card">
             <div class="deal-discount">7 FOR $70</div>
             <div class="deal-name">Cartridge Bundle</div>
             <div class="deal-desc">Mix and match any 7 carts from our 1g cartridge selection.</div>
-            <button class="btn btn-primary btn-sm">Shop Carts</button>
+            <button type="button" class="btn btn-primary btn-sm">Shop Carts</button>
           </div>
           <div class="deal-card">
             <div class="deal-discount">$99+</div>
             <div class="deal-name">Ounce Drop</div>
             <div class="deal-desc">Premium ounces starting at $99. Select strains, limited stock.</div>
-            <button class="btn btn-primary btn-sm">Shop Flower</button>
+            <button type="button" class="btn btn-primary btn-sm">Shop Flower</button>
           </div>
         </div>
       </div>
@@ -1184,8 +1184,8 @@
         <h2>Come see what the Eastside has been waiting for.</h2>
         <p class="lead" style="margin:16px auto 32px;">Open daily 8 AM – 11 PM. Walk-ins always welcome. Free parking.</p>
         <div class="hero-cta" style="justify-content:center;">
-          <button class="btn btn-primary">Get Directions</button>
-          <button class="btn btn-secondary">View Full Menu</button>
+          <button type="button" class="btn btn-primary">Get Directions</button>
+          <button type="button" class="btn btn-secondary">View Full Menu</button>
         </div>
       </div>
     </section>
