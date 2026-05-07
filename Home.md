@@ -69,3 +69,9 @@ tags: [dashboard, antigravity]
 | 2026-05-05 | 09–10 | SkillUI CLI installed · webgpu-threejs-tsl skill installed |
 | 2026-05-05 | 11–12 | 70 brand DESIGN.md reference files installed · Full alignment pass — all docs synced |
 | 2026-05-05 | 13 | ui-ux-pro-max installed (67 styles, 161 rules, Design System Generator) · All files aligned · **Mainframe build complete** |
+
+
+## Active Docs
+- [[Notes/Phase 1 Todo List|Phase 1 Todo List]] — platform audit checklist
+- [[Website/Website|Website Section]] — prototype status and next steps
+- [[Handoff/Handoff|Session Handoffs]] — read most recent before starting

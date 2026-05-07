@@ -77,3 +77,8 @@ Customized to enforce our Phase 1 brand tokens. It will restrict colors, fonts (
 - Deploy to a Vercel staging link.
 - Trevor to test the POSaBIT product sync (verify a price change in POSaBIT reflects on the staging site instantly via React Query).
 - Verify the mobile responsive layout (filters collapsing into a drawer).
+
+
+
+---
+*[[CLAUDE]] — master document · [[Website/Website|Website Section]]*
