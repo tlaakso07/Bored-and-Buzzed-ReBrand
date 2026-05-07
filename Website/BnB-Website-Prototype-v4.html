@@ -102,13 +102,6 @@
   .marquee-inner-rev{animation-name:ticker-rev;animation-duration:38s}
 
   /* Hero watermark */
-  .hero-wm{
-    position:absolute;inset:0;
-    background-image:url('../Brand Identity/BnB Logos/BNB LOGO (Facebook Cover).png');
-    background-size:cover;background-position:center;
-    opacity:.022;filter:invert(1);pointer-events:none
-  }
-
   /* Concentric rings */
   .ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,var(--ro,0.06))}
 
@@ -144,6 +137,12 @@
   /* Scrollbar-none utility */
   .no-scroll::-webkit-scrollbar{display:none}
   .no-scroll{-ms-overflow-style:none;scrollbar-width:none}
+
+  /* Reduced motion — pause video and all animations */
+  @media(prefers-reduced-motion:reduce){
+    video{display:none}
+    .marquee-inner,.marquee-inner-rev{animation:none}
+  }
 </style>
 </head>
 <body class="bg-bg font-sans antialiased">
@@ -182,7 +181,8 @@
     <div class="hidden md:flex items-center gap-8">
       <a href="#shop" class="relative text-[11px] font-medium text-fg tracking-[.08em] uppercase pb-0.5 after:absolute after:bottom-[-6px] after:left-0 after:right-0 after:h-px after:bg-accent">Menu</a>
       <a href="#deals" class="text-[11px] font-medium text-muted tracking-[.08em] uppercase hover:text-fg transition-colors">Deals</a>
-      <a href="#about" class="text-[11px] font-medium text-muted tracking-[.08em] uppercase hover:text-fg transition-colors">Events</a>
+      <a href="#reviews" class="text-[11px] font-medium text-muted tracking-[.08em] uppercase hover:text-fg transition-colors">Reviews</a>
+      <a href="#rewards" class="text-[11px] font-medium text-muted tracking-[.08em] uppercase hover:text-fg transition-colors">Rewards</a>
       <a href="#about" class="text-[11px] font-medium text-muted tracking-[.08em] uppercase hover:text-fg transition-colors">About</a>
     </div>
 
@@ -214,7 +214,6 @@
 <section class="relative flex flex-col overflow-hidden bg-bg">
 
   <!-- Texture layers -->
-  <div class="hero-wm"></div>
   <div class="halftone-overlay"></div>
   <div class="grain-overlay"></div>
 
@@ -884,6 +883,68 @@
         </a>
       </div>
     </div>
+
+    <!-- ── WEEKLY DEAL CALENDAR ── -->
+    <div class="mt-16 pt-12 border-t border-white/[0.07]">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <p class="font-mono text-[10px] text-muted tracking-[.18em] uppercase mb-2">Every week, without fail</p>
+          <p class="font-display text-xl font-bold text-fg">The Daily Deal Schedule</p>
+        </div>
+        <span class="hidden md:flex items-center gap-2 font-mono text-[10px] text-open tracking-[.14em] uppercase">
+          <span class="w-1.5 h-1.5 rounded-full bg-open"></span>Today: Pre-Roll Thursday
+        </span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+
+        <div class="bg-bg border border-white/[0.07] rounded-lg p-4 flex flex-col">
+          <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-3">Monday</p>
+          <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Munchie<br>Monday</p>
+          <p class="font-mono text-accent text-[10px] font-bold mb-1">30% OFF</p>
+          <p class="text-muted text-[11px] leading-snug mt-auto">Buy 3+ edibles</p>
+        </div>
+
+        <div class="bg-bg border border-white/[0.07] rounded-lg p-4 flex flex-col">
+          <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-3">Tuesday</p>
+          <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Top Shelf<br>Tuesday</p>
+          <p class="font-mono text-accent text-[10px] font-bold mb-1">30% OFF</p>
+          <p class="text-muted text-[11px] leading-snug mt-auto">3+ top shelf brands</p>
+        </div>
+
+        <div class="bg-bg border border-white/[0.07] rounded-lg p-4 flex flex-col">
+          <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-3">Wednesday</p>
+          <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Wax<br>Wednesday</p>
+          <p class="font-mono text-accent text-[10px] font-bold mb-1">30% OFF</p>
+          <p class="text-muted text-[11px] leading-snug mt-auto">3g+ concentrate</p>
+        </div>
+
+        <!-- THURSDAY — TODAY -->
+        <div class="bg-bg border border-accent/40 rounded-lg p-4 flex flex-col relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-0.5 bg-accent"></div>
+          <p class="font-mono text-[9px] text-accent tracking-[.14em] uppercase mb-3">Thursday · Today</p>
+          <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Pre-Roll<br>Thursday</p>
+          <p class="font-mono text-accent text-[10px] font-bold mb-1">30% OFF</p>
+          <p class="text-muted text-[11px] leading-snug mt-auto">Any 3 pre-rolls</p>
+          <span class="absolute top-4 right-3 w-1.5 h-1.5 rounded-full bg-open animate-pulse"></span>
+        </div>
+
+        <div class="bg-bg border border-white/[0.07] rounded-lg p-4 flex flex-col">
+          <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-3">Friday</p>
+          <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Flower<br>Friday</p>
+          <p class="font-mono text-accent text-[10px] font-bold mb-1">30% OFF</p>
+          <p class="text-muted text-[11px] leading-snug mt-auto">3+ flower products</p>
+        </div>
+
+        <div class="bg-bg border border-white/[0.07] rounded-lg p-4 flex flex-col col-span-2">
+          <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-3">Sat + Sun</p>
+          <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Bulk Up<br>Weekend</p>
+          <p class="font-mono text-accent text-[10px] font-bold mb-1">UP TO 30% OFF</p>
+          <p class="text-muted text-[11px] leading-snug mt-auto">$100=20% · $200=25% · $300=30%</p>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -908,13 +969,13 @@
           in the Suburbs.
         </h2>
         <p class="text-muted text-lg leading-relaxed max-w-md mb-6">
-          Bored and Buzzed is Kirkland's home for real cannabis culture.
-          We're not a chain, not a template. We know the Eastside — Kirkland,
-          Redmond, Bothell, Woodinville — and we curate for the people who live here.
+          Your neighborhood cannabis shop, proudly serving Kirkland and the surrounding Eastside community. We're more than just a place to shop — we're a space where quality, education, and real customer service come together.
         </p>
-        <p class="text-muted text-base leading-relaxed max-w-md mb-10">
-          Every product on our shelf was chosen. Every brand we carry has a story.
-          Come in and you'll feel the difference immediately.
+        <p class="text-muted text-base leading-relaxed max-w-md mb-4">
+          Our budtenders take the time to understand what you're looking for — whether you're a seasoned connoisseur or completely new to cannabis. Every product on our shelf was chosen because we'd buy it ourselves.
+        </p>
+        <p class="text-muted text-sm leading-relaxed max-w-md mb-10">
+          Conveniently located just minutes from Totem Lake Town Center and Juanita Beach. Serving Kirkland, Woodinville, Redmond, Bothell, and beyond.
         </p>
 
         <!-- Pillars -->
@@ -947,6 +1008,58 @@
             style="filter:drop-shadow(0 0 40px rgba(201,168,76,0.32))"
             loading="lazy">
         </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CULTURE / EVENTS ──────────────────────────────────────── -->
+<section class="bg-bg border-t border-white/[0.06] py-20">
+  <div class="max-w-wrap mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Copy -->
+      <div>
+        <p class="section-eyebrow mb-4">Events &amp; Culture</p>
+        <h2 class="font-display font-bold text-fg leading-[.92] tracking-tight mb-8" style="font-size:clamp(36px,5vw,64px)">
+          We Brought<br>
+          Jim Jones<br>
+          <span class="text-accent">to Kirkland.</span>
+        </h2>
+        <p class="text-muted text-base leading-relaxed max-w-md mb-4">
+          Bored and Buzzed hosted Grammy-nominated rapper and Dipset co-founder Jim Jones for an exclusive meet &amp; greet — right here in Kirkland. Then we sponsored the afterparty at Mirra in Bellevue.
+        </p>
+        <p class="text-muted text-sm leading-relaxed max-w-md mb-4">
+          VIP guests left with limited-edition B&amp;B tees and hats. Sky High Gardens and WYLD were on the floor. It wasn't just an event — it was a reminder of why we do what we do.
+        </p>
+        <p class="text-muted text-sm leading-relaxed max-w-md mb-8 italic">
+          "We're here for the people, the culture, and the moments that bring us together. Stay tuned, Kirkland. This is just the beginning."
+        </p>
+        <div class="flex items-center gap-6">
+          <a href="https://borednbuzzed.com/blog-events-b1/" target="_blank" rel="noopener"
+            class="inline-flex items-center gap-2 text-accent text-[12px] tracking-[.1em] uppercase font-medium hover:text-accent-hi transition-colors">
+            Read the Recap
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@BorednBuzzedKirkland" target="_blank" rel="noopener"
+            class="inline-flex items-center gap-2 text-muted text-[12px] tracking-[.1em] uppercase hover:text-fg transition-colors">
+            Our YouTube
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- YouTube embed -->
+      <div class="relative rounded-lg overflow-hidden bg-surface border border-white/[0.07]" style="aspect-ratio:16/9">
+        <iframe
+          src="https://www.youtube.com/embed/5Ym4_EEfUSA?rel=0&modestbranding=1&color=white"
+          title="Jim Jones Pulls Up to Kirkland for a Special Meet &amp; Greet — Bored N Buzzed"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+          class="absolute inset-0 w-full h-full border-0">
+        </iframe>
       </div>
 
     </div>
@@ -1000,23 +1113,225 @@
   </div>
 </section>
 
-<!-- ─── PROOF STRIP ───────────────────────────────────────────── -->
-<section class="bg-surface border-y border-white/[0.07] py-12">
+<!-- ─── REVIEWS ──────────────────────────────────────────────── -->
+<section id="reviews" class="bg-surface border-t border-white/[0.07] py-20">
   <div class="max-w-wrap mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/[0.07]">
+
+    <div class="flex items-end justify-between mb-12">
+      <div>
+        <p class="section-eyebrow mb-3">The Eastside Weighs In</p>
+        <h2 class="font-display text-4xl font-bold text-fg tracking-tight">Real People.<br>Real Reviews.</h2>
+      </div>
+      <a href="https://g.page/r/CSSJAhsfuIj-EAI/review" target="_blank" rel="noopener"
+        class="hidden md:inline-flex items-center gap-2 border border-accent/30 text-accent text-[11px] tracking-[.1em] uppercase font-medium px-5 py-3 hover:border-accent hover:bg-accent/5 transition-all">
+        Leave a Google Review
+        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-6">
+
+      <!-- Featured review -->
+      <div class="bg-bg border border-white/[0.07] rounded-lg p-8 flex flex-col justify-between">
+        <div>
+          <div class="flex gap-1 mb-5">
+            <span class="text-accent text-lg">★★★★★</span>
+          </div>
+          <blockquote class="font-display text-fg text-xl font-semibold leading-snug mb-6">
+            "Had the nicest guy help me both times — knowledgeable, friendly, and excellent customer service."
+          </blockquote>
+          <p class="text-muted text-sm leading-relaxed">
+            This is what every dispensary visit should feel like. Staff who actually know the products and take the time to listen.
+          </p>
+        </div>
+        <div class="flex items-center justify-between pt-6 mt-6 border-t border-white/[0.07]">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center">
+              <span class="font-mono text-accent text-[11px] font-bold">V</span>
+            </div>
+            <div>
+              <p class="text-fg text-sm font-medium">Verified Customer</p>
+              <p class="font-mono text-[9px] text-muted tracking-[.1em] uppercase">via Leafly</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-[#00C170]">
+              <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" fill="#034638"/>
+              <path d="M8.5 12.5L11 15l5-5" stroke="#00C170" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="font-mono text-[9px] text-muted tracking-[.08em]">Leafly Verified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Platform ratings stack -->
+      <div class="flex flex-col gap-4">
+
+        <!-- Google -->
+        <div class="bg-bg border border-white/[0.07] rounded-lg p-6 flex items-center justify-between">
+          <div>
+            <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-2">Google Reviews</p>
+            <div class="flex items-baseline gap-2">
+              <span class="font-display text-3xl font-bold text-fg">4.8</span>
+              <div class="flex gap-0.5">
+                <span class="text-accent text-sm">★★★★★</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://www.google.com/maps/place/Bored+N+Buzzed+Cannabis+Kirkland/@47.7033124,-122.1748707,17z" target="_blank" rel="noopener"
+            class="font-mono text-[9px] text-muted tracking-[.1em] uppercase hover:text-fg transition-colors flex items-center gap-1">
+            Read
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        </div>
+
+        <!-- Leafly -->
+        <div class="bg-bg border border-white/[0.07] rounded-lg p-6 flex items-center justify-between">
+          <div>
+            <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-2">Leafly</p>
+            <div class="flex items-baseline gap-2">
+              <span class="font-display text-3xl font-bold text-fg">4.7</span>
+              <div class="flex gap-0.5">
+                <span class="text-accent text-sm">★★★★★</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://www.leafly.com/dispensary-info/bored-n-buzzed/reviews" target="_blank" rel="noopener"
+            class="font-mono text-[9px] text-muted tracking-[.1em] uppercase hover:text-fg transition-colors flex items-center gap-1">
+            Read
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        </div>
+
+        <!-- Weedmaps -->
+        <div class="bg-bg border border-white/[0.07] rounded-lg p-6 flex items-center justify-between">
+          <div>
+            <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-2">Weedmaps</p>
+            <div class="flex items-baseline gap-2">
+              <span class="font-display text-3xl font-bold text-fg">5.0</span>
+              <div class="flex gap-0.5">
+                <span class="text-accent text-sm">★★★★★</span>
+              </div>
+            </div>
+          </div>
+          <a href="https://weedmaps.com/dispensaries/bored-n-buzzed" target="_blank" rel="noopener"
+            class="font-mono text-[9px] text-muted tracking-[.1em] uppercase hover:text-fg transition-colors flex items-center gap-1">
+            Read
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        </div>
+
+        <!-- Leave a review CTA (mobile) -->
+        <a href="https://g.page/r/CSSJAhsfuIj-EAI/review" target="_blank" rel="noopener"
+          class="md:hidden text-center border border-accent/30 text-accent text-[11px] tracking-[.1em] uppercase font-medium py-3 hover:border-accent hover:bg-accent/5 transition-all rounded-lg">
+          Leave a Google Review →
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Bottom note -->
+    <p class="font-mono text-[9px] text-muted/50 tracking-[.1em] uppercase mt-8 text-center">
+      Ratings sourced directly from Google, Leafly, and Weedmaps · Updated regularly
+    </p>
+
+  </div>
+</section>
+
+<!-- ─── PROOF STRIP ───────────────────────────────────────────── -->
+<section class="bg-bg border-y border-white/[0.07] py-12">
+  <div class="max-w-wrap mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/[0.07]">
       <div class="py-8 md:py-0 md:px-12 first:pl-0 last:pr-0 text-center">
-        <p class="font-display text-4xl font-bold text-fg mb-2">200+</p>
-        <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase">Curated Products</p>
+        <p class="font-display text-4xl font-bold text-fg mb-2">659</p>
+        <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase">Products in Stock</p>
       </div>
       <div class="py-8 md:py-0 md:px-12 text-center">
-        <p class="font-display text-4xl font-bold text-fg mb-2">4.9★</p>
+        <p class="font-display text-4xl font-bold text-fg mb-2">4.8★</p>
         <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase">Google Rating</p>
       </div>
       <div class="py-8 md:py-0 md:px-12 text-center">
         <p class="font-display text-4xl font-bold text-fg mb-2">Daily</p>
-        <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase">659 Products · Daily</p>
+        <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase">New Deals Every Day</p>
+      </div>
+      <div class="py-8 md:py-0 md:px-12 text-center">
+        <p class="font-display text-4xl font-bold text-fg mb-2">30%</p>
+        <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase">Off First Order · Rewards</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ─── LOYALTY / REWARDS ─────────────────────────────────────── -->
+<section id="rewards" class="bg-navy relative overflow-hidden py-20">
+  <div class="halftone-overlay" style="opacity:.03"></div>
+  <div class="grain-overlay" style="opacity:.04"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(201,168,76,0.08),transparent)]"></div>
+
+  <div class="relative z-10 max-w-wrap mx-auto px-6">
+
+    <div class="text-center mb-14">
+      <p class="section-eyebrow mb-3">Bored N Buzzed Rewards</p>
+      <h2 class="font-display text-4xl font-bold text-fg tracking-tight mb-4">Earn While You Shop</h2>
+      <p class="text-muted text-base max-w-sm mx-auto">$1 spent = 1 point earned. No sign-up fees. No complicated rules. Just savings every visit.</p>
+    </div>
+
+    <!-- Points tiers -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      <div class="bg-bg/50 border border-white/[0.07] rounded-lg p-6 text-center">
+        <p class="font-display text-3xl font-bold text-accent mb-1">10%</p>
+        <p class="font-mono text-[9px] text-muted tracking-[.15em] uppercase mb-3">Off</p>
+        <p class="font-mono text-[11px] text-fg font-medium">100 pts</p>
+      </div>
+      <div class="bg-bg/50 border border-white/[0.07] rounded-lg p-6 text-center">
+        <p class="font-display text-3xl font-bold text-accent mb-1">20%</p>
+        <p class="font-mono text-[9px] text-muted tracking-[.15em] uppercase mb-3">Off</p>
+        <p class="font-mono text-[11px] text-fg font-medium">250 pts</p>
+      </div>
+      <div class="bg-bg/50 border border-accent/30 rounded-lg p-6 text-center relative">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-bg font-mono text-[8px] tracking-[.12em] uppercase px-3 py-1 rounded-full">Most Popular</span>
+        <p class="font-display text-3xl font-bold text-accent mb-1">25%</p>
+        <p class="font-mono text-[9px] text-muted tracking-[.15em] uppercase mb-3">Off</p>
+        <p class="font-mono text-[11px] text-fg font-medium">500 pts</p>
+      </div>
+      <div class="bg-bg/50 border border-white/[0.07] rounded-lg p-6 text-center">
+        <p class="font-display text-3xl font-bold text-accent mb-1">30%</p>
+        <p class="font-mono text-[9px] text-muted tracking-[.15em] uppercase mb-3">Off</p>
+        <p class="font-mono text-[11px] text-fg font-medium">800 pts</p>
+      </div>
+    </div>
+
+    <!-- Bonus ways to earn -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14">
+      <div class="bg-bg/40 border border-white/[0.06] rounded-lg p-6">
+        <p class="font-mono text-[9px] text-accent tracking-[.15em] uppercase mb-3">First Visit</p>
+        <p class="font-display font-bold text-fg text-base mb-2">30% Off Your First Order</p>
+        <p class="text-muted text-sm leading-relaxed">Sign up before you come in. Redeemable same day.</p>
+      </div>
+      <div class="bg-bg/40 border border-white/[0.06] rounded-lg p-6">
+        <p class="font-mono text-[9px] text-accent tracking-[.15em] uppercase mb-3">Refer a Friend</p>
+        <p class="font-display font-bold text-fg text-base mb-2">You get 25%. They get 30%.</p>
+        <p class="text-muted text-sm leading-relaxed">Bring someone new to B&amp;B — you both win on their first visit.</p>
+      </div>
+      <div class="bg-bg/40 border border-white/[0.06] rounded-lg p-6">
+        <p class="font-mono text-[9px] text-accent tracking-[.15em] uppercase mb-3">Social Bonus</p>
+        <p class="font-display font-bold text-fg text-base mb-2">25% for a Review</p>
+        <p class="text-muted text-sm leading-relaxed">Leave a Google review or show a budtender your comment on socials.</p>
+      </div>
+    </div>
+
+    <!-- Wallet CTAs -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+      <a href="https://take.cards/PEM8L" target="_blank" rel="noopener" aria-label="Add to Apple Wallet">
+        <img src="https://borednbuzzed.com/wp-content/uploads/2026/02/APPLE-WALLET-2-1-1024x393.webp"
+          alt="Add to Apple Wallet" class="h-14 w-auto object-contain" loading="lazy">
+      </a>
+      <a href="https://take.cards/PEM8L" target="_blank" rel="noopener" aria-label="Add to Google Wallet">
+        <img src="https://borednbuzzed.com/wp-content/uploads/2026/02/GOOGLE-WALLET-2-1024x393.png"
+          alt="Add to Google Wallet" class="h-14 w-auto object-contain" loading="lazy">
+      </a>
+    </div>
+
   </div>
 </section>
 
