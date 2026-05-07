@@ -1,1437 +1,1873 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bored and Buzzed · The Eastside Standard · Kirkland, WA</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          bg:          '#0D0D0B',
-          surface:     '#111210',
-          'surface-up':'#181816',
-          'surface-hi':'#1E1E1A',
-          navy:        '#0F2640',
-          'navy-up':   '#132E4A',
-          fg:          '#F4EFE6',
-          muted:       '#A09880',
-          subtle:      '#685E52',
-          accent:      '#C9A84C',
-          'accent-hi': '#D4B55A',
-          open:        '#5CB870',
-        },
-        fontFamily: {
-          display: ['"Clash Display"', 'sans-serif'],
-          sans:    ['"DM Sans"', 'sans-serif'],
-          mono:    ['"JetBrains Mono"', 'monospace'],
-        },
-        maxWidth: { wrap: '1340px' },
-        height:   { nav: '80px', cat: '52px' },
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bored and Buzzed · The Eastside Standard · Kirkland, WA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#0D0D0B',
+            surface: '#111210',
+            'surface-up': '#181816',
+            'surface-hi': '#1E1E1A',
+            navy: '#0F2640',
+            'navy-up': '#132E4A',
+            fg: '#F4EFE6',
+            muted: '#A09880',
+            subtle: '#685E52',
+            accent: '#C9A84C',
+            'accent-hi': '#D4B55A',
+            open: '#5CB870',
+          },
+          fontFamily: {
+            display: ['"Clash Display"', 'sans-serif'],
+            sans: ['"DM Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          maxWidth: { wrap: '1340px' },
+          height: { nav: '80px', cat: '52px' },
+        }
       }
     }
-  }
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
-<style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-  body{background:#0D0D0B;color:#F4EFE6;font-family:'DM Sans',sans-serif;font-size:17px;line-height:1.65}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-  :focus-visible{outline:2px solid #C9A84C;outline-offset:2px;border-radius:2px}
+    html {
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility
+    }
 
-  ::-webkit-scrollbar{width:5px;height:5px}
-  ::-webkit-scrollbar-track{background:#0D0D0B}
-  ::-webkit-scrollbar-thumb{background:rgba(244,239,230,0.12);border-radius:3px}
+    body {
+      background: #0D0D0B;
+      color: #F4EFE6;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      line-height: 1.65
+    }
 
-  @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-  .d1{animation:fadeUp .75s cubic-bezier(.16,1,.3,1) .05s both}
-  .d2{animation:fadeUp .75s cubic-bezier(.16,1,.3,1) .2s  both}
-  .d3{animation:fadeUp .75s cubic-bezier(.16,1,.3,1) .35s both}
-  .d4{animation:fadeUp .75s cubic-bezier(.16,1,.3,1) .5s  both}
-  .d5{animation:fadeUp .75s cubic-bezier(.16,1,.3,1) .65s both}
-  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important}}
+    :focus-visible {
+      outline: 2px solid #C9A84C;
+      outline-offset: 2px;
+      border-radius: 2px
+    }
 
-  /* ── TEXTURE LAYERS ── */
-  .grain-overlay{
-    position:absolute;inset:0;z-index:2;pointer-events:none;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23g)'/%3E%3C/svg%3E");
-    opacity:.055
-  }
-  .halftone-overlay{
-    position:absolute;inset:0;z-index:1;pointer-events:none;
-    background-image:radial-gradient(circle,rgba(201,168,76,0.07) 1px,transparent 1px);
-    background-size:30px 30px
-  }
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px
+    }
 
-  /* ── HERO TYPOGRAPHY ── */
-  .hero-word{
-    font-family:'Clash Display',sans-serif;
-    font-size:clamp(52px,10.5vw,158px);
-    line-height:.88;
-    letter-spacing:-0.035em;
-    font-weight:700;
-    display:block;
-    white-space:nowrap
-  }
-  .hero-word-outline{
-    -webkit-text-stroke:2.5px #C9A84C;
-    color:transparent
-  }
-  @media(max-width:640px){
-    .hero-word{font-size:clamp(44px,13.5vw,90px);white-space:normal}
-    .hero-word-outline{-webkit-text-stroke:1.5px #C9A84C}
-  }
+    ::-webkit-scrollbar-track {
+      background: #0D0D0B
+    }
 
-  /* ── MARQUEE ── */
-  @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  @keyframes ticker-rev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-  .marquee-track{overflow:hidden;width:100%}
-  .marquee-inner{
-    display:flex;align-items:center;
-    width:max-content;
-    animation:ticker 32s linear infinite
-  }
-  .marquee-inner:hover{animation-play-state:paused}
-  .marquee-inner-rev{animation-name:ticker-rev;animation-duration:38s}
+    ::-webkit-scrollbar-thumb {
+      background: rgba(244, 239, 230, 0.12);
+      border-radius: 3px
+    }
 
-  /* Hero watermark */
-  /* Concentric rings */
-  .ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,var(--ro,0.06))}
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px)
+      }
 
-  /* Product card - Apple elevated card system */
-  .pcard{transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s cubic-bezier(.16,1,.3,1);box-shadow:rgba(0,0,0,.22) 0 4px 20px,rgba(0,0,0,.12) 0 1px 4px}
-  .pcard:hover{transform:translateY(-2px) scale(1.01);box-shadow:rgba(0,0,0,.4) 0 20px 48px,rgba(0,0,0,.15) 0 4px 8px}
-  .pcard:hover .pcard-img-inner{transform:scale(1.04)}
-  .pcard-img-inner{transition:transform .4s cubic-bezier(.16,1,.3,1)}
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
 
-  /* Cat tab active */
-  .cat-tab-active{color:#F4EFE6;border-bottom-color:#C9A84C!important}
+    @keyframes fadeIn {
+      from {
+        opacity: 0
+      }
 
-  /* Sidebar filter group */
-  .filter-label{
-    font-family:'JetBrains Mono',monospace;
-    font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-    color:#685E52;padding:16px 0 8px
-  }
+      to {
+        opacity: 1
+      }
+    }
 
-  /* Section label */
-  .section-eyebrow{
-    font-family:'JetBrains Mono',monospace;
-    font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#C9A84C
-  }
+    .d1 {
+      animation: fadeUp .75s cubic-bezier(.16, 1, .3, 1) .05s both
+    }
 
-  /* Deal badge */
-  .deal-pct{
-    font-family:'Clash Display',sans-serif;
-    font-size:clamp(36px,5vw,56px);
-    font-weight:700;line-height:1;color:#C9A84C;letter-spacing:-.03em
-  }
+    .d2 {
+      animation: fadeUp .75s cubic-bezier(.16, 1, .3, 1) .2s both
+    }
 
-  /* Scrollbar-none utility */
-  .no-scroll::-webkit-scrollbar{display:none}
-  .no-scroll{-ms-overflow-style:none;scrollbar-width:none}
+    .d3 {
+      animation: fadeUp .75s cubic-bezier(.16, 1, .3, 1) .35s both
+    }
 
-  /* Reduced motion - pause video and all animations */
-  @media(prefers-reduced-motion:reduce){
-    video{display:none}
-    .marquee-inner,.marquee-inner-rev{animation:none}
-  }
+    .d4 {
+      animation: fadeUp .75s cubic-bezier(.16, 1, .3, 1) .5s both
+    }
 
-  /* ── APPLE DESIGN PASS ── */
-  /* Pill button grammar - all interactive buttons except category strip tabs */
-  button:not(.cat-tab):not([type='checkbox']):not([type='range']){border-radius:9999px}
-  /* Press micro-interaction (Apple scale-on-tap) */
-  button:not(.cat-tab):active{transform:scale(.97);transition:transform .07s ease}
-  /* Display heading letter-spacing - Apple negative tracking */
-  h2{letter-spacing:-.03em}
-  h3{letter-spacing:-.02em}
-  /* Proof strip numbers */
-  .proof-num{letter-spacing:-.04em}
-  /* Nav icon buttons - enforce circle shape */
-  nav button{border-radius:9999px!important}
-</style>
+    .d5 {
+      animation: fadeUp .75s cubic-bezier(.16, 1, .3, 1) .65s both
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important
+      }
+    }
+
+    /* ── TEXTURE LAYERS ── */
+    .grain-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23g)'/%3E%3C/svg%3E");
+      opacity: .055
+    }
+
+    .halftone-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background-image: radial-gradient(circle, rgba(201, 168, 76, 0.07) 1px, transparent 1px);
+      background-size: 30px 30px
+    }
+
+    /* ── HERO TYPOGRAPHY ── */
+    .hero-word {
+      font-family: 'Clash Display', sans-serif;
+      font-size: clamp(52px, 10.5vw, 158px);
+      line-height: .88;
+      letter-spacing: -0.035em;
+      font-weight: 700;
+      display: block;
+      white-space: nowrap
+    }
+
+    .hero-word-outline {
+      -webkit-text-stroke: 2.5px #C9A84C;
+      color: transparent
+    }
+
+    @media(max-width:640px) {
+      .hero-word {
+        font-size: clamp(44px, 13.5vw, 90px);
+        white-space: normal
+      }
+
+      .hero-word-outline {
+        -webkit-text-stroke: 1.5px #C9A84C
+      }
+    }
+
+    /* ── MARQUEE ── */
+    @keyframes ticker {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    @keyframes ticker-rev {
+      from {
+        transform: translateX(-50%)
+      }
+
+      to {
+        transform: translateX(0)
+      }
+    }
+
+    .marquee-track {
+      overflow: hidden;
+      width: 100%
+    }
+
+    .marquee-inner {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      animation: ticker 32s linear infinite
+    }
+
+    .marquee-inner:hover {
+      animation-play-state: paused
+    }
+
+    .marquee-inner-rev {
+      animation-name: ticker-rev;
+      animation-duration: 38s
+    }
+
+    /* Hero watermark */
+    /* Concentric rings */
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, var(--ro, 0.06))
+    }
+
+    /* Product card - Apple elevated card system */
+    .pcard {
+      transition: transform .3s cubic-bezier(.16, 1, .3, 1), box-shadow .3s cubic-bezier(.16, 1, .3, 1);
+      box-shadow: rgba(0, 0, 0, .22) 0 4px 20px, rgba(0, 0, 0, .12) 0 1px 4px
+    }
+
+    .pcard:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: rgba(0, 0, 0, .4) 0 20px 48px, rgba(0, 0, 0, .15) 0 4px 8px
+    }
+
+    .pcard:hover .pcard-img-inner {
+      transform: scale(1.04)
+    }
+
+    .pcard-img-inner {
+      transition: transform .4s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    /* Cat tab active */
+    .cat-tab-active {
+      color: #F4EFE6;
+      border-bottom-color: #C9A84C !important
+    }
+
+    /* Sidebar filter group */
+    .filter-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #685E52;
+      padding: 16px 0 8px
+    }
+
+    /* Section label */
+    .section-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #C9A84C
+    }
+
+    /* Deal badge */
+    .deal-pct {
+      font-family: 'Clash Display', sans-serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700;
+      line-height: 1;
+      color: #C9A84C;
+      letter-spacing: -.03em
+    }
+
+    /* Scrollbar-none utility */
+    .no-scroll::-webkit-scrollbar {
+      display: none
+    }
+
+    .no-scroll {
+      -ms-overflow-style: none;
+      scrollbar-width: none
+    }
+
+    /* Reduced motion - pause video and all animations */
+    @media(prefers-reduced-motion:reduce) {
+      video {
+        display: none
+      }
+
+      .marquee-inner,
+      .marquee-inner-rev {
+        animation: none
+      }
+    }
+
+    /* ── APPLE DESIGN PASS ── */
+    /* Pill button grammar - all interactive buttons except category strip tabs */
+    button:not(.cat-tab):not([type='checkbox']):not([type='range']) {
+      border-radius: 9999px
+    }
+
+    /* Press micro-interaction (Apple scale-on-tap) */
+    button:not(.cat-tab):active {
+      transform: scale(.97);
+      transition: transform .07s ease
+    }
+
+    /* Display heading letter-spacing - Apple negative tracking */
+    h2 {
+      letter-spacing: -.03em
+    }
+
+    h3 {
+      letter-spacing: -.02em
+    }
+
+    /* Proof strip numbers */
+    .proof-num {
+      letter-spacing: -.04em
+    }
+
+    /* Nav icon buttons - enforce circle shape */
+    nav button {
+      border-radius: 9999px !important
+    }
+  </style>
 </head>
+
 <body class="bg-bg font-sans antialiased">
 
-<!-- ─── AGE GATE ─────────────────────────────────────────────── -->
-<div id="age-gate" class="fixed inset-0 z-[200] flex items-center justify-center bg-bg/98 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Age verification">
-  <div class="w-full max-w-sm mx-5 bg-surface border border-white/10 rounded-2xl p-10 text-center">
-    <img src="../Brand Identity/BnB Logos/BNB Coaster front.png" alt="Bored and Buzzed" class="w-24 h-24 mx-auto mb-6 object-contain">
-    <p class="font-mono text-[10px] text-muted tracking-[.18em] uppercase mb-3">Kirkland, WA · Est. 2023</p>
-    <h2 class="font-display text-3xl font-bold text-fg mb-2" style="letter-spacing:-.03em">Are you 21+?</h2>
-    <p class="text-muted text-[15px] leading-relaxed mb-8">You must be 21 or older to enter.<br>Please verify your age to continue.</p>
-    <div class="flex gap-3 mb-6">
-      <button type="button" id="age-yes"
-        class="flex-1 bg-accent text-bg font-semibold py-3.5 text-sm tracking-wide hover:bg-accent-hi transition-colors focus-visible:outline-accent">
-        Yes, I'm 21+
-      </button>
-      <button type="button" onclick="window.location='https://google.com'"
-        class="flex-1 border border-white/15 text-muted py-3.5 text-sm tracking-wide hover:border-white/30 hover:text-fg transition-colors">
-        No
-      </button>
-    </div>
-    <p class="text-subtle text-[11px] leading-relaxed">By entering you agree to our Terms and Privacy Policy.<br>Keep out of reach of children.</p>
-  </div>
-</div>
-
-<!-- ─── NAV ──────────────────────────────────────────────────── -->
-<nav class="sticky top-0 z-[150] h-nav bg-bg/95 backdrop-blur-md border-b border-white/[0.07]">
-  <div class="max-w-wrap mx-auto px-6 h-full flex items-center justify-between gap-8">
-
-    <!-- Logo -->
-    <a href="#" aria-label="Bored and Buzzed - Home" class="flex-shrink-0">
-      <img src="../Brand Identity/BnB Logos/Square Logo size.png" alt="Bored and Buzzed" class="h-16 w-auto object-contain">
-    </a>
-
-    <!-- Links -->
-    <div class="hidden md:flex items-center gap-8">
-      <a href="#shop" class="relative text-[11px] font-medium text-fg tracking-[.08em] uppercase pb-0.5 after:absolute after:bottom-[-6px] after:left-0 after:right-0 after:h-px after:bg-accent">Menu</a>
-      <a href="#deals" class="text-[11px] font-medium text-muted tracking-[.08em] uppercase hover:text-fg transition-colors">Deals</a>
-      <a href="#reviews" class="text-[11px] font-medium text-muted tracking-[.08em] uppercase hover:text-fg transition-colors">Reviews</a>
-      <a href="#rewards" class="text-[11px] font-medium text-muted tracking-[.08em] uppercase hover:text-fg transition-colors">Rewards</a>
-      <a href="#about" class="text-[11px] font-medium text-muted tracking-[.08em] uppercase hover:text-fg transition-colors">About</a>
-    </div>
-
-    <!-- Right -->
-    <div class="flex items-center gap-3 flex-shrink-0">
-      <div class="hidden lg:flex items-center gap-2 mr-2">
-        <span class="w-1.5 h-1.5 rounded-full bg-open"></span>
-        <span class="font-mono text-[10px] text-muted tracking-[.12em]">OPEN · 8AM-11PM</span>
-      </div>
-      <!-- Search -->
-      <button type="button" aria-label="Search" class="w-10 h-10 flex items-center justify-center text-muted hover:text-fg transition-colors">
-        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      </button>
-      <!-- Cart -->
-      <button type="button" aria-label="Cart" class="relative w-10 h-10 flex items-center justify-center text-muted hover:text-fg transition-colors">
-        <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        <span class="absolute top-1.5 right-1.5 w-4 h-4 bg-accent text-bg text-[9px] font-bold rounded-full flex items-center justify-center leading-none">0</span>
-      </button>
-      <!-- Mobile hamburger -->
-      <button type="button" aria-label="Open menu" class="md:hidden w-10 h-10 flex items-center justify-center text-muted hover:text-fg transition-colors">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-
-  </div>
-</nav>
-
-<!-- ─── HERO ──────────────────────────────────────────────────── -->
-<section class="relative flex flex-col overflow-hidden bg-bg">
-
-  <!-- Texture layers -->
-  <div class="halftone-overlay"></div>
-  <div class="grain-overlay"></div>
-
-  <!-- Mood gradients (below grain, z-index 0) -->
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_100%_80%_at_100%_0%,rgba(15,38,64,0.75),transparent)] z-0"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_0%_100%,rgba(15,38,64,0.4),transparent)] z-0"></div>
-  <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-bg to-transparent z-0 pointer-events-none"></div>
-
-  <!-- ── MAIN HERO BODY ── -->
-  <div class="relative z-10 flex-1 max-w-wrap mx-auto px-6 w-full pt-14 pb-4">
-
-    <!-- Coaster badge (desktop only, top right) -->
-    <div class="hidden lg:flex absolute top-10 right-6 z-20 items-center justify-center flex-shrink-0">
-      <div class="relative w-48 h-48 flex items-center justify-center">
-        <div class="absolute w-44 h-44 rounded-full bg-[radial-gradient(circle,rgba(201,168,76,0.18),transparent_70%)]"></div>
-        <img src="../Brand Identity/BnB Logos/BNB Coaster front.png"
-          alt=""
-          class="relative w-36 h-36 object-cover rounded-full"
-          style="filter:drop-shadow(0 0 32px rgba(201,168,76,0.35))"
-          loading="lazy">
-      </div>
-    </div>
-
-    <!-- Eyebrow strip -->
-    <div class="d1 flex items-center gap-5 mb-10">
-      <span class="font-mono text-[11px] text-accent tracking-[.24em] uppercase">Kirkland, WA</span>
-      <span class="h-px w-12 bg-accent/25"></span>
-      <div class="flex items-center gap-2">
-        <span class="w-1.5 h-1.5 rounded-full bg-open"></span>
-        <span class="font-mono text-[11px] text-open tracking-[.16em] uppercase">Open Now · 8AM-11PM</span>
-      </div>
-      <span class="h-px w-12 bg-white/10 hidden md:block"></span>
-      <span class="font-mono text-[11px] text-muted tracking-[.16em] uppercase hidden md:block">Est. 2023</span>
-    </div>
-
-    <!-- HERO LOGO -->
-    <div class="d2 mb-0">
-      <img src="../Brand Identity/BnB Logos/Square Logo size.png"
-        alt="Bored and Buzzed"
-        style="height:clamp(300px,40vw,500px);width:auto;max-width:100%;object-fit:contain;display:block;"
-        loading="eager">
-    </div>
-
-    <!-- Sub content row: tagline + badge -->
-    <div class="d5 pt-8 pb-10">
-
-      <!-- Left: tagline + CTAs + location -->
-      <div>
-        <p class="text-muted text-xl leading-relaxed max-w-lg mb-8">
-          Kirkland's home for curated cannabis.<br class="hidden lg:block">
-          Premium selection. Real community.
-        </p>
-        <div class="flex items-center gap-4 flex-wrap mb-10">
-          <a href="#shop" class="inline-flex items-center gap-3 bg-accent text-bg font-bold px-9 py-4 rounded-full text-[13px] tracking-[.06em] uppercase hover:bg-accent-hi transition-colors active:scale-[.97]">
-            Shop the Menu
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-          </a>
-          <a href="#about" class="inline-flex items-center gap-3 border-2 border-white/25 text-fg px-9 py-4 rounded-full text-[13px] tracking-[.06em] uppercase hover:border-accent hover:text-accent transition-colors active:scale-[.97]">
-            Our Story
-          </a>
+  <!-- ─── AGE GATE ─────────────────────────────────────────────── -->
+  <div id="age-gate" class="fixed inset-0 z-[200] flex items-center justify-center bg-bg/98 backdrop-blur-sm"
+    role="dialog" aria-modal="true" aria-label="Age verification">
+    <div class="w-full max-w-sm mx-5 bg-surface border border-white/10 rounded-2xl p-10 text-center">
+      <div class="relative w-28 h-28 mx-auto mb-6 flex items-center justify-center">
+        <div class="absolute w-28 h-28 rounded-full bg-[radial-gradient(circle,rgba(201,168,76,0.18),transparent_70%)]">
         </div>
-        <div class="flex items-center gap-6 pt-7 border-t border-white/[0.08]">
-          <div>
-            <p class="font-mono text-[9px] text-subtle tracking-[.18em] uppercase mb-1">Address</p>
-            <p class="text-sm text-muted">11516 124th Ave NE, Kirkland</p>
-          </div>
-          <div class="w-px h-7 bg-white/10"></div>
-          <div>
-            <p class="font-mono text-[9px] text-subtle tracking-[.18em] uppercase mb-1">Hours</p>
-            <p class="text-sm text-muted">Sun-Thu 8AM-11PM · Fri-Sat 8AM-11:45PM</p>
-          </div>
-          <div class="w-px h-7 bg-white/10 hidden sm:block"></div>
-          <a href="tel:+14258140200" class="hidden sm:block text-sm text-muted hover:text-fg transition-colors">(425) 814-0200</a>
-        </div>
+        <img src="../Brand Identity/BnB Logos/BNB Coaster front.png" alt="Bored and Buzzed"
+          class="relative w-24 h-24 object-cover rounded-full"
+          style="filter:drop-shadow(0 0 24px rgba(201,168,76,0.35))">
       </div>
-
+      <p class="font-mono text-[10px] text-muted tracking-[.18em] uppercase mb-3">Kirkland, WA · Est. 2023</p>
+      <h2 class="font-display text-3xl font-bold text-fg mb-2" style="letter-spacing:-.03em">Are you 21+?</h2>
+      <p class="text-muted text-[15px] leading-relaxed mb-8">You must be 21 or older to enter.<br>Please verify your age
+        to continue.</p>
+      <div class="flex gap-3 mb-6">
+        <button type="button" id="age-yes"
+          class="flex-1 bg-accent text-bg font-semibold py-3.5 text-sm tracking-wide hover:bg-accent-hi transition-colors focus-visible:outline-accent">
+          Yes, I'm 21+
+        </button>
+        <button type="button" onclick="window.location='https://google.com'"
+          class="flex-1 border border-white/15 text-muted py-3.5 text-sm tracking-wide hover:border-white/30 hover:text-fg transition-colors">
+          No
+        </button>
+      </div>
+      <p class="text-subtle text-[11px] leading-relaxed">By entering you agree to our Terms and Privacy Policy.<br>Keep
+        out of reach of children.</p>
     </div>
   </div>
 
-  <!-- ── MARQUEE BAND 1 ── gold on dark -->
-  <div class="relative z-10 border-y border-accent/30 bg-navy/70 backdrop-blur-sm py-3 overflow-hidden">
-    <div class="marquee-track" aria-hidden="true">
-      <div class="marquee-inner">
-        <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">The Eastside Standard</span>
-        <span class="text-accent font-bold text-base">★</span>
-        <span class="mx-7 font-mono text-[11px] text-accent tracking-[.2em] uppercase whitespace-nowrap">Soulshine 30% Off This Weekend</span>
-        <span class="text-white/30 font-bold text-base">★</span>
-        <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">Kirkland, WA · Open Now</span>
-        <span class="text-accent font-bold text-base">★</span>
-        <span class="mx-7 font-mono text-[11px] text-accent tracking-[.2em] uppercase whitespace-nowrap">Kush Mountain 30% Off · All Sizes</span>
-        <span class="text-white/30 font-bold text-base">★</span>
-        <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">659 Products · Daily New Drops</span>
-        <span class="text-accent font-bold text-base">★</span>
-        <span class="mx-7 font-mono text-[11px] text-accent tracking-[.2em] uppercase whitespace-nowrap">28 Herbs 30% Off · Flower + Edibles</span>
-        <span class="text-white/30 font-bold text-base">★</span>
-        <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">Sun-Thu 8AM-11PM · Fri-Sat 8AM-11:45PM</span>
-        <span class="text-accent font-bold text-base">★</span>
-        <!-- Duplicate for seamless loop -->
-        <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">The Eastside Standard</span>
-        <span class="text-accent font-bold text-base">★</span>
-        <span class="mx-7 font-mono text-[11px] text-accent tracking-[.2em] uppercase whitespace-nowrap">Soulshine 30% Off This Weekend</span>
-        <span class="text-white/30 font-bold text-base">★</span>
-        <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">Kirkland, WA · Open Now</span>
-        <span class="text-accent font-bold text-base">★</span>
-        <span class="mx-7 font-mono text-[11px] text-accent tracking-[.2em] uppercase whitespace-nowrap">Kush Mountain 30% Off · All Sizes</span>
-        <span class="text-white/30 font-bold text-base">★</span>
-        <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">659 Products · Daily New Drops</span>
-        <span class="text-accent font-bold text-base">★</span>
-        <span class="mx-7 font-mono text-[11px] text-accent tracking-[.2em] uppercase whitespace-nowrap">28 Herbs 30% Off · Flower + Edibles</span>
-        <span class="text-white/30 font-bold text-base">★</span>
-        <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">Sun-Thu 8AM-11PM · Fri-Sat 8AM-11:45PM</span>
-        <span class="text-accent font-bold text-base">★</span>
-      </div>
-    </div>
-  </div>
+  <!-- ─── NAV ──────────────────────────────────────────────────── -->
+  <nav class="sticky top-0 z-[150] h-nav bg-bg/95 backdrop-blur-md border-b border-white/[0.07]">
+    <div class="max-w-wrap mx-auto px-6 h-full flex items-center justify-between gap-8">
 
-  <!-- ── MARQUEE BAND 2 ── reversed, smaller, cream on dark -->
-  <div class="relative z-10 border-b border-white/[0.07] bg-bg/80 overflow-hidden py-2.5">
-    <div class="marquee-track" aria-hidden="true">
-      <div class="marquee-inner marquee-inner-rev">
-        <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Curated Cannabis</span>
-        <span class="text-muted/30 text-xs">◆</span>
-        <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Kirkland · Redmond · Bothell · Woodinville</span>
-        <span class="text-muted/30 text-xs">◆</span>
-        <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Premium Selection</span>
-        <span class="text-muted/30 text-xs">◆</span>
-        <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Real Community</span>
-        <span class="text-muted/30 text-xs">◆</span>
-        <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Est. 2023</span>
-        <span class="text-muted/30 text-xs">◆</span>
-        <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">The Culture's Outpost in the Suburbs</span>
-        <span class="text-muted/30 text-xs">◆</span>
-        <!-- Duplicate -->
-        <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Curated Cannabis</span>
-        <span class="text-muted/30 text-xs">◆</span>
-        <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Kirkland · Redmond · Bothell · Woodinville</span>
-        <span class="text-muted/30 text-xs">◆</span>
-        <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Premium Selection</span>
-        <span class="text-muted/30 text-xs">◆</span>
-        <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Real Community</span>
-        <span class="text-muted/30 text-xs">◆</span>
-        <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Est. 2023</span>
-        <span class="text-muted/30 text-xs">◆</span>
-        <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">The Culture's Outpost in the Suburbs</span>
-        <span class="text-muted/30 text-xs">◆</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── CATEGORY STRIP ── -->
-  <div class="relative z-10 border-b border-white/[0.07] bg-bg">
-    <div class="max-w-wrap mx-auto px-6">
-      <div id="cat-strip" class="flex items-center gap-0 overflow-x-auto no-scroll">
-        <button type="button" class="cat-tab cat-tab-active flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-accent text-fg transition-colors" data-cat="all">All</button>
-        <button type="button" class="cat-tab flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-transparent text-muted hover:text-fg transition-colors" data-cat="flower">Flower</button>
-        <button type="button" class="cat-tab flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-transparent text-muted hover:text-fg transition-colors" data-cat="vapes">Vapes</button>
-        <button type="button" class="cat-tab flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-transparent text-muted hover:text-fg transition-colors" data-cat="edibles">Edibles</button>
-        <button type="button" class="cat-tab flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-transparent text-muted hover:text-fg transition-colors" data-cat="concentrates">Concentrates</button>
-        <button type="button" class="cat-tab flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-transparent text-muted hover:text-fg transition-colors" data-cat="prerolls">Pre-Rolls</button>
-        <button type="button" class="cat-tab flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-transparent text-muted hover:text-fg transition-colors" data-cat="topicals">Topicals</button>
-        <button type="button" class="cat-tab flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-transparent text-muted hover:text-fg transition-colors" data-cat="accessories">Accessories</button>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<!-- ─── SHOP SECTION ──────────────────────────────────────────── -->
-<section id="shop" class="bg-bg py-20">
-  <div class="max-w-wrap mx-auto px-6">
-    <div class="flex gap-10">
-
-      <!-- Sidebar -->
-      <aside class="hidden lg:block w-56 flex-shrink-0">
-        <div class="sticky top-[148px]">
-
-          <!-- Sort -->
-          <div class="mb-6">
-            <p class="filter-label">Sort By</p>
-            <select aria-label="Sort products by" title="Sort by" class="w-full bg-surface border border-white/10 text-fg text-sm px-3 py-2.5 rounded appearance-none cursor-pointer focus-visible:outline-accent">
-              <option>Popular</option>
-              <option>Newest</option>
-              <option>Price: Low → High</option>
-              <option>Price: High → Low</option>
-              <option>Highest THC</option>
-            </select>
-          </div>
-
-          <!-- Strain type -->
-          <div class="mb-6 border-t border-white/[0.06] pt-4">
-            <p class="filter-label">Strain Type</p>
-            <div class="flex flex-col gap-2">
-              <label class="flex items-center gap-2.5 cursor-pointer group">
-                <input type="checkbox" class="accent-accent w-3.5 h-3.5" checked>
-                <span class="text-sm text-muted group-hover:text-fg transition-colors">All Types</span>
-              </label>
-              <label class="flex items-center gap-2.5 cursor-pointer group">
-                <input type="checkbox" class="accent-accent w-3.5 h-3.5">
-                <span class="text-sm text-muted group-hover:text-fg transition-colors">Indica</span>
-              </label>
-              <label class="flex items-center gap-2.5 cursor-pointer group">
-                <input type="checkbox" class="accent-accent w-3.5 h-3.5">
-                <span class="text-sm text-muted group-hover:text-fg transition-colors">Sativa</span>
-              </label>
-              <label class="flex items-center gap-2.5 cursor-pointer group">
-                <input type="checkbox" class="accent-accent w-3.5 h-3.5">
-                <span class="text-sm text-muted group-hover:text-fg transition-colors">Hybrid</span>
-              </label>
-              <label class="flex items-center gap-2.5 cursor-pointer group">
-                <input type="checkbox" class="accent-accent w-3.5 h-3.5">
-                <span class="text-sm text-muted group-hover:text-fg transition-colors">CBD</span>
-              </label>
-            </div>
-          </div>
-
-          <!-- Price -->
-          <div class="mb-6 border-t border-white/[0.06] pt-4">
-            <p class="filter-label">Price Range</p>
-            <div class="flex items-center gap-2">
-              <input type="number" placeholder="$0" aria-label="Minimum price" class="w-full bg-surface border border-white/10 text-fg text-sm px-3 py-2 rounded focus-visible:outline-accent">
-              <span class="text-muted text-xs">-</span>
-              <input type="number" placeholder="$100" aria-label="Maximum price" class="w-full bg-surface border border-white/10 text-fg text-sm px-3 py-2 rounded focus-visible:outline-accent">
-            </div>
-          </div>
-
-          <!-- THC% -->
-          <div class="mb-6 border-t border-white/[0.06] pt-4">
-            <p class="filter-label">THC %</p>
-            <input type="range" min="0" max="40" value="40" aria-label="Maximum THC percentage" title="THC %" class="w-full accent-accent cursor-pointer">
-            <div class="flex justify-between mt-1">
-              <span class="font-mono text-[10px] text-muted">0%</span>
-              <span class="font-mono text-[10px] text-muted">40%+</span>
-            </div>
-          </div>
-
-          <!-- Toggles -->
-          <div class="border-t border-white/[0.06] pt-4 flex flex-col gap-3">
-            <label class="flex items-center justify-between cursor-pointer group">
-              <span class="text-sm text-muted group-hover:text-fg transition-colors">On Sale</span>
-              <div class="relative w-9 h-5 bg-surface-hi rounded-full border border-white/10 transition-colors peer-checked:bg-accent/20">
-                <input type="checkbox" class="peer sr-only">
-                <span class="absolute left-0.5 top-0.5 w-4 h-4 bg-subtle rounded-full transition-transform peer-checked:translate-x-4 peer-checked:bg-accent"></span>
-              </div>
-            </label>
-            <label class="flex items-center justify-between cursor-pointer group">
-              <span class="text-sm text-muted group-hover:text-fg transition-colors">In Stock Only</span>
-              <div class="relative w-9 h-5 bg-surface-hi rounded-full border border-white/10">
-                <input type="checkbox" class="peer sr-only" checked>
-                <span class="absolute left-0.5 top-0.5 w-4 h-4 bg-accent rounded-full transition-transform translate-x-4"></span>
-              </div>
-            </label>
-          </div>
-
-        </div>
-      </aside>
-
-      <!-- Product grid -->
-      <div class="flex-1 min-w-0">
-
-        <!-- Grid header -->
-        <div class="flex items-center justify-between mb-7">
-          <div>
-            <span class="font-mono text-[10px] text-muted tracking-[.14em] uppercase">Showing 12 of </span>
-            <span class="font-mono text-[10px] text-accent tracking-[.14em]">659 products</span>
-          </div>
-          <!-- Mobile filter toggle -->
-          <button type="button" id="filter-toggle" class="lg:hidden flex items-center gap-2 border border-white/15 px-4 py-2 text-[11px] text-muted hover:text-fg hover:border-white/30 transition-colors">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/></svg>
-            Filters
-          </button>
-        </div>
-
-        <!-- Grid -->
-        <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
-
-          <!-- CARD 1: Soulshine Drip Station -->
-          <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
-            <div class="overflow-hidden bg-surface-up h-48 relative">
-              <img src="https://pbit-production.s3.amazonaws.com/images/image/255610/soulshine_limited_release_indica.png?auto=compress,format&w=400&h=400&fit=crop"
-                alt="Soulshine Drip Station 3.5G"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy">
-              <span class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
-              <span class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30% OFF</span>
-            </div>
-            <div class="flex-1 p-4 flex flex-col">
-              <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Soulshine Cannabis</p>
-              <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Drip Station · 3.5G</h3>
-              <div class="flex items-center gap-3 mb-3">
-                <span class="font-mono text-[10px] text-accent">25% THC</span>
-                <span class="text-white/20 text-xs">·</span>
-                <span class="font-mono text-[10px] text-muted">Flower</span>
-              </div>
-              <div class="mt-auto flex items-center justify-between">
-                <div class="flex items-baseline gap-1.5">
-                  <span class="font-display font-bold text-fg text-lg">$38</span>
-                  <span class="font-mono text-[10px] text-muted line-through">$54</span>
-                </div>
-                <button type="button" class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add +</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 2: Soulshine Lava Cake -->
-          <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
-            <div class="overflow-hidden bg-surface-up h-48 relative">
-              <img src="https://pbit-production.s3.amazonaws.com/images/image/255610/soulshine_limited_release_indica.png?auto=compress,format&w=400&h=400&fit=crop"
-                alt="Soulshine Lava Cake 3.5G"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy">
-              <span class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
-              <span class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30% OFF</span>
-            </div>
-            <div class="flex-1 p-4 flex flex-col">
-              <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Soulshine Cannabis</p>
-              <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Lava Cake · 3.5G</h3>
-              <div class="flex items-center gap-3 mb-3">
-                <span class="font-mono text-[10px] text-accent">20% THC</span>
-                <span class="text-white/20 text-xs">·</span>
-                <span class="font-mono text-[10px] text-muted">Flower</span>
-              </div>
-              <div class="mt-auto flex items-center justify-between">
-                <div class="flex items-baseline gap-1.5">
-                  <span class="font-display font-bold text-fg text-lg">$35</span>
-                  <span class="font-mono text-[10px] text-muted line-through">$50</span>
-                </div>
-                <button type="button" class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add +</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 3: Kush Mountain Jahlotto -->
-          <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
-            <div class="overflow-hidden bg-surface-up h-48 relative">
-              <img src="https://pbit-production.s3.amazonaws.com/images/image/292671/Kush_mt_3.5g.png?auto=compress,format&w=400&h=400&fit=crop"
-                alt="Kush Mountain Jahlotto 3.5g"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy">
-              <span class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
-              <span class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30% OFF</span>
-            </div>
-            <div class="flex-1 p-4 flex flex-col">
-              <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Kush Mountain</p>
-              <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Jahlotto · 3.5G</h3>
-              <div class="flex items-center gap-3 mb-3">
-                <span class="font-mono text-[10px] text-accent">27% THC</span>
-                <span class="text-white/20 text-xs">·</span>
-                <span class="font-mono text-[10px] text-muted">Flower</span>
-              </div>
-              <div class="mt-auto flex items-center justify-between">
-                <div class="flex items-baseline gap-1.5">
-                  <span class="font-display font-bold text-fg text-lg">$36</span>
-                  <span class="font-mono text-[10px] text-muted line-through">$51</span>
-                </div>
-                <button type="button" class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add +</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 4: Kush Mountain Dante's Inferno -->
-          <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
-            <div class="overflow-hidden bg-surface-up h-48 relative">
-              <img src="https://pbit-production.s3.amazonaws.com/images/image/292671/Kush_mt_3.5g.png?auto=compress,format&w=400&h=400&fit=crop"
-                alt="Kush Mountain Dante's Inferno 3.5g"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy">
-              <span class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
-              <span class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30% OFF</span>
-            </div>
-            <div class="flex-1 p-4 flex flex-col">
-              <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Kush Mountain</p>
-              <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Dante's Inferno · 3.5G</h3>
-              <div class="flex items-center gap-3 mb-3">
-                <span class="font-mono text-[10px] text-accent">22% THC</span>
-                <span class="text-white/20 text-xs">·</span>
-                <span class="font-mono text-[10px] text-muted">Flower</span>
-              </div>
-              <div class="mt-auto flex items-center justify-between">
-                <div class="flex items-baseline gap-1.5">
-                  <span class="font-display font-bold text-fg text-lg">$34</span>
-                  <span class="font-mono text-[10px] text-muted line-through">$49</span>
-                </div>
-                <button type="button" class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add +</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 5: Kush Mountain Sherb Cake -->
-          <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
-            <div class="overflow-hidden bg-surface-up h-48 relative">
-              <img src="https://pbit-production.s3.amazonaws.com/images/image/292671/Kush_mt_3.5g.png?auto=compress,format&w=400&h=400&fit=crop"
-                alt="Kush Mountain Sherb Cake 3.5g"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy">
-              <span class="absolute top-3 left-3 bg-[rgba(90,55,130,0.7)] text-[#C8A8EC] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Indica</span>
-              <span class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30% OFF</span>
-            </div>
-            <div class="flex-1 p-4 flex flex-col">
-              <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Kush Mountain</p>
-              <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Sherb Cake · 3.5G</h3>
-              <div class="flex items-center gap-3 mb-3">
-                <span class="font-mono text-[10px] text-accent">20% THC</span>
-                <span class="text-white/20 text-xs">·</span>
-                <span class="font-mono text-[10px] text-muted">Flower</span>
-              </div>
-              <div class="mt-auto flex items-center justify-between">
-                <div class="flex items-baseline gap-1.5">
-                  <span class="font-display font-bold text-fg text-lg">$32</span>
-                  <span class="font-mono text-[10px] text-muted line-through">$46</span>
-                </div>
-                <button type="button" class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add +</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 6: 28 Herbs Too Cool -->
-          <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
-            <div class="overflow-hidden bg-surface-up h-48 relative">
-              <img src="https://pbit-production.s3.amazonaws.com/images/image/346954/28_Herbs_Hybrid.png?auto=compress,format&w=400&h=400&fit=crop"
-                alt="28 Herbs Too Cool 3.5g"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy">
-              <span class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
-              <span class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30% OFF</span>
-            </div>
-            <div class="flex-1 p-4 flex flex-col">
-              <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">28 Herbs</p>
-              <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Too Cool · 3.5G</h3>
-              <div class="flex items-center gap-3 mb-3">
-                <span class="font-mono text-[10px] text-accent">21% THC</span>
-                <span class="text-white/20 text-xs">·</span>
-                <span class="font-mono text-[10px] text-muted">Flower</span>
-              </div>
-              <div class="mt-auto flex items-center justify-between">
-                <div class="flex items-baseline gap-1.5">
-                  <span class="font-display font-bold text-fg text-lg">$34</span>
-                  <span class="font-mono text-[10px] text-muted line-through">$49</span>
-                </div>
-                <button type="button" class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add +</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 7: 28 Herbs Lemon Cherry Gelato -->
-          <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
-            <div class="overflow-hidden bg-surface-up h-48 relative">
-              <img src="https://pbit-production.s3.amazonaws.com/images/image/346954/28_Herbs_Hybrid.png?auto=compress,format&w=400&h=400&fit=crop"
-                alt="28 Herbs Lemon Cherry Gelato 3.5g"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy">
-              <span class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
-              <span class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30% OFF</span>
-            </div>
-            <div class="flex-1 p-4 flex flex-col">
-              <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">28 Herbs</p>
-              <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Lemon Cherry Gelato · 3.5G</h3>
-              <div class="flex items-center gap-3 mb-3">
-                <span class="font-mono text-[10px] text-accent">19% THC</span>
-                <span class="text-white/20 text-xs">·</span>
-                <span class="font-mono text-[10px] text-muted">Flower</span>
-              </div>
-              <div class="mt-auto flex items-center justify-between">
-                <div class="flex items-baseline gap-1.5">
-                  <span class="font-display font-bold text-fg text-lg">$32</span>
-                  <span class="font-mono text-[10px] text-muted line-through">$46</span>
-                </div>
-                <button type="button" class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add +</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 8: Soulshine Jelly Candy Cured Resin -->
-          <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
-            <div class="overflow-hidden bg-surface-up h-48 relative">
-              <img src="https://pbit-production.s3.amazonaws.com/images/image/129603/Concentrate_3.jpg?auto=compress,format&w=400&h=400&fit=crop"
-                alt="Soulshine Jelly Candy Cured Resin 1G"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy">
-              <span class="absolute top-3 left-3 bg-[rgba(195,135,25,0.7)] text-[#EDB84A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Concentrate</span>
-              <span class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30% OFF</span>
-            </div>
-            <div class="flex-1 p-4 flex flex-col">
-              <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Soulshine Cannabis</p>
-              <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Jelly Candy Cured Resin · 1G</h3>
-              <div class="flex items-center gap-3 mb-3">
-                <span class="font-mono text-[10px] text-accent">73% THC</span>
-                <span class="text-white/20 text-xs">·</span>
-                <span class="font-mono text-[10px] text-muted">Cured Resin</span>
-              </div>
-              <div class="mt-auto flex items-center justify-between">
-                <div class="flex items-baseline gap-1.5">
-                  <span class="font-display font-bold text-fg text-lg">$32</span>
-                  <span class="font-mono text-[10px] text-muted line-through">$46</span>
-                </div>
-                <button type="button" class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add +</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 9: Soulshine Wedding Cake Cured Resin -->
-          <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
-            <div class="overflow-hidden bg-surface-up h-48 relative">
-              <img src="https://pbit-production.s3.amazonaws.com/images/image/129603/Concentrate_3.jpg?auto=compress,format&w=400&h=400&fit=crop"
-                alt="Soulshine Wedding Cake Cured Resin 1G"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy">
-              <span class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
-              <span class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30% OFF</span>
-            </div>
-            <div class="flex-1 p-4 flex flex-col">
-              <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Soulshine Cannabis</p>
-              <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Wedding Cake Cured Resin · 1G</h3>
-              <div class="flex items-center gap-3 mb-3">
-                <span class="font-mono text-[10px] text-accent">72% THC</span>
-                <span class="text-white/20 text-xs">·</span>
-                <span class="font-mono text-[10px] text-muted">Cured Resin</span>
-              </div>
-              <div class="mt-auto flex items-center justify-between">
-                <div class="flex items-baseline gap-1.5">
-                  <span class="font-display font-bold text-fg text-lg">$30</span>
-                  <span class="font-mono text-[10px] text-muted line-through">$43</span>
-                </div>
-                <button type="button" class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add +</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 10: 28 Herbs Blueberry Gummies -->
-          <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
-            <div class="overflow-hidden bg-surface-up h-48 relative">
-              <img src="https://pbit-production.s3.amazonaws.com/images/image/293313/28_Herbs_Blueberry_Gummies.png?auto=compress,format&w=400&h=400&fit=crop"
-                alt="28 Herbs Blueberry Gummies 100mg"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy">
-              <span class="absolute top-3 left-3 bg-[rgba(90,55,130,0.7)] text-[#C8A8EC] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Indica</span>
-              <span class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30% OFF</span>
-            </div>
-            <div class="flex-1 p-4 flex flex-col">
-              <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">28 Herbs</p>
-              <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Blueberry Gummies · 100mg</h3>
-              <div class="flex items-center gap-3 mb-3">
-                <span class="font-mono text-[10px] text-accent">100mg THC</span>
-                <span class="text-white/20 text-xs">·</span>
-                <span class="font-mono text-[10px] text-muted">Edible</span>
-              </div>
-              <div class="mt-auto flex items-center justify-between">
-                <div class="flex items-baseline gap-1.5">
-                  <span class="font-display font-bold text-fg text-lg">$14</span>
-                  <span class="font-mono text-[10px] text-muted line-through">$20</span>
-                </div>
-                <button type="button" class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add +</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 11: Cormorant Pineapple Chilados -->
-          <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
-            <div class="overflow-hidden bg-surface-up h-48 relative">
-              <img src="https://pbit-production.s3.amazonaws.com/images/image/257842/cormorant_edibles_pineapple.png?auto=compress,format&w=400&h=400&fit=crop"
-                alt="Cormorant Pineapple Chilados Gummies 100mg"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy">
-              <span class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
-            </div>
-            <div class="flex-1 p-4 flex flex-col">
-              <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Cormorant</p>
-              <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Pineapple Chilados · 100mg</h3>
-              <div class="flex items-center gap-3 mb-3">
-                <span class="font-mono text-[10px] text-accent">100mg THC</span>
-                <span class="text-white/20 text-xs">·</span>
-                <span class="font-mono text-[10px] text-muted">Edible</span>
-              </div>
-              <div class="mt-auto flex items-center justify-between">
-                <span class="font-display font-bold text-fg text-lg">$15</span>
-                <button type="button" class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add +</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 12: Mama J's Amnesia Lemon Pre-Roll -->
-          <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
-            <div class="overflow-hidden bg-surface-up h-48 relative">
-              <img src="https://pbit-production.s3.amazonaws.com/images/image/143792/POSaBIT_Stock_-_Preroll_1.png?auto=compress,format&w=400&h=400&fit=crop"
-                alt="Mama J's Amnesia Lemon Pre-Roll 2pk"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy">
-              <span class="absolute top-3 left-3 bg-[rgba(195,135,25,0.7)] text-[#EDB84A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Sativa</span>
-            </div>
-            <div class="flex-1 p-4 flex flex-col">
-              <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">MAMA J's</p>
-              <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Amnesia Lemon · 2pk 2G</h3>
-              <div class="flex items-center gap-3 mb-3">
-                <span class="font-mono text-[10px] text-accent">21% THC</span>
-                <span class="text-white/20 text-xs">·</span>
-                <span class="font-mono text-[10px] text-muted">Pre-Roll</span>
-              </div>
-              <div class="mt-auto flex items-center justify-between">
-                <span class="font-display font-bold text-fg text-lg">$18</span>
-                <button type="button" class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add +</button>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /grid -->
-
-        <!-- Load more -->
-        <div class="flex justify-center mt-12">
-          <button type="button" class="border border-white/20 text-muted text-[12px] tracking-[.1em] uppercase font-medium px-10 py-3.5 hover:border-white/40 hover:text-fg transition-colors">
-            Load More (647 remaining)
-          </button>
-        </div>
-
-      </div><!-- /product grid -->
-    </div><!-- /flex -->
-  </div>
-</section>
-
-<!-- ─── DEALS STRIP ───────────────────────────────────────────── -->
-<section id="deals" class="bg-surface border-y border-white/[0.07] py-20">
-  <div class="max-w-wrap mx-auto px-6">
-    <div class="flex items-end justify-between mb-10">
-      <div>
-        <p class="section-eyebrow mb-3">Current Drops</p>
-        <h2 class="font-display text-4xl font-bold text-fg tracking-tight">This Week's Picks</h2>
-      </div>
-      <a href="#" class="hidden md:inline-flex items-center gap-2 border border-white/15 text-muted text-[11px] tracking-[.1em] uppercase font-medium px-5 py-2.5 rounded-full hover:border-white/30 hover:text-fg transition-all active:scale-[.97]">
-        View All Deals
-        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+      <!-- Logo -->
+      <a href="#" aria-label="Bored and Buzzed - Home" class="flex-shrink-0">
+        <img src="../Brand Identity/BnB Logos/Square Logo size.png" alt="Bored and Buzzed"
+          class="h-16 w-auto object-contain">
       </a>
+
+      <!-- Links -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#shop"
+          class="relative text-[11px] font-medium text-fg tracking-[.08em] uppercase pb-0.5 after:absolute after:bottom-[-6px] after:left-0 after:right-0 after:h-px after:bg-accent">Menu</a>
+        <a href="#deals"
+          class="text-[11px] font-medium text-muted tracking-[.08em] uppercase hover:text-fg transition-colors">Deals</a>
+        <a href="#reviews"
+          class="text-[11px] font-medium text-muted tracking-[.08em] uppercase hover:text-fg transition-colors">Reviews</a>
+        <a href="#rewards"
+          class="text-[11px] font-medium text-muted tracking-[.08em] uppercase hover:text-fg transition-colors">Rewards</a>
+        <a href="#about"
+          class="text-[11px] font-medium text-muted tracking-[.08em] uppercase hover:text-fg transition-colors">About</a>
+      </div>
+
+      <!-- Right -->
+      <div class="flex items-center gap-3 flex-shrink-0">
+        <div class="hidden lg:flex items-center gap-2 mr-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-open"></span>
+          <span class="font-mono text-[10px] text-muted tracking-[.12em]">OPEN · 8AM-11PM</span>
+        </div>
+        <!-- Search -->
+        <button type="button" aria-label="Search"
+          class="w-10 h-10 flex items-center justify-center text-muted hover:text-fg transition-colors">
+          <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+        </button>
+        <!-- Cart -->
+        <button type="button" aria-label="Cart"
+          class="relative w-10 h-10 flex items-center justify-center text-muted hover:text-fg transition-colors">
+          <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <span
+            class="absolute top-1.5 right-1.5 w-4 h-4 bg-accent text-bg text-[9px] font-bold rounded-full flex items-center justify-center leading-none">0</span>
+        </button>
+        <!-- Mobile hamburger -->
+        <button type="button" aria-label="Open menu"
+          class="md:hidden w-10 h-10 flex items-center justify-center text-muted hover:text-fg transition-colors">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ─── HERO ──────────────────────────────────────────────────── -->
+  <section class="relative flex flex-col overflow-hidden bg-bg">
+
+    <!-- Texture layers -->
+    <div class="halftone-overlay"></div>
+    <div class="grain-overlay"></div>
+
+    <!-- Mood gradients (below grain, z-index 0) -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_100%_80%_at_100%_0%,rgba(15,38,64,0.75),transparent)] z-0">
+    </div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_0%_100%,rgba(15,38,64,0.4),transparent)] z-0">
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-bg to-transparent z-0 pointer-events-none">
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <div class="bg-bg border border-accent/20 rounded-lg p-7">
-        <p class="section-eyebrow mb-4">Weekend Drop</p>
-        <div class="deal-pct mb-2">30% OFF</div>
-        <p class="font-display text-xl font-semibold text-fg mb-2">All Soulshine</p>
-        <p class="text-muted text-sm leading-relaxed mb-6">Drip Station, Lava Cake, Blockberry. Plus, their full concentrate line. Limited while supplies last.</p>
-        <a href="#shop" class="inline-flex items-center gap-2 border border-accent/40 text-accent text-[11px] tracking-[.1em] uppercase font-semibold px-5 py-2.5 rounded-full hover:bg-accent hover:text-bg transition-all active:scale-[.97]">
-          Shop Now
-          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-        </a>
+    <!-- ── MAIN HERO BODY ── -->
+    <div class="relative z-10 flex-1 max-w-wrap mx-auto px-6 w-full pt-14 pb-4">
+
+      <!-- Coaster badge (desktop only, top right) -->
+      <div class="hidden lg:flex absolute top-10 right-6 z-20 items-center justify-center flex-shrink-0">
+        <div class="relative w-48 h-48 flex items-center justify-center">
+          <div
+            class="absolute w-44 h-44 rounded-full bg-[radial-gradient(circle,rgba(201,168,76,0.18),transparent_70%)]">
+          </div>
+          <img src="../Brand Identity/BnB Logos/BNB Coaster front.png" alt=""
+            class="relative w-36 h-36 object-cover rounded-full"
+            style="filter:drop-shadow(0 0 32px rgba(201,168,76,0.35))" loading="lazy">
+        </div>
       </div>
 
-      <div class="bg-bg border border-white/[0.08] rounded-lg p-7">
-        <p class="section-eyebrow mb-4">This Week</p>
-        <div class="deal-pct mb-2">30% OFF</div>
-        <p class="font-display text-xl font-semibold text-fg mb-2">Kush Mountain</p>
-        <p class="text-muted text-sm leading-relaxed mb-6">Jahlotto, Dante's Inferno, Sherb Cake and more. Available in all sizes from 3.5g down to 1g pre-rolls.</p>
-        <a href="#shop" class="inline-flex items-center gap-2 border border-accent/40 text-accent text-[11px] tracking-[.1em] uppercase font-semibold px-5 py-2.5 rounded-full hover:bg-accent hover:text-bg transition-all active:scale-[.97]">
-          Shop Now
-          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-        </a>
+      <!-- Eyebrow strip -->
+      <div class="d1 flex items-center gap-5 mb-10">
+        <span class="font-mono text-[11px] text-accent tracking-[.24em] uppercase">Kirkland, WA</span>
+        <span class="h-px w-12 bg-accent/25"></span>
+        <div class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-open"></span>
+          <span class="font-mono text-[11px] text-open tracking-[.16em] uppercase">Open Now · 8AM-11PM</span>
+        </div>
+        <span class="h-px w-12 bg-white/10 hidden md:block"></span>
+        <span class="font-mono text-[11px] text-muted tracking-[.16em] uppercase hidden md:block">Est. 2023</span>
       </div>
 
-      <div class="bg-bg border border-white/[0.08] rounded-lg p-7">
-        <p class="section-eyebrow mb-4">This Week</p>
-        <div class="deal-pct mb-2">30% OFF</div>
-        <p class="font-display text-xl font-semibold text-fg mb-2">28 Herbs Everything</p>
-        <p class="text-muted text-sm leading-relaxed mb-6">Flower, 7g bags, edibles. The full 28 Herbs catalog at 30% off. Too Cool, Lemon Cherry Gelato, Blueberry Gummies.</p>
-        <a href="#shop" class="inline-flex items-center gap-2 border border-accent/40 text-accent text-[11px] tracking-[.1em] uppercase font-semibold px-5 py-2.5 rounded-full hover:bg-accent hover:text-bg transition-all active:scale-[.97]">
-          Shop Now
-          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-        </a>
+      <!-- HERO LOGO -->
+      <div class="d2 mb-0">
+        <img src="../Brand Identity/BnB Logos/Square Logo size.png" alt="Bored and Buzzed"
+          style="height:clamp(300px,40vw,500px);width:auto;max-width:100%;object-fit:contain;display:block;"
+          loading="eager">
       </div>
-    </div>
 
-    <!-- ── WEEKLY DEAL CALENDAR ── -->
-    <div class="mt-16 pt-12 border-t border-white/[0.07]">
-      <div class="flex items-end justify-between mb-8">
+      <!-- Sub content row: tagline + CTAs -->
+      <div class="d5 pt-8 pb-10">
+
+        <!-- Left: tagline + CTAs + location -->
         <div>
-          <p class="font-mono text-[10px] text-muted tracking-[.18em] uppercase mb-2">Every week, without fail</p>
-          <p class="font-display text-xl font-bold text-fg">The Daily Deal Schedule</p>
-        </div>
-        <span class="hidden md:flex items-center gap-2 font-mono text-[10px] text-open tracking-[.14em] uppercase">
-          <span class="w-1.5 h-1.5 rounded-full bg-open"></span>Today: Pre-Roll Thursday
-        </span>
-      </div>
-      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
-
-        <div class="bg-bg border border-white/[0.07] rounded-lg p-4 flex flex-col">
-          <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-3">Monday</p>
-          <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Munchie<br>Monday</p>
-          <p class="font-mono text-accent text-[10px] font-bold mb-1">30% OFF</p>
-          <p class="text-muted text-[11px] leading-snug mt-auto">Buy 3+ edibles</p>
-        </div>
-
-        <div class="bg-bg border border-white/[0.07] rounded-lg p-4 flex flex-col">
-          <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-3">Tuesday</p>
-          <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Top Shelf<br>Tuesday</p>
-          <p class="font-mono text-accent text-[10px] font-bold mb-1">30% OFF</p>
-          <p class="text-muted text-[11px] leading-snug mt-auto">3+ top shelf brands</p>
-        </div>
-
-        <div class="bg-bg border border-white/[0.07] rounded-lg p-4 flex flex-col">
-          <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-3">Wednesday</p>
-          <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Wax<br>Wednesday</p>
-          <p class="font-mono text-accent text-[10px] font-bold mb-1">30% OFF</p>
-          <p class="text-muted text-[11px] leading-snug mt-auto">3g+ concentrate</p>
-        </div>
-
-        <!-- THURSDAY - TODAY -->
-        <div class="bg-bg border border-accent/40 rounded-lg p-4 flex flex-col relative overflow-hidden">
-          <div class="absolute top-0 left-0 right-0 h-0.5 bg-accent"></div>
-          <p class="font-mono text-[9px] text-accent tracking-[.14em] uppercase mb-3">Thursday · Today</p>
-          <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Pre-Roll<br>Thursday</p>
-          <p class="font-mono text-accent text-[10px] font-bold mb-1">30% OFF</p>
-          <p class="text-muted text-[11px] leading-snug mt-auto">Any 3 pre-rolls</p>
-          <span class="absolute top-4 right-3 w-1.5 h-1.5 rounded-full bg-open animate-pulse"></span>
-        </div>
-
-        <div class="bg-bg border border-white/[0.07] rounded-lg p-4 flex flex-col">
-          <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-3">Friday</p>
-          <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Flower<br>Friday</p>
-          <p class="font-mono text-accent text-[10px] font-bold mb-1">30% OFF</p>
-          <p class="text-muted text-[11px] leading-snug mt-auto">3+ flower products</p>
-        </div>
-
-        <div class="bg-bg border border-white/[0.07] rounded-lg p-4 flex flex-col col-span-2">
-          <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-3">Sat + Sun</p>
-          <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Bulk Up<br>Weekend</p>
-          <p class="font-mono text-accent text-[10px] font-bold mb-1">UP TO 30% OFF</p>
-          <p class="text-muted text-[11px] leading-snug mt-auto">$100=20% · $200=25% · $300=30%</p>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ─── BRAND STORY ───────────────────────────────────────────── -->
-<section id="about" class="bg-navy relative overflow-hidden py-24">
-  <!-- Texture layers -->
-  <div class="halftone-overlay" style="opacity:.04"></div>
-  <div class="grain-overlay" style="opacity:.05"></div>
-  <!-- Gradient overlays -->
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_90%_at_100%_50%,rgba(201,168,76,0.06),transparent)]"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_50%_80%_at_0%_50%,rgba(9,26,46,0.5),transparent)]"></div>
-
-  <div class="relative z-10 max-w-wrap mx-auto px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-
-      <!-- Copy -->
-      <div>
-        <p class="section-eyebrow mb-6">Who We Are</p>
-        <h2 class="font-display font-bold text-fg leading-[.9] tracking-tight mb-8" style="font-size:clamp(44px,6vw,88px)">
-          The Culture's<br>
-          <span class="text-accent">Outpost</span><br>
-          in the Suburbs.
-        </h2>
-        <p class="text-muted text-lg leading-relaxed max-w-md mb-6">
-          Your neighborhood cannabis shop, proudly serving Kirkland and the surrounding Eastside community. We're more than just a place to shop. We're a space where quality, education, and real customer service come together.
-        </p>
-        <p class="text-muted text-base leading-relaxed max-w-md mb-4">
-          Our budtenders take the time to understand what you're looking for, whether you're a seasoned connoisseur or completely new to cannabis. Every product on our shelf was chosen because we'd buy it ourselves.
-        </p>
-        <p class="text-muted text-sm leading-relaxed max-w-md mb-10">
-          Conveniently located just minutes from Totem Lake Town Center and Juanita Beach. Serving Kirkland, Woodinville, Redmond, Bothell, and beyond.
-        </p>
-
-        <!-- Pillars -->
-        <div class="grid grid-cols-3 gap-5 pt-8 border-t border-white/[0.08]">
-          <div>
-            <p class="font-mono text-[10px] text-accent tracking-[.15em] uppercase mb-2">01</p>
-            <p class="font-display font-bold text-fg text-sm leading-tight">Craft.<br>Curated.</p>
-          </div>
-          <div>
-            <p class="font-mono text-[10px] text-accent tracking-[.15em] uppercase mb-2">02</p>
-            <p class="font-display font-bold text-fg text-sm leading-tight">The Eastside,<br>Elevated.</p>
-          </div>
-          <div>
-            <p class="font-mono text-[10px] text-accent tracking-[.15em] uppercase mb-2">03</p>
-            <p class="font-display font-bold text-fg text-sm leading-tight">Culture.<br>In Person.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Visual -->
-      <div class="flex items-center justify-center">
-        <div class="relative w-[400px] h-[400px] flex items-center justify-center">
-
-          <div class="absolute w-52 h-52 rounded-full bg-[radial-gradient(circle,rgba(201,168,76,0.18),transparent_70%)]"></div>
-          <img src="../Brand Identity/BnB Logos/BNB Coaster front.png"
-            alt="Bored and Buzzed"
-            class="relative w-44 h-44 object-cover rounded-full"
-            style="filter:drop-shadow(0 0 40px rgba(201,168,76,0.32))"
-            loading="lazy">
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ─── CULTURE / EVENTS ──────────────────────────────────────── -->
-<section class="bg-bg border-t border-white/[0.06] py-20">
-  <div class="max-w-wrap mx-auto px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
-      <!-- Copy -->
-      <div>
-        <p class="section-eyebrow mb-4">Events &amp; Culture</p>
-        <h2 class="font-display font-bold text-fg leading-[.92] tracking-tight mb-8" style="font-size:clamp(36px,5vw,64px)">
-          We Brought<br>
-          Jim Jones<br>
-          <span class="text-accent">to Kirkland.</span>
-        </h2>
-        <p class="text-muted text-base leading-relaxed max-w-md mb-4">
-          Bored and Buzzed hosted Grammy-nominated rapper and Dipset co-founder Jim Jones for an exclusive meet &amp; greet right here in Kirkland. Then we sponsored the afterparty at Mirra in Bellevue.
-        </p>
-        <p class="text-muted text-sm leading-relaxed max-w-md mb-4">
-          VIP guests left with limited-edition B&amp;B tees and hats. Sky High Gardens and WYLD were on the floor. It wasn't just an event; it was a reminder of why we do what we do.
-        </p>
-        <p class="text-muted text-sm leading-relaxed max-w-md mb-8 italic">
-          "We're here for the people, the culture, and the moments that bring us together. Stay tuned, Kirkland. This is just the beginning."
-        </p>
-        <div class="flex items-center gap-6">
-          <a href="https://borednbuzzed.com/blog-events-b1/" target="_blank" rel="noopener"
-            class="inline-flex items-center gap-2 border border-accent/40 text-accent text-[12px] tracking-[.1em] uppercase font-semibold px-6 py-2.5 rounded-full hover:bg-accent hover:text-bg transition-all active:scale-[.97]">
-            Read the Recap
-            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-          </a>
-          <a href="https://www.youtube.com/@BorednBuzzedKirkland" target="_blank" rel="noopener"
-            class="inline-flex items-center gap-2 border border-white/20 text-muted text-[12px] tracking-[.1em] uppercase font-medium px-6 py-2.5 rounded-full hover:border-white/40 hover:text-fg transition-all">
-            Our YouTube
-            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- YouTube embed -->
-      <div class="relative rounded-lg overflow-hidden bg-surface border border-white/[0.07]" style="aspect-ratio:16/9">
-        <iframe
-          src="https://www.youtube.com/embed/5Ym4_EEfUSA?rel=0&modestbranding=1&color=white"
-          title="Jim Jones Pulls Up to Kirkland for a Special Meet &amp; Greet - Bored N Buzzed"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          loading="lazy"
-          class="absolute inset-0 w-full h-full border-0">
-        </iframe>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ─── NEIGHBORHOOD SECTION ──────────────────────────────────── -->
-<section class="bg-bg py-20 border-t border-white/[0.06]">
-  <div class="max-w-wrap mx-auto px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-16 items-center">
-
-      <div>
-        <p class="section-eyebrow mb-4">The Eastside, Specifically</p>
-        <h2 class="font-display text-4xl lg:text-5xl font-bold text-fg leading-tight tracking-tight mb-6">
-          Built for<br>the neighbors.
-        </h2>
-        <p class="text-muted text-base leading-relaxed max-w-sm mb-8">
-          We're on the Eastside for the Eastside. Not a Seattle import.
-          Not a franchise. Just the best dispensary for where you actually live.
-        </p>
-        <a href="#" class="inline-flex items-center gap-2 border border-accent/40 text-accent text-[12px] tracking-[.1em] uppercase font-semibold px-6 py-2.5 rounded-full hover:bg-accent hover:text-bg transition-all active:scale-[.97]">
-          Get Directions
-          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-        </a>
-      </div>
-
-      <div class="grid grid-cols-2 gap-4">
-        <div class="bg-surface border border-white/[0.07] rounded-lg p-6">
-          <p class="font-mono text-[10px] text-accent tracking-[.15em] uppercase mb-3">Home Base</p>
-          <p class="font-display text-xl font-bold text-fg mb-1">Kirkland</p>
-          <p class="text-muted text-sm">11516 124th Ave NE</p>
-        </div>
-        <div class="bg-surface border border-white/[0.07] rounded-lg p-6">
-          <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase mb-3">7 min away</p>
-          <p class="font-display text-xl font-bold text-fg mb-1">Redmond</p>
-          <p class="text-muted text-sm">Via NE 85th St</p>
-        </div>
-        <div class="bg-surface border border-white/[0.07] rounded-lg p-6">
-          <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase mb-3">12 min away</p>
-          <p class="font-display text-xl font-bold text-fg mb-1">Bothell</p>
-          <p class="text-muted text-sm">Via I-405</p>
-        </div>
-        <div class="bg-surface border border-white/[0.07] rounded-lg p-6">
-          <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase mb-3">14 min away</p>
-          <p class="font-display text-xl font-bold text-fg mb-1">Woodinville</p>
-          <p class="text-muted text-sm">Via NE 124th St</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ─── REVIEWS ──────────────────────────────────────────────── -->
-<section id="reviews" class="bg-surface border-t border-white/[0.07] py-20">
-  <div class="max-w-wrap mx-auto px-6">
-
-    <div class="flex items-end justify-between mb-12">
-      <div>
-        <p class="section-eyebrow mb-3">The Eastside Weighs In</p>
-        <h2 class="font-display text-4xl font-bold text-fg tracking-tight">Real People.<br>Real Reviews.</h2>
-      </div>
-      <a href="https://g.page/r/CSSJAhsfuIj-EAI/review" target="_blank" rel="noopener"
-        class="hidden md:inline-flex items-center gap-2 border border-accent/30 text-accent text-[11px] tracking-[.1em] uppercase font-semibold px-6 py-3 rounded-full hover:border-accent hover:bg-accent/5 transition-all active:scale-[.97]">
-        Leave a Google Review
-        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-      </a>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-6">
-
-      <!-- Featured review -->
-      <div class="bg-bg border border-white/[0.07] rounded-lg p-8 flex flex-col justify-between">
-        <div>
-          <div class="flex gap-1 mb-5">
-            <span class="text-accent text-lg">★★★★★</span>
-          </div>
-          <blockquote class="font-display text-fg text-xl font-semibold leading-snug mb-6">
-            "Had the nicest guy help me both times. Very knowledgeable, friendly, and excellent customer service."
-          </blockquote>
-          <p class="text-muted text-sm leading-relaxed">
-            This is what every dispensary visit should feel like. Staff who actually know the products and take the time to listen.
+          <p class="text-muted text-xl leading-relaxed max-w-lg mb-8">
+            Kirkland's home for curated cannabis.<br class="hidden lg:block">
+            Premium selection. Real community.
           </p>
+          <div class="flex items-center gap-4 flex-wrap mb-10">
+            <a href="#shop"
+              class="inline-flex items-center gap-3 bg-accent text-bg font-bold px-9 py-4 rounded-full text-[13px] tracking-[.06em] uppercase hover:bg-accent-hi transition-colors active:scale-[.97]">
+              Shop the Menu
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </a>
+            <a href="#about"
+              class="inline-flex items-center gap-3 border-2 border-white/25 text-fg px-9 py-4 rounded-full text-[13px] tracking-[.06em] uppercase hover:border-accent hover:text-accent transition-colors active:scale-[.97]">
+              Our Story
+            </a>
+          </div>
+          <div class="flex items-center gap-6 pt-7 border-t border-white/[0.08]">
+            <div>
+              <p class="font-mono text-[9px] text-subtle tracking-[.18em] uppercase mb-1">Address</p>
+              <p class="text-sm text-muted">11516 124th Ave NE, Kirkland</p>
+            </div>
+            <div class="w-px h-7 bg-white/10"></div>
+            <div>
+              <p class="font-mono text-[9px] text-subtle tracking-[.18em] uppercase mb-1">Hours</p>
+              <p class="text-sm text-muted">Sun-Thu 8AM-11PM · Fri-Sat 8AM-11:45PM</p>
+            </div>
+            <div class="w-px h-7 bg-white/10 hidden sm:block"></div>
+            <a href="tel:+14258140200" class="hidden sm:block text-sm text-muted hover:text-fg transition-colors">(425)
+              814-0200</a>
+          </div>
         </div>
-        <div class="flex items-center justify-between pt-6 mt-6 border-t border-white/[0.07]">
-          <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center">
-              <span class="font-mono text-accent text-[11px] font-bold">V</span>
+
+      </div>
+    </div>
+
+    <!-- ── MARQUEE BAND 1 ── gold on dark -->
+    <div class="relative z-10 border-y border-accent/30 bg-navy/70 backdrop-blur-sm py-3 overflow-hidden">
+      <div class="marquee-track" aria-hidden="true">
+        <div class="marquee-inner">
+          <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">The Eastside
+            Standard</span>
+          <span class="text-accent font-bold text-base">★</span>
+          <span class="mx-7 font-mono text-[11px] text-accent tracking-[.2em] uppercase whitespace-nowrap">Soulshine 30%
+            Off This Weekend</span>
+          <span class="text-white/30 font-bold text-base">★</span>
+          <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">Kirkland, WA ·
+            Open Now</span>
+          <span class="text-accent font-bold text-base">★</span>
+          <span class="mx-7 font-mono text-[11px] text-accent tracking-[.2em] uppercase whitespace-nowrap">Kush Mountain
+            30% Off · All Sizes</span>
+          <span class="text-white/30 font-bold text-base">★</span>
+          <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">659 Products ·
+            Daily New Drops</span>
+          <span class="text-accent font-bold text-base">★</span>
+          <span class="mx-7 font-mono text-[11px] text-accent tracking-[.2em] uppercase whitespace-nowrap">28 Herbs 30%
+            Off · Flower + Edibles</span>
+          <span class="text-white/30 font-bold text-base">★</span>
+          <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">Sun-Thu 8AM-11PM
+            · Fri-Sat 8AM-11:45PM</span>
+          <span class="text-accent font-bold text-base">★</span>
+          <!-- Duplicate for seamless loop -->
+          <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">The Eastside
+            Standard</span>
+          <span class="text-accent font-bold text-base">★</span>
+          <span class="mx-7 font-mono text-[11px] text-accent tracking-[.2em] uppercase whitespace-nowrap">Soulshine 30%
+            Off This Weekend</span>
+          <span class="text-white/30 font-bold text-base">★</span>
+          <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">Kirkland, WA ·
+            Open Now</span>
+          <span class="text-accent font-bold text-base">★</span>
+          <span class="mx-7 font-mono text-[11px] text-accent tracking-[.2em] uppercase whitespace-nowrap">Kush Mountain
+            30% Off · All Sizes</span>
+          <span class="text-white/30 font-bold text-base">★</span>
+          <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">659 Products ·
+            Daily New Drops</span>
+          <span class="text-accent font-bold text-base">★</span>
+          <span class="mx-7 font-mono text-[11px] text-accent tracking-[.2em] uppercase whitespace-nowrap">28 Herbs 30%
+            Off · Flower + Edibles</span>
+          <span class="text-white/30 font-bold text-base">★</span>
+          <span class="mx-7 font-mono text-[11px] text-fg tracking-[.2em] uppercase whitespace-nowrap">Sun-Thu 8AM-11PM
+            · Fri-Sat 8AM-11:45PM</span>
+          <span class="text-accent font-bold text-base">★</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MARQUEE BAND 2 ── reversed, smaller, cream on dark -->
+    <div class="relative z-10 border-b border-white/[0.07] bg-bg/80 overflow-hidden py-2.5">
+      <div class="marquee-track" aria-hidden="true">
+        <div class="marquee-inner marquee-inner-rev">
+          <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Curated
+            Cannabis</span>
+          <span class="text-muted/30 text-xs">◆</span>
+          <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Kirkland ·
+            Redmond · Bothell · Woodinville</span>
+          <span class="text-muted/30 text-xs">◆</span>
+          <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Premium
+            Selection</span>
+          <span class="text-muted/30 text-xs">◆</span>
+          <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Real
+            Community</span>
+          <span class="text-muted/30 text-xs">◆</span>
+          <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Est.
+            2023</span>
+          <span class="text-muted/30 text-xs">◆</span>
+          <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">The
+            Culture's Outpost in the Suburbs</span>
+          <span class="text-muted/30 text-xs">◆</span>
+          <!-- Duplicate -->
+          <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Curated
+            Cannabis</span>
+          <span class="text-muted/30 text-xs">◆</span>
+          <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Kirkland ·
+            Redmond · Bothell · Woodinville</span>
+          <span class="text-muted/30 text-xs">◆</span>
+          <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Premium
+            Selection</span>
+          <span class="text-muted/30 text-xs">◆</span>
+          <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Real
+            Community</span>
+          <span class="text-muted/30 text-xs">◆</span>
+          <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">Est.
+            2023</span>
+          <span class="text-muted/30 text-xs">◆</span>
+          <span class="mx-6 font-mono text-[9px] text-muted/60 tracking-[.22em] uppercase whitespace-nowrap">The
+            Culture's Outpost in the Suburbs</span>
+          <span class="text-muted/30 text-xs">◆</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CATEGORY STRIP ── -->
+    <div class="relative z-10 border-b border-white/[0.07] bg-bg">
+      <div class="max-w-wrap mx-auto px-6">
+        <div id="cat-strip" class="flex items-center gap-0 overflow-x-auto no-scroll">
+          <button type="button"
+            class="cat-tab cat-tab-active flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-accent text-fg transition-colors"
+            data-cat="all">All</button>
+          <button type="button"
+            class="cat-tab flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-transparent text-muted hover:text-fg transition-colors"
+            data-cat="flower">Flower</button>
+          <button type="button"
+            class="cat-tab flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-transparent text-muted hover:text-fg transition-colors"
+            data-cat="vapes">Vapes</button>
+          <button type="button"
+            class="cat-tab flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-transparent text-muted hover:text-fg transition-colors"
+            data-cat="edibles">Edibles</button>
+          <button type="button"
+            class="cat-tab flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-transparent text-muted hover:text-fg transition-colors"
+            data-cat="concentrates">Concentrates</button>
+          <button type="button"
+            class="cat-tab flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-transparent text-muted hover:text-fg transition-colors"
+            data-cat="prerolls">Pre-Rolls</button>
+          <button type="button"
+            class="cat-tab flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-transparent text-muted hover:text-fg transition-colors"
+            data-cat="topicals">Topicals</button>
+          <button type="button"
+            class="cat-tab flex-shrink-0 px-5 h-cat font-mono text-[10px] tracking-[.16em] uppercase border-b-2 border-transparent text-muted hover:text-fg transition-colors"
+            data-cat="accessories">Accessories</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ─── SHOP SECTION ──────────────────────────────────────────── -->
+  <section id="shop" class="bg-bg py-20">
+    <div class="max-w-wrap mx-auto px-6">
+      <div class="flex gap-10">
+
+        <!-- Sidebar -->
+        <aside class="hidden lg:block w-56 flex-shrink-0">
+          <div class="sticky top-[148px]">
+
+            <!-- Sort -->
+            <div class="mb-6">
+              <p class="filter-label">Sort By</p>
+              <select aria-label="Sort products by" title="Sort by"
+                class="w-full bg-surface border border-white/10 text-fg text-sm px-3 py-2.5 rounded appearance-none cursor-pointer focus-visible:outline-accent">
+                <option>Popular</option>
+                <option>Newest</option>
+                <option>Price: Low → High</option>
+                <option>Price: High → Low</option>
+                <option>Highest THC</option>
+              </select>
+            </div>
+
+            <!-- Strain type -->
+            <div class="mb-6 border-t border-white/[0.06] pt-4">
+              <p class="filter-label">Strain Type</p>
+              <div class="flex flex-col gap-2">
+                <label class="flex items-center gap-2.5 cursor-pointer group">
+                  <input type="checkbox" class="accent-accent w-3.5 h-3.5" checked>
+                  <span class="text-sm text-muted group-hover:text-fg transition-colors">All Types</span>
+                </label>
+                <label class="flex items-center gap-2.5 cursor-pointer group">
+                  <input type="checkbox" class="accent-accent w-3.5 h-3.5">
+                  <span class="text-sm text-muted group-hover:text-fg transition-colors">Indica</span>
+                </label>
+                <label class="flex items-center gap-2.5 cursor-pointer group">
+                  <input type="checkbox" class="accent-accent w-3.5 h-3.5">
+                  <span class="text-sm text-muted group-hover:text-fg transition-colors">Sativa</span>
+                </label>
+                <label class="flex items-center gap-2.5 cursor-pointer group">
+                  <input type="checkbox" class="accent-accent w-3.5 h-3.5">
+                  <span class="text-sm text-muted group-hover:text-fg transition-colors">Hybrid</span>
+                </label>
+                <label class="flex items-center gap-2.5 cursor-pointer group">
+                  <input type="checkbox" class="accent-accent w-3.5 h-3.5">
+                  <span class="text-sm text-muted group-hover:text-fg transition-colors">CBD</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Price -->
+            <div class="mb-6 border-t border-white/[0.06] pt-4">
+              <p class="filter-label">Price Range</p>
+              <div class="flex items-center gap-2">
+                <input type="number" placeholder="$0" aria-label="Minimum price"
+                  class="w-full bg-surface border border-white/10 text-fg text-sm px-3 py-2 rounded focus-visible:outline-accent">
+                <span class="text-muted text-xs">-</span>
+                <input type="number" placeholder="$100" aria-label="Maximum price"
+                  class="w-full bg-surface border border-white/10 text-fg text-sm px-3 py-2 rounded focus-visible:outline-accent">
+              </div>
+            </div>
+
+            <!-- THC% -->
+            <div class="mb-6 border-t border-white/[0.06] pt-4">
+              <p class="filter-label">THC %</p>
+              <input type="range" min="0" max="40" value="40" aria-label="Maximum THC percentage" title="THC %"
+                class="w-full accent-accent cursor-pointer">
+              <div class="flex justify-between mt-1">
+                <span class="font-mono text-[10px] text-muted">0%</span>
+                <span class="font-mono text-[10px] text-muted">40%+</span>
+              </div>
+            </div>
+
+            <!-- Toggles -->
+            <div class="border-t border-white/[0.06] pt-4 flex flex-col gap-3">
+              <label class="flex items-center justify-between cursor-pointer group">
+                <span class="text-sm text-muted group-hover:text-fg transition-colors">On Sale</span>
+                <div
+                  class="relative w-9 h-5 bg-surface-hi rounded-full border border-white/10 transition-colors peer-checked:bg-accent/20">
+                  <input type="checkbox" class="peer sr-only">
+                  <span
+                    class="absolute left-0.5 top-0.5 w-4 h-4 bg-subtle rounded-full transition-transform peer-checked:translate-x-4 peer-checked:bg-accent"></span>
+                </div>
+              </label>
+              <label class="flex items-center justify-between cursor-pointer group">
+                <span class="text-sm text-muted group-hover:text-fg transition-colors">In Stock Only</span>
+                <div class="relative w-9 h-5 bg-surface-hi rounded-full border border-white/10">
+                  <input type="checkbox" class="peer sr-only" checked>
+                  <span
+                    class="absolute left-0.5 top-0.5 w-4 h-4 bg-accent rounded-full transition-transform translate-x-4"></span>
+                </div>
+              </label>
+            </div>
+
+          </div>
+        </aside>
+
+        <!-- Product grid -->
+        <div class="flex-1 min-w-0">
+
+          <!-- Grid header -->
+          <div class="flex items-center justify-between mb-7">
+            <div>
+              <span class="font-mono text-[10px] text-muted tracking-[.14em] uppercase">Showing 12 of </span>
+              <span class="font-mono text-[10px] text-accent tracking-[.14em]">659 products</span>
+            </div>
+            <!-- Mobile filter toggle -->
+            <button type="button" id="filter-toggle"
+              class="lg:hidden flex items-center gap-2 border border-white/15 px-4 py-2 text-[11px] text-muted hover:text-fg hover:border-white/30 transition-colors">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <line x1="4" y1="6" x2="20" y2="6" />
+                <line x1="8" y1="12" x2="20" y2="12" />
+                <line x1="12" y1="18" x2="20" y2="18" />
+              </svg>
+              Filters
+            </button>
+          </div>
+
+          <!-- Grid -->
+          <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
+
+            <!-- CARD 1: Soulshine Drip Station -->
+            <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
+              <div class="overflow-hidden bg-surface-up h-48 relative">
+                <img
+                  src="https://pbit-production.s3.amazonaws.com/images/image/255610/soulshine_limited_release_indica.png?auto=compress,format&w=400&h=400&fit=crop"
+                  alt="Soulshine Drip Station 3.5G"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy">
+                <span
+                  class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
+                <span
+                  class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30%
+                  OFF</span>
+              </div>
+              <div class="flex-1 p-4 flex flex-col">
+                <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Soulshine Cannabis</p>
+                <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Drip Station · 3.5G</h3>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="font-mono text-[10px] text-accent">25% THC</span>
+                  <span class="text-white/20 text-xs">·</span>
+                  <span class="font-mono text-[10px] text-muted">Flower</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between">
+                  <div class="flex items-baseline gap-1.5">
+                    <span class="font-display font-bold text-fg text-lg">$38</span>
+                    <span class="font-mono text-[10px] text-muted line-through">$54</span>
+                  </div>
+                  <button type="button"
+                    class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add
+                    +</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 2: Soulshine Lava Cake -->
+            <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
+              <div class="overflow-hidden bg-surface-up h-48 relative">
+                <img
+                  src="https://pbit-production.s3.amazonaws.com/images/image/255610/soulshine_limited_release_indica.png?auto=compress,format&w=400&h=400&fit=crop"
+                  alt="Soulshine Lava Cake 3.5G"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy">
+                <span
+                  class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
+                <span
+                  class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30%
+                  OFF</span>
+              </div>
+              <div class="flex-1 p-4 flex flex-col">
+                <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Soulshine Cannabis</p>
+                <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Lava Cake · 3.5G</h3>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="font-mono text-[10px] text-accent">20% THC</span>
+                  <span class="text-white/20 text-xs">·</span>
+                  <span class="font-mono text-[10px] text-muted">Flower</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between">
+                  <div class="flex items-baseline gap-1.5">
+                    <span class="font-display font-bold text-fg text-lg">$35</span>
+                    <span class="font-mono text-[10px] text-muted line-through">$50</span>
+                  </div>
+                  <button type="button"
+                    class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add
+                    +</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 3: Kush Mountain Jahlotto -->
+            <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
+              <div class="overflow-hidden bg-surface-up h-48 relative">
+                <img
+                  src="https://pbit-production.s3.amazonaws.com/images/image/292671/Kush_mt_3.5g.png?auto=compress,format&w=400&h=400&fit=crop"
+                  alt="Kush Mountain Jahlotto 3.5g"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy">
+                <span
+                  class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
+                <span
+                  class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30%
+                  OFF</span>
+              </div>
+              <div class="flex-1 p-4 flex flex-col">
+                <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Kush Mountain</p>
+                <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Jahlotto · 3.5G</h3>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="font-mono text-[10px] text-accent">27% THC</span>
+                  <span class="text-white/20 text-xs">·</span>
+                  <span class="font-mono text-[10px] text-muted">Flower</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between">
+                  <div class="flex items-baseline gap-1.5">
+                    <span class="font-display font-bold text-fg text-lg">$36</span>
+                    <span class="font-mono text-[10px] text-muted line-through">$51</span>
+                  </div>
+                  <button type="button"
+                    class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add
+                    +</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 4: Kush Mountain Dante's Inferno -->
+            <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
+              <div class="overflow-hidden bg-surface-up h-48 relative">
+                <img
+                  src="https://pbit-production.s3.amazonaws.com/images/image/292671/Kush_mt_3.5g.png?auto=compress,format&w=400&h=400&fit=crop"
+                  alt="Kush Mountain Dante's Inferno 3.5g"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy">
+                <span
+                  class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
+                <span
+                  class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30%
+                  OFF</span>
+              </div>
+              <div class="flex-1 p-4 flex flex-col">
+                <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Kush Mountain</p>
+                <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Dante's Inferno · 3.5G</h3>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="font-mono text-[10px] text-accent">22% THC</span>
+                  <span class="text-white/20 text-xs">·</span>
+                  <span class="font-mono text-[10px] text-muted">Flower</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between">
+                  <div class="flex items-baseline gap-1.5">
+                    <span class="font-display font-bold text-fg text-lg">$34</span>
+                    <span class="font-mono text-[10px] text-muted line-through">$49</span>
+                  </div>
+                  <button type="button"
+                    class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add
+                    +</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 5: Kush Mountain Sherb Cake -->
+            <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
+              <div class="overflow-hidden bg-surface-up h-48 relative">
+                <img
+                  src="https://pbit-production.s3.amazonaws.com/images/image/292671/Kush_mt_3.5g.png?auto=compress,format&w=400&h=400&fit=crop"
+                  alt="Kush Mountain Sherb Cake 3.5g"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy">
+                <span
+                  class="absolute top-3 left-3 bg-[rgba(90,55,130,0.7)] text-[#C8A8EC] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Indica</span>
+                <span
+                  class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30%
+                  OFF</span>
+              </div>
+              <div class="flex-1 p-4 flex flex-col">
+                <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Kush Mountain</p>
+                <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Sherb Cake · 3.5G</h3>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="font-mono text-[10px] text-accent">20% THC</span>
+                  <span class="text-white/20 text-xs">·</span>
+                  <span class="font-mono text-[10px] text-muted">Flower</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between">
+                  <div class="flex items-baseline gap-1.5">
+                    <span class="font-display font-bold text-fg text-lg">$32</span>
+                    <span class="font-mono text-[10px] text-muted line-through">$46</span>
+                  </div>
+                  <button type="button"
+                    class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add
+                    +</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 6: 28 Herbs Too Cool -->
+            <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
+              <div class="overflow-hidden bg-surface-up h-48 relative">
+                <img
+                  src="https://pbit-production.s3.amazonaws.com/images/image/346954/28_Herbs_Hybrid.png?auto=compress,format&w=400&h=400&fit=crop"
+                  alt="28 Herbs Too Cool 3.5g"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy">
+                <span
+                  class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
+                <span
+                  class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30%
+                  OFF</span>
+              </div>
+              <div class="flex-1 p-4 flex flex-col">
+                <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">28 Herbs</p>
+                <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Too Cool · 3.5G</h3>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="font-mono text-[10px] text-accent">21% THC</span>
+                  <span class="text-white/20 text-xs">·</span>
+                  <span class="font-mono text-[10px] text-muted">Flower</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between">
+                  <div class="flex items-baseline gap-1.5">
+                    <span class="font-display font-bold text-fg text-lg">$34</span>
+                    <span class="font-mono text-[10px] text-muted line-through">$49</span>
+                  </div>
+                  <button type="button"
+                    class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add
+                    +</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 7: 28 Herbs Lemon Cherry Gelato -->
+            <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
+              <div class="overflow-hidden bg-surface-up h-48 relative">
+                <img
+                  src="https://pbit-production.s3.amazonaws.com/images/image/346954/28_Herbs_Hybrid.png?auto=compress,format&w=400&h=400&fit=crop"
+                  alt="28 Herbs Lemon Cherry Gelato 3.5g"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy">
+                <span
+                  class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
+                <span
+                  class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30%
+                  OFF</span>
+              </div>
+              <div class="flex-1 p-4 flex flex-col">
+                <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">28 Herbs</p>
+                <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Lemon Cherry Gelato · 3.5G
+                </h3>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="font-mono text-[10px] text-accent">19% THC</span>
+                  <span class="text-white/20 text-xs">·</span>
+                  <span class="font-mono text-[10px] text-muted">Flower</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between">
+                  <div class="flex items-baseline gap-1.5">
+                    <span class="font-display font-bold text-fg text-lg">$32</span>
+                    <span class="font-mono text-[10px] text-muted line-through">$46</span>
+                  </div>
+                  <button type="button"
+                    class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add
+                    +</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 8: Soulshine Jelly Candy Cured Resin -->
+            <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
+              <div class="overflow-hidden bg-surface-up h-48 relative">
+                <img
+                  src="https://pbit-production.s3.amazonaws.com/images/image/129603/Concentrate_3.jpg?auto=compress,format&w=400&h=400&fit=crop"
+                  alt="Soulshine Jelly Candy Cured Resin 1G"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy">
+                <span
+                  class="absolute top-3 left-3 bg-[rgba(195,135,25,0.7)] text-[#EDB84A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Concentrate</span>
+                <span
+                  class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30%
+                  OFF</span>
+              </div>
+              <div class="flex-1 p-4 flex flex-col">
+                <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Soulshine Cannabis</p>
+                <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Jelly Candy Cured Resin · 1G
+                </h3>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="font-mono text-[10px] text-accent">73% THC</span>
+                  <span class="text-white/20 text-xs">·</span>
+                  <span class="font-mono text-[10px] text-muted">Cured Resin</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between">
+                  <div class="flex items-baseline gap-1.5">
+                    <span class="font-display font-bold text-fg text-lg">$32</span>
+                    <span class="font-mono text-[10px] text-muted line-through">$46</span>
+                  </div>
+                  <button type="button"
+                    class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add
+                    +</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 9: Soulshine Wedding Cake Cured Resin -->
+            <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
+              <div class="overflow-hidden bg-surface-up h-48 relative">
+                <img
+                  src="https://pbit-production.s3.amazonaws.com/images/image/129603/Concentrate_3.jpg?auto=compress,format&w=400&h=400&fit=crop"
+                  alt="Soulshine Wedding Cake Cured Resin 1G"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy">
+                <span
+                  class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
+                <span
+                  class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30%
+                  OFF</span>
+              </div>
+              <div class="flex-1 p-4 flex flex-col">
+                <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Soulshine Cannabis</p>
+                <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Wedding Cake Cured Resin · 1G
+                </h3>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="font-mono text-[10px] text-accent">72% THC</span>
+                  <span class="text-white/20 text-xs">·</span>
+                  <span class="font-mono text-[10px] text-muted">Cured Resin</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between">
+                  <div class="flex items-baseline gap-1.5">
+                    <span class="font-display font-bold text-fg text-lg">$30</span>
+                    <span class="font-mono text-[10px] text-muted line-through">$43</span>
+                  </div>
+                  <button type="button"
+                    class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add
+                    +</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 10: 28 Herbs Blueberry Gummies -->
+            <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
+              <div class="overflow-hidden bg-surface-up h-48 relative">
+                <img
+                  src="https://pbit-production.s3.amazonaws.com/images/image/293313/28_Herbs_Blueberry_Gummies.png?auto=compress,format&w=400&h=400&fit=crop"
+                  alt="28 Herbs Blueberry Gummies 100mg"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy">
+                <span
+                  class="absolute top-3 left-3 bg-[rgba(90,55,130,0.7)] text-[#C8A8EC] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Indica</span>
+                <span
+                  class="absolute top-3 right-3 bg-accent text-bg font-mono text-[9px] tracking-[.1em] uppercase px-2 py-1 rounded-sm font-bold">30%
+                  OFF</span>
+              </div>
+              <div class="flex-1 p-4 flex flex-col">
+                <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">28 Herbs</p>
+                <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Blueberry Gummies · 100mg</h3>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="font-mono text-[10px] text-accent">100mg THC</span>
+                  <span class="text-white/20 text-xs">·</span>
+                  <span class="font-mono text-[10px] text-muted">Edible</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between">
+                  <div class="flex items-baseline gap-1.5">
+                    <span class="font-display font-bold text-fg text-lg">$14</span>
+                    <span class="font-mono text-[10px] text-muted line-through">$20</span>
+                  </div>
+                  <button type="button"
+                    class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add
+                    +</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 11: Cormorant Pineapple Chilados -->
+            <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
+              <div class="overflow-hidden bg-surface-up h-48 relative">
+                <img
+                  src="https://pbit-production.s3.amazonaws.com/images/image/257842/cormorant_edibles_pineapple.png?auto=compress,format&w=400&h=400&fit=crop"
+                  alt="Cormorant Pineapple Chilados Gummies 100mg"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy">
+                <span
+                  class="absolute top-3 left-3 bg-[rgba(35,115,70,0.7)] text-[#6EC48A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Hybrid</span>
+              </div>
+              <div class="flex-1 p-4 flex flex-col">
+                <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">Cormorant</p>
+                <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Pineapple Chilados · 100mg
+                </h3>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="font-mono text-[10px] text-accent">100mg THC</span>
+                  <span class="text-white/20 text-xs">·</span>
+                  <span class="font-mono text-[10px] text-muted">Edible</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between">
+                  <span class="font-display font-bold text-fg text-lg">$15</span>
+                  <button type="button"
+                    class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add
+                    +</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 12: Mama J's Amnesia Lemon Pre-Roll -->
+            <div class="pcard bg-surface border border-white/[0.07] rounded-lg overflow-hidden flex flex-col group">
+              <div class="overflow-hidden bg-surface-up h-48 relative">
+                <img
+                  src="https://pbit-production.s3.amazonaws.com/images/image/143792/POSaBIT_Stock_-_Preroll_1.png?auto=compress,format&w=400&h=400&fit=crop"
+                  alt="Mama J's Amnesia Lemon Pre-Roll 2pk"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy">
+                <span
+                  class="absolute top-3 left-3 bg-[rgba(195,135,25,0.7)] text-[#EDB84A] font-mono text-[9px] tracking-[.12em] uppercase px-2 py-1 rounded-sm">Sativa</span>
+              </div>
+              <div class="flex-1 p-4 flex flex-col">
+                <p class="font-mono text-[9px] text-muted tracking-[.12em] uppercase mb-1">MAMA J's</p>
+                <h3 class="font-display font-semibold text-fg text-sm leading-tight mb-2">Amnesia Lemon · 2pk 2G</h3>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="font-mono text-[10px] text-accent">21% THC</span>
+                  <span class="text-white/20 text-xs">·</span>
+                  <span class="font-mono text-[10px] text-muted">Pre-Roll</span>
+                </div>
+                <div class="mt-auto flex items-center justify-between">
+                  <span class="font-display font-bold text-fg text-lg">$18</span>
+                  <button type="button"
+                    class="bg-accent text-bg font-semibold text-[11px] tracking-wide px-4 py-2 hover:bg-accent-hi transition-colors">Add
+                    +</button>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /grid -->
+
+          <!-- Load more -->
+          <div class="flex justify-center mt-12">
+            <button type="button"
+              class="border border-white/20 text-muted text-[12px] tracking-[.1em] uppercase font-medium px-10 py-3.5 hover:border-white/40 hover:text-fg transition-colors">
+              Load More (647 remaining)
+            </button>
+          </div>
+
+        </div><!-- /product grid -->
+      </div><!-- /flex -->
+    </div>
+  </section>
+
+  <!-- ─── DEALS STRIP ───────────────────────────────────────────── -->
+  <section id="deals" class="bg-surface border-y border-white/[0.07] py-20">
+    <div class="max-w-wrap mx-auto px-6">
+      <div class="flex items-end justify-between mb-10">
+        <div>
+          <p class="section-eyebrow mb-3">Current Drops</p>
+          <h2 class="font-display text-4xl font-bold text-fg tracking-tight">This Week's Picks</h2>
+        </div>
+        <a href="#"
+          class="hidden md:inline-flex items-center gap-2 border border-white/15 text-muted text-[11px] tracking-[.1em] uppercase font-medium px-5 py-2.5 rounded-full hover:border-white/30 hover:text-fg transition-all active:scale-[.97]">
+          View All Deals
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="bg-bg border border-accent/20 rounded-lg p-7">
+          <p class="section-eyebrow mb-4">Weekend Drop</p>
+          <div class="deal-pct mb-2">30% OFF</div>
+          <p class="font-display text-xl font-semibold text-fg mb-2">All Soulshine</p>
+          <p class="text-muted text-sm leading-relaxed mb-6">Drip Station, Lava Cake, Blockberry. Plus, their full
+            concentrate line. Limited while supplies last.</p>
+          <a href="#shop"
+            class="inline-flex items-center gap-2 border border-accent/40 text-accent text-[11px] tracking-[.1em] uppercase font-semibold px-5 py-2.5 rounded-full hover:bg-accent hover:text-bg transition-all active:scale-[.97]">
+            Shop Now
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="bg-bg border border-white/[0.08] rounded-lg p-7">
+          <p class="section-eyebrow mb-4">This Week</p>
+          <div class="deal-pct mb-2">30% OFF</div>
+          <p class="font-display text-xl font-semibold text-fg mb-2">Kush Mountain</p>
+          <p class="text-muted text-sm leading-relaxed mb-6">Jahlotto, Dante's Inferno, Sherb Cake and more. Available
+            in all sizes from 3.5g down to 1g pre-rolls.</p>
+          <a href="#shop"
+            class="inline-flex items-center gap-2 border border-accent/40 text-accent text-[11px] tracking-[.1em] uppercase font-semibold px-5 py-2.5 rounded-full hover:bg-accent hover:text-bg transition-all active:scale-[.97]">
+            Shop Now
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="bg-bg border border-white/[0.08] rounded-lg p-7">
+          <p class="section-eyebrow mb-4">This Week</p>
+          <div class="deal-pct mb-2">30% OFF</div>
+          <p class="font-display text-xl font-semibold text-fg mb-2">28 Herbs Everything</p>
+          <p class="text-muted text-sm leading-relaxed mb-6">Flower, 7g bags, edibles. The full 28 Herbs catalog at 30%
+            off. Too Cool, Lemon Cherry Gelato, Blueberry Gummies.</p>
+          <a href="#shop"
+            class="inline-flex items-center gap-2 border border-accent/40 text-accent text-[11px] tracking-[.1em] uppercase font-semibold px-5 py-2.5 rounded-full hover:bg-accent hover:text-bg transition-all active:scale-[.97]">
+            Shop Now
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── WEEKLY DEAL CALENDAR ── -->
+      <div class="mt-16 pt-12 border-t border-white/[0.07]">
+        <div class="flex items-end justify-between mb-8">
+          <div>
+            <p class="font-mono text-[10px] text-muted tracking-[.18em] uppercase mb-2">Every week, without fail</p>
+            <p class="font-display text-xl font-bold text-fg">The Daily Deal Schedule</p>
+          </div>
+          <span class="hidden md:flex items-center gap-2 font-mono text-[10px] text-open tracking-[.14em] uppercase">
+            <span class="w-1.5 h-1.5 rounded-full bg-open"></span>Today: Pre-Roll Thursday
+          </span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+
+          <div class="bg-bg border border-white/[0.07] rounded-lg p-4 flex flex-col">
+            <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-3">Monday</p>
+            <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Munchie<br>Monday</p>
+            <p class="font-mono text-accent text-[10px] font-bold mb-1">30% OFF</p>
+            <p class="text-muted text-[11px] leading-snug mt-auto">Buy 3+ edibles</p>
+          </div>
+
+          <div class="bg-bg border border-white/[0.07] rounded-lg p-4 flex flex-col">
+            <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-3">Tuesday</p>
+            <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Top Shelf<br>Tuesday</p>
+            <p class="font-mono text-accent text-[10px] font-bold mb-1">30% OFF</p>
+            <p class="text-muted text-[11px] leading-snug mt-auto">3+ top shelf brands</p>
+          </div>
+
+          <div class="bg-bg border border-white/[0.07] rounded-lg p-4 flex flex-col">
+            <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-3">Wednesday</p>
+            <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Wax<br>Wednesday</p>
+            <p class="font-mono text-accent text-[10px] font-bold mb-1">30% OFF</p>
+            <p class="text-muted text-[11px] leading-snug mt-auto">3g+ concentrate</p>
+          </div>
+
+          <!-- THURSDAY - TODAY -->
+          <div class="bg-bg border border-accent/40 rounded-lg p-4 flex flex-col relative overflow-hidden">
+            <div class="absolute top-0 left-0 right-0 h-0.5 bg-accent"></div>
+            <p class="font-mono text-[9px] text-accent tracking-[.14em] uppercase mb-3">Thursday · Today</p>
+            <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Pre-Roll<br>Thursday</p>
+            <p class="font-mono text-accent text-[10px] font-bold mb-1">30% OFF</p>
+            <p class="text-muted text-[11px] leading-snug mt-auto">Any 3 pre-rolls</p>
+            <span class="absolute top-4 right-3 w-1.5 h-1.5 rounded-full bg-open animate-pulse"></span>
+          </div>
+
+          <div class="bg-bg border border-white/[0.07] rounded-lg p-4 flex flex-col">
+            <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-3">Friday</p>
+            <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Flower<br>Friday</p>
+            <p class="font-mono text-accent text-[10px] font-bold mb-1">30% OFF</p>
+            <p class="text-muted text-[11px] leading-snug mt-auto">3+ flower products</p>
+          </div>
+
+          <div class="bg-bg border border-white/[0.07] rounded-lg p-4 flex flex-col col-span-2">
+            <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-3">Sat + Sun</p>
+            <p class="font-display font-bold text-fg text-xs leading-snug mb-3">Bulk Up<br>Weekend</p>
+            <p class="font-mono text-accent text-[10px] font-bold mb-1">UP TO 30% OFF</p>
+            <p class="text-muted text-[11px] leading-snug mt-auto">$100=20% · $200=25% · $300=30%</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── BRAND STORY ───────────────────────────────────────────── -->
+  <section id="about" class="bg-navy relative overflow-hidden py-24">
+    <!-- Texture layers -->
+    <div class="halftone-overlay" style="opacity:.04"></div>
+    <div class="grain-overlay" style="opacity:.05"></div>
+    <!-- Gradient overlays -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_90%_at_100%_50%,rgba(201,168,76,0.06),transparent)]">
+    </div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_50%_80%_at_0%_50%,rgba(9,26,46,0.5),transparent)]"></div>
+
+    <div class="relative z-10 max-w-wrap mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+
+        <!-- Copy -->
+        <div>
+          <p class="section-eyebrow mb-6">Who We Are</p>
+          <h2 class="font-display font-bold text-fg leading-[.9] tracking-tight mb-8"
+            style="font-size:clamp(44px,6vw,88px)">
+            The Culture's<br>
+            <span class="text-accent">Outpost</span><br>
+            in the Suburbs.
+          </h2>
+          <p class="text-muted text-lg leading-relaxed max-w-md mb-6">
+            Your neighborhood cannabis shop, proudly serving Kirkland and the surrounding Eastside community. We're more
+            than just a place to shop. We're a space where quality, education, and real customer service come together.
+          </p>
+          <p class="text-muted text-base leading-relaxed max-w-md mb-4">
+            Our budtenders take the time to understand what you're looking for, whether you're a seasoned connoisseur or
+            completely new to cannabis. Every product on our shelf was chosen because we'd buy it ourselves.
+          </p>
+          <p class="text-muted text-sm leading-relaxed max-w-md mb-10">
+            Conveniently located just minutes from Totem Lake Town Center and Juanita Beach. Serving Kirkland,
+            Woodinville, Redmond, Bothell, and beyond.
+          </p>
+
+          <!-- Pillars -->
+          <div class="grid grid-cols-3 gap-5 pt-8 border-t border-white/[0.08]">
+            <div>
+              <p class="font-mono text-[10px] text-accent tracking-[.15em] uppercase mb-2">01</p>
+              <p class="font-display font-bold text-fg text-sm leading-tight">Craft.<br>Curated.</p>
             </div>
             <div>
-              <p class="text-fg text-sm font-medium">Verified Customer</p>
-              <p class="font-mono text-[9px] text-muted tracking-[.1em] uppercase">via Leafly</p>
+              <p class="font-mono text-[10px] text-accent tracking-[.15em] uppercase mb-2">02</p>
+              <p class="font-display font-bold text-fg text-sm leading-tight">The Eastside,<br>Elevated.</p>
+            </div>
+            <div>
+              <p class="font-mono text-[10px] text-accent tracking-[.15em] uppercase mb-2">03</p>
+              <p class="font-display font-bold text-fg text-sm leading-tight">Culture.<br>In Person.</p>
             </div>
           </div>
-          <div class="flex items-center gap-1.5">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-[#00C170]">
-              <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" fill="#034638"/>
-              <path d="M8.5 12.5L11 15l5-5" stroke="#00C170" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </div>
+
+        <!-- Visual -->
+        <div class="flex items-center justify-center">
+          <div class="relative w-[400px] h-[400px] flex items-center justify-center">
+
+            <div
+              class="absolute w-52 h-52 rounded-full bg-[radial-gradient(circle,rgba(201,168,76,0.18),transparent_70%)]">
+            </div>
+            <img src="../Brand Identity/BnB Logos/BNB Coaster front.png" alt="Bored and Buzzed"
+              class="relative w-44 h-44 object-cover rounded-full"
+              style="filter:drop-shadow(0 0 40px rgba(201,168,76,0.32))" loading="lazy">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CULTURE / EVENTS ──────────────────────────────────────── -->
+  <section class="bg-bg border-t border-white/[0.06] py-20">
+    <div class="max-w-wrap mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Copy -->
+        <div>
+          <p class="section-eyebrow mb-4">Events &amp; Culture</p>
+          <h2 class="font-display font-bold text-fg leading-[.92] tracking-tight mb-8"
+            style="font-size:clamp(36px,5vw,64px)">
+            We Brought<br>
+            Jim Jones<br>
+            <span class="text-accent">to Kirkland.</span>
+          </h2>
+          <p class="text-muted text-base leading-relaxed max-w-md mb-4">
+            Bored and Buzzed hosted Grammy-nominated rapper and Dipset co-founder Jim Jones for an exclusive meet &amp;
+            greet right here in Kirkland. Then we sponsored the afterparty at Mirra in Bellevue.
+          </p>
+          <p class="text-muted text-sm leading-relaxed max-w-md mb-4">
+            VIP guests left with limited-edition B&amp;B tees and hats. Sky High Gardens and WYLD were on the floor. It
+            wasn't just an event; it was a reminder of why we do what we do.
+          </p>
+          <p class="text-muted text-sm leading-relaxed max-w-md mb-8 italic">
+            "We're here for the people, the culture, and the moments that bring us together. Stay tuned, Kirkland. This
+            is just the beginning."
+          </p>
+          <div class="flex items-center gap-6">
+            <a href="https://borednbuzzed.com/blog-events-b1/" target="_blank" rel="noopener"
+              class="inline-flex items-center gap-2 border border-accent/40 text-accent text-[12px] tracking-[.1em] uppercase font-semibold px-6 py-2.5 rounded-full hover:bg-accent hover:text-bg transition-all active:scale-[.97]">
+              Read the Recap
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </a>
+            <a href="https://www.youtube.com/@BorednBuzzedKirkland" target="_blank" rel="noopener"
+              class="inline-flex items-center gap-2 border border-white/20 text-muted text-[12px] tracking-[.1em] uppercase font-medium px-6 py-2.5 rounded-full hover:border-white/40 hover:text-fg transition-all">
+              Our YouTube
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- YouTube embed -->
+        <div class="relative rounded-lg overflow-hidden bg-surface border border-white/[0.07]"
+          style="aspect-ratio:16/9">
+          <iframe src="https://www.youtube.com/embed/5Ym4_EEfUSA?rel=0&modestbranding=1&color=white"
+            title="Jim Jones Pulls Up to Kirkland for a Special Meet &amp; Greet - Bored N Buzzed"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy" class="absolute inset-0 w-full h-full border-0">
+          </iframe>
+        </div>
+
+      </div>
+
+      <!-- Event photo strip -->
+      <div class="grid grid-cols-3 gap-4 mt-12">
+        <div class="relative rounded-xl overflow-hidden" style="aspect-ratio:3/4">
+          <img src="https://borednbuzzed.com/wp-content/uploads/2025/08/Jimm-Jones-1-819x1024.png"
+            alt="Jim Jones at Bored and Buzzed Kirkland"
+            class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+            loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-bg/70 via-bg/20 to-transparent"></div>
+        </div>
+        <div class="relative rounded-xl overflow-hidden" style="aspect-ratio:3/4">
+          <img src="https://borednbuzzed.com/wp-content/uploads/2025/08/Jimm-Jones-2-1-819x1024.png"
+            alt="Jim Jones meet and greet at Bored and Buzzed"
+            class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+            loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-bg/70 via-bg/20 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <p class="font-mono text-[9px] text-accent tracking-[.18em] uppercase mb-1">August 2025</p>
+            <p class="font-display font-bold text-fg text-sm leading-tight">Jim Jones<br>Meet &amp; Greet</p>
+          </div>
+        </div>
+        <div class="relative rounded-xl overflow-hidden" style="aspect-ratio:3/4">
+          <img src="https://borednbuzzed.com/wp-content/uploads/2025/08/Jimm-Jones-3-1-819x1024.png"
+            alt="Bored and Buzzed Kirkland event"
+            class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+            loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-bg/70 via-bg/20 to-transparent"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── NEIGHBORHOOD SECTION ──────────────────────────────────── -->
+  <section class="bg-bg py-20 border-t border-white/[0.06]">
+    <div class="max-w-wrap mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-16 items-center">
+
+        <div>
+          <p class="section-eyebrow mb-4">The Eastside, Specifically</p>
+          <h2 class="font-display text-4xl lg:text-5xl font-bold text-fg leading-tight tracking-tight mb-6">
+            Built for<br>the neighbors.
+          </h2>
+          <p class="text-muted text-base leading-relaxed max-w-sm mb-8">
+            We're on the Eastside for the Eastside. Not a Seattle import.
+            Not a franchise. Just the best dispensary for where you actually live.
+          </p>
+          <a href="#"
+            class="inline-flex items-center gap-2 border border-accent/40 text-accent text-[12px] tracking-[.1em] uppercase font-semibold px-6 py-2.5 rounded-full hover:bg-accent hover:text-bg transition-all active:scale-[.97]">
+            Get Directions
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="m9 18 6-6-6-6" />
             </svg>
-            <span class="font-mono text-[9px] text-muted tracking-[.08em]">Leafly Verified</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-surface border border-white/[0.07] rounded-lg p-6">
+            <p class="font-mono text-[10px] text-accent tracking-[.15em] uppercase mb-3">Home Base</p>
+            <p class="font-display text-xl font-bold text-fg mb-1">Kirkland</p>
+            <p class="text-muted text-sm">11516 124th Ave NE</p>
+          </div>
+          <div class="bg-surface border border-white/[0.07] rounded-lg p-6">
+            <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase mb-3">7 min away</p>
+            <p class="font-display text-xl font-bold text-fg mb-1">Redmond</p>
+            <p class="text-muted text-sm">Via NE 85th St</p>
+          </div>
+          <div class="bg-surface border border-white/[0.07] rounded-lg p-6">
+            <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase mb-3">12 min away</p>
+            <p class="font-display text-xl font-bold text-fg mb-1">Bothell</p>
+            <p class="text-muted text-sm">Via I-405</p>
+          </div>
+          <div class="bg-surface border border-white/[0.07] rounded-lg p-6">
+            <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase mb-3">14 min away</p>
+            <p class="font-display text-xl font-bold text-fg mb-1">Woodinville</p>
+            <p class="text-muted text-sm">Via NE 124th St</p>
           </div>
         </div>
+
       </div>
+    </div>
+  </section>
 
-      <!-- Platform ratings stack -->
-      <div class="flex flex-col gap-4">
+  <!-- ─── REVIEWS ──────────────────────────────────────────────── -->
+  <section id="reviews" class="bg-surface border-t border-white/[0.07] py-20">
+    <div class="max-w-wrap mx-auto px-6">
 
-        <!-- Google -->
-        <div class="bg-bg border border-white/[0.07] rounded-lg p-6 flex items-center justify-between">
-          <div>
-            <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-2">Google Reviews</p>
-            <div class="flex items-baseline gap-2">
-              <span class="font-display text-3xl font-bold text-fg">4.8</span>
-              <div class="flex gap-0.5">
-                <span class="text-accent text-sm">★★★★★</span>
-              </div>
-            </div>
-          </div>
-          <a href="https://www.google.com/maps/place/Bored+N+Buzzed+Cannabis+Kirkland/@47.7033124,-122.1748707,17z" target="_blank" rel="noopener"
-            class="font-mono text-[9px] text-muted tracking-[.1em] uppercase hover:text-fg transition-colors flex items-center gap-1">
-            Read
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-          </a>
+      <div class="flex items-end justify-between mb-12">
+        <div>
+          <p class="section-eyebrow mb-3">The Eastside Weighs In</p>
+          <h2 class="font-display text-4xl font-bold text-fg tracking-tight">Real People.<br>Real Reviews.</h2>
         </div>
-
-        <!-- Leafly -->
-        <div class="bg-bg border border-white/[0.07] rounded-lg p-6 flex items-center justify-between">
-          <div>
-            <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-2">Leafly</p>
-            <div class="flex items-baseline gap-2">
-              <span class="font-display text-3xl font-bold text-fg">4.7</span>
-              <div class="flex gap-0.5">
-                <span class="text-accent text-sm">★★★★★</span>
-              </div>
-            </div>
-          </div>
-          <a href="https://www.leafly.com/dispensary-info/bored-n-buzzed/reviews" target="_blank" rel="noopener"
-            class="font-mono text-[9px] text-muted tracking-[.1em] uppercase hover:text-fg transition-colors flex items-center gap-1">
-            Read
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-          </a>
-        </div>
-
-        <!-- Weedmaps -->
-        <div class="bg-bg border border-white/[0.07] rounded-lg p-6 flex items-center justify-between">
-          <div>
-            <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-2">Weedmaps</p>
-            <div class="flex items-baseline gap-2">
-              <span class="font-display text-3xl font-bold text-fg">5.0</span>
-              <div class="flex gap-0.5">
-                <span class="text-accent text-sm">★★★★★</span>
-              </div>
-            </div>
-          </div>
-          <a href="https://weedmaps.com/dispensaries/bored-n-buzzed" target="_blank" rel="noopener"
-            class="font-mono text-[9px] text-muted tracking-[.1em] uppercase hover:text-fg transition-colors flex items-center gap-1">
-            Read
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
-          </a>
-        </div>
-
-        <!-- Leave a review CTA (mobile) -->
         <a href="https://g.page/r/CSSJAhsfuIj-EAI/review" target="_blank" rel="noopener"
-          class="md:hidden text-center border border-accent/30 text-accent text-[11px] tracking-[.1em] uppercase font-semibold py-3 hover:border-accent hover:bg-accent/5 transition-all rounded-full">
-          Leave a Google Review →
+          class="hidden md:inline-flex items-center gap-2 border border-accent/30 text-accent text-[11px] tracking-[.1em] uppercase font-semibold px-6 py-3 rounded-full hover:border-accent hover:bg-accent/5 transition-all active:scale-[.97]">
+          Leave a Google Review
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="m9 18 6-6-6-6" />
+          </svg>
         </a>
-
       </div>
-    </div>
 
-    <!-- Bottom note -->
-    <p class="font-mono text-[9px] text-muted/50 tracking-[.1em] uppercase mt-8 text-center">
-      Ratings sourced directly from Google, Leafly, and Weedmaps · Updated regularly
-    </p>
+      <div class="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-6">
 
-  </div>
-</section>
+        <!-- Featured review -->
+        <div class="bg-bg border border-white/[0.07] rounded-lg p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex gap-1 mb-5">
+              <span class="text-accent text-lg">★★★★★</span>
+            </div>
+            <blockquote class="font-display text-fg text-xl font-semibold leading-snug mb-6">
+              "Had the nicest guy help me both times. Very knowledgeable, friendly, and excellent customer service."
+            </blockquote>
+            <p class="text-muted text-sm leading-relaxed">
+              This is what every dispensary visit should feel like. Staff who actually know the products and take the
+              time to listen.
+            </p>
+          </div>
+          <div class="flex items-center justify-between pt-6 mt-6 border-t border-white/[0.07]">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center">
+                <span class="font-mono text-accent text-[11px] font-bold">V</span>
+              </div>
+              <div>
+                <p class="text-fg text-sm font-medium">Verified Customer</p>
+                <p class="font-mono text-[9px] text-muted tracking-[.1em] uppercase">via Leafly</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="text-[#00C170]">
+                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" fill="#034638" />
+                <path d="M8.5 12.5L11 15l5-5" stroke="#00C170" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              <span class="font-mono text-[9px] text-muted tracking-[.08em]">Leafly Verified</span>
+            </div>
+          </div>
+        </div>
 
-<!-- ─── PROOF STRIP ───────────────────────────────────────────── -->
-<section class="bg-bg border-y border-white/[0.07] py-12">
-  <div class="max-w-wrap mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/[0.07]">
-      <div class="py-8 md:py-0 md:px-12 first:pl-0 last:pr-0 text-center">
-        <p class="proof-num font-display text-4xl font-bold text-fg mb-2">659</p>
-        <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase">Products in Stock</p>
-      </div>
-      <div class="py-8 md:py-0 md:px-12 text-center">
-        <p class="proof-num font-display text-4xl font-bold text-fg mb-2">4.8★</p>
-        <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase">Google Rating</p>
-      </div>
-      <div class="py-8 md:py-0 md:px-12 text-center">
-        <p class="proof-num font-display text-4xl font-bold text-fg mb-2">Daily</p>
-        <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase">New Deals Every Day</p>
-      </div>
-      <div class="py-8 md:py-0 md:px-12 text-center">
-        <p class="proof-num font-display text-4xl font-bold text-fg mb-2">30%</p>
-        <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase">Off First Order · Rewards</p>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- Platform ratings stack -->
+        <div class="flex flex-col gap-4">
 
-<!-- ─── LOYALTY / REWARDS ─────────────────────────────────────── -->
-<section id="rewards" class="bg-navy relative overflow-hidden py-20">
-  <div class="halftone-overlay" style="opacity:.03"></div>
-  <div class="grain-overlay" style="opacity:.04"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(201,168,76,0.08),transparent)]"></div>
+          <!-- Google -->
+          <div class="bg-bg border border-white/[0.07] rounded-lg p-6 flex items-center justify-between">
+            <div>
+              <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-2">Google Reviews</p>
+              <div class="flex items-baseline gap-2">
+                <span class="font-display text-3xl font-bold text-fg">4.8</span>
+                <div class="flex gap-0.5">
+                  <span class="text-accent text-sm">★★★★★</span>
+                </div>
+              </div>
+            </div>
+            <a href="https://www.google.com/maps/place/Bored+N+Buzzed+Cannabis+Kirkland/@47.7033124,-122.1748707,17z"
+              target="_blank" rel="noopener"
+              class="font-mono text-[9px] text-muted tracking-[.1em] uppercase hover:text-fg transition-colors flex items-center gap-1">
+              Read
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </a>
+          </div>
 
-  <div class="relative z-10 max-w-wrap mx-auto px-6">
+          <!-- Leafly -->
+          <div class="bg-bg border border-white/[0.07] rounded-lg p-6 flex items-center justify-between">
+            <div>
+              <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-2">Leafly</p>
+              <div class="flex items-baseline gap-2">
+                <span class="font-display text-3xl font-bold text-fg">4.7</span>
+                <div class="flex gap-0.5">
+                  <span class="text-accent text-sm">★★★★★</span>
+                </div>
+              </div>
+            </div>
+            <a href="https://www.leafly.com/dispensary-info/bored-n-buzzed/reviews" target="_blank" rel="noopener"
+              class="font-mono text-[9px] text-muted tracking-[.1em] uppercase hover:text-fg transition-colors flex items-center gap-1">
+              Read
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </a>
+          </div>
 
-    <div class="text-center mb-14">
-      <p class="section-eyebrow mb-3">Bored N Buzzed Rewards</p>
-      <h2 class="font-display text-4xl font-bold text-fg tracking-tight mb-4">Earn While You Shop</h2>
-      <p class="text-muted text-base max-w-sm mx-auto">$1 spent = 1 point earned. No sign-up fees. No complicated rules. Just savings every visit.</p>
-    </div>
+          <!-- Weedmaps -->
+          <div class="bg-bg border border-white/[0.07] rounded-lg p-6 flex items-center justify-between">
+            <div>
+              <p class="font-mono text-[9px] text-muted tracking-[.14em] uppercase mb-2">Weedmaps</p>
+              <div class="flex items-baseline gap-2">
+                <span class="font-display text-3xl font-bold text-fg">5.0</span>
+                <div class="flex gap-0.5">
+                  <span class="text-accent text-sm">★★★★★</span>
+                </div>
+              </div>
+            </div>
+            <a href="https://weedmaps.com/dispensaries/bored-n-buzzed" target="_blank" rel="noopener"
+              class="font-mono text-[9px] text-muted tracking-[.1em] uppercase hover:text-fg transition-colors flex items-center gap-1">
+              Read
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </a>
+          </div>
 
-    <!-- Points tiers -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-      <div class="bg-bg/50 border border-white/[0.07] rounded-lg p-6 text-center">
-        <p class="font-display text-3xl font-bold text-accent mb-1">10%</p>
-        <p class="font-mono text-[9px] text-muted tracking-[.15em] uppercase mb-3">Off</p>
-        <p class="font-mono text-[11px] text-fg font-medium">100 pts</p>
-      </div>
-      <div class="bg-bg/50 border border-white/[0.07] rounded-lg p-6 text-center">
-        <p class="font-display text-3xl font-bold text-accent mb-1">20%</p>
-        <p class="font-mono text-[9px] text-muted tracking-[.15em] uppercase mb-3">Off</p>
-        <p class="font-mono text-[11px] text-fg font-medium">250 pts</p>
-      </div>
-      <div class="bg-bg/50 border border-accent/30 rounded-lg p-6 text-center relative">
-        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-bg font-mono text-[8px] tracking-[.12em] uppercase px-3 py-1 rounded-full">Most Popular</span>
-        <p class="font-display text-3xl font-bold text-accent mb-1">25%</p>
-        <p class="font-mono text-[9px] text-muted tracking-[.15em] uppercase mb-3">Off</p>
-        <p class="font-mono text-[11px] text-fg font-medium">500 pts</p>
-      </div>
-      <div class="bg-bg/50 border border-white/[0.07] rounded-lg p-6 text-center">
-        <p class="font-display text-3xl font-bold text-accent mb-1">30%</p>
-        <p class="font-mono text-[9px] text-muted tracking-[.15em] uppercase mb-3">Off</p>
-        <p class="font-mono text-[11px] text-fg font-medium">800 pts</p>
-      </div>
-    </div>
-
-    <!-- Bonus ways to earn -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14">
-      <div class="bg-bg/40 border border-white/[0.06] rounded-lg p-6">
-        <p class="font-mono text-[9px] text-accent tracking-[.15em] uppercase mb-3">First Visit</p>
-        <p class="font-display font-bold text-fg text-base mb-2">30% Off Your First Order</p>
-        <p class="text-muted text-sm leading-relaxed">Sign up before you come in. Redeemable same day.</p>
-      </div>
-      <div class="bg-bg/40 border border-white/[0.06] rounded-lg p-6">
-        <p class="font-mono text-[9px] text-accent tracking-[.15em] uppercase mb-3">Refer a Friend</p>
-        <p class="font-display font-bold text-fg text-base mb-2">You get 25%. They get 30%.</p>
-        <p class="text-muted text-sm leading-relaxed">Bring someone new to B&amp;B. You both win on their first visit.</p>
-      </div>
-      <div class="bg-bg/40 border border-white/[0.06] rounded-lg p-6">
-        <p class="font-mono text-[9px] text-accent tracking-[.15em] uppercase mb-3">Social Bonus</p>
-        <p class="font-display font-bold text-fg text-base mb-2">25% for a Review</p>
-        <p class="text-muted text-sm leading-relaxed">Leave a Google review or show a budtender your comment on socials.</p>
-      </div>
-    </div>
-
-    <!-- Wallet CTAs -->
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-      <a href="https://take.cards/PEM8L" target="_blank" rel="noopener" aria-label="Add to Apple Wallet">
-        <img src="https://borednbuzzed.com/wp-content/uploads/2026/02/APPLE-WALLET-2-1-1024x393.webp"
-          alt="Add to Apple Wallet" class="h-14 w-auto object-contain" loading="lazy">
-      </a>
-      <a href="https://take.cards/PEM8L" target="_blank" rel="noopener" aria-label="Add to Google Wallet">
-        <img src="https://borednbuzzed.com/wp-content/uploads/2026/02/GOOGLE-WALLET-2-1024x393.png"
-          alt="Add to Google Wallet" class="h-14 w-auto object-contain" loading="lazy">
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ─── FOOTER ────────────────────────────────────────────────── -->
-<footer class="bg-bg pt-16 pb-10 border-t border-white/[0.06]">
-  <div class="max-w-wrap mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-12 mb-16">
-
-      <!-- Brand col -->
-      <div>
-        <img src="../Brand Identity/BnB Logos/BNB LOGO.png" alt="Bored and Buzzed" class="h-16 w-auto object-contain mb-6" style="filter:invert(1);opacity:.88">
-        <p class="text-muted text-sm leading-relaxed max-w-xs mb-6">The Eastside Standard.<br>Kirkland's home for curated cannabis.</p>
-        <div class="flex items-center gap-4">
-          <a href="#" aria-label="Instagram" class="text-muted hover:text-fg transition-colors">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <!-- Leave a review CTA (mobile) -->
+          <a href="https://g.page/r/CSSJAhsfuIj-EAI/review" target="_blank" rel="noopener"
+            class="md:hidden text-center border border-accent/30 text-accent text-[11px] tracking-[.1em] uppercase font-semibold py-3 hover:border-accent hover:bg-accent/5 transition-all rounded-full">
+            Leave a Google Review →
           </a>
-          <a href="#" aria-label="Facebook" class="text-muted hover:text-fg transition-colors">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
-          <a href="#" aria-label="TikTok" class="text-muted hover:text-fg transition-colors">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg>
-          </a>
+
         </div>
       </div>
 
-      <!-- Shop -->
-      <div>
-        <p class="font-mono text-[10px] text-accent tracking-[.18em] uppercase mb-5">Shop</p>
-        <ul class="flex flex-col gap-3">
-          <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Flower</a></li>
-          <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Vapes</a></li>
-          <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Edibles</a></li>
-          <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Concentrates</a></li>
-          <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Pre-Rolls</a></li>
-          <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Deals</a></li>
-        </ul>
+      <!-- Bottom note -->
+      <p class="font-mono text-[9px] text-muted/50 tracking-[.1em] uppercase mt-8 text-center">
+        Ratings sourced directly from Google, Leafly, and Weedmaps · Updated regularly
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ─── PROOF STRIP ───────────────────────────────────────────── -->
+  <section class="bg-bg border-y border-white/[0.07] py-12">
+    <div class="max-w-wrap mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/[0.07]">
+        <div class="py-8 md:py-0 md:px-12 first:pl-0 last:pr-0 text-center">
+          <p class="proof-num font-display text-4xl font-bold text-fg mb-2">659</p>
+          <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase">Products in Stock</p>
+        </div>
+        <div class="py-8 md:py-0 md:px-12 text-center">
+          <p class="proof-num font-display text-4xl font-bold text-fg mb-2">4.8★</p>
+          <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase">Google Rating</p>
+        </div>
+        <div class="py-8 md:py-0 md:px-12 text-center">
+          <p class="proof-num font-display text-4xl font-bold text-fg mb-2">Daily</p>
+          <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase">New Deals Every Day</p>
+        </div>
+        <div class="py-8 md:py-0 md:px-12 text-center">
+          <p class="proof-num font-display text-4xl font-bold text-fg mb-2">30%</p>
+          <p class="font-mono text-[10px] text-muted tracking-[.15em] uppercase">Off First Order · Rewards</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── LOYALTY / REWARDS ─────────────────────────────────────── -->
+  <section id="rewards" class="bg-navy relative overflow-hidden py-20">
+    <div class="halftone-overlay" style="opacity:.03"></div>
+    <div class="grain-overlay" style="opacity:.04"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(201,168,76,0.08),transparent)]">
+    </div>
+
+    <div class="relative z-10 max-w-wrap mx-auto px-6">
+
+      <div class="text-center mb-14">
+        <p class="section-eyebrow mb-3">Bored N Buzzed Rewards</p>
+        <h2 class="font-display text-4xl font-bold text-fg tracking-tight mb-4">Earn While You Shop</h2>
+        <p class="text-muted text-base max-w-sm mx-auto">$1 spent = 1 point earned. No sign-up fees. No complicated
+          rules. Just savings every visit.</p>
       </div>
 
-      <!-- Info -->
-      <div>
-        <p class="font-mono text-[10px] text-accent tracking-[.18em] uppercase mb-5">Info</p>
-        <ul class="flex flex-col gap-3">
-          <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">About Us</a></li>
-          <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Events</a></li>
-          <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Blog</a></li>
-          <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Careers</a></li>
-          <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Contact</a></li>
-        </ul>
-      </div>
-
-      <!-- Location -->
-      <div>
-        <p class="font-mono text-[10px] text-accent tracking-[.18em] uppercase mb-5">Visit</p>
-        <div class="flex flex-col gap-3">
-          <p class="text-sm text-muted leading-relaxed">11516 124th Ave NE<br>Kirkland, WA 98034</p>
-          <p class="text-sm text-muted">Sun-Thu · 8:00AM-11:00PM<br>Fri-Sat · 8:00AM-11:45PM</p>
-          <a href="tel:+14258140200" class="text-sm text-muted hover:text-fg transition-colors">(425) 814-0200</a>
+      <!-- Points tiers -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <div class="bg-bg/50 border border-white/[0.07] rounded-lg p-6 text-center">
+          <p class="font-display text-3xl font-bold text-accent mb-1">10%</p>
+          <p class="font-mono text-[9px] text-muted tracking-[.15em] uppercase mb-3">Off</p>
+          <p class="font-mono text-[11px] text-fg font-medium">100 pts</p>
+        </div>
+        <div class="bg-bg/50 border border-white/[0.07] rounded-lg p-6 text-center">
+          <p class="font-display text-3xl font-bold text-accent mb-1">20%</p>
+          <p class="font-mono text-[9px] text-muted tracking-[.15em] uppercase mb-3">Off</p>
+          <p class="font-mono text-[11px] text-fg font-medium">250 pts</p>
+        </div>
+        <div class="bg-bg/50 border border-accent/30 rounded-lg p-6 text-center relative">
+          <span
+            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-bg font-mono text-[8px] tracking-[.12em] uppercase px-3 py-1 rounded-full">Most
+            Popular</span>
+          <p class="font-display text-3xl font-bold text-accent mb-1">25%</p>
+          <p class="font-mono text-[9px] text-muted tracking-[.15em] uppercase mb-3">Off</p>
+          <p class="font-mono text-[11px] text-fg font-medium">500 pts</p>
+        </div>
+        <div class="bg-bg/50 border border-white/[0.07] rounded-lg p-6 text-center">
+          <p class="font-display text-3xl font-bold text-accent mb-1">30%</p>
+          <p class="font-mono text-[9px] text-muted tracking-[.15em] uppercase mb-3">Off</p>
+          <p class="font-mono text-[11px] text-fg font-medium">800 pts</p>
         </div>
       </div>
 
-    </div>
-
-    <!-- Bottom bar -->
-    <div class="border-t border-white/[0.07] pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-      <p class="font-mono text-[10px] text-subtle tracking-[.1em]">© 2026 BORED AND BUZZED · ALL RIGHTS RESERVED · WA LICENSE #555555</p>
-      <div class="flex items-center gap-6">
-        <a href="#" class="font-mono text-[10px] text-subtle hover:text-muted tracking-[.1em] uppercase transition-colors">Privacy</a>
-        <a href="#" class="font-mono text-[10px] text-subtle hover:text-muted tracking-[.1em] uppercase transition-colors">Terms</a>
-        <a href="#" class="font-mono text-[10px] text-subtle hover:text-muted tracking-[.1em] uppercase transition-colors">Accessibility</a>
+      <!-- Bonus ways to earn -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14">
+        <div class="bg-bg/40 border border-white/[0.06] rounded-lg p-6">
+          <p class="font-mono text-[9px] text-accent tracking-[.15em] uppercase mb-3">First Visit</p>
+          <p class="font-display font-bold text-fg text-base mb-2">30% Off Your First Order</p>
+          <p class="text-muted text-sm leading-relaxed">Sign up before you come in. Redeemable same day.</p>
+        </div>
+        <div class="bg-bg/40 border border-white/[0.06] rounded-lg p-6">
+          <p class="font-mono text-[9px] text-accent tracking-[.15em] uppercase mb-3">Refer a Friend</p>
+          <p class="font-display font-bold text-fg text-base mb-2">You get 25%. They get 30%.</p>
+          <p class="text-muted text-sm leading-relaxed">Bring someone new to B&amp;B. You both win on their first visit.
+          </p>
+        </div>
+        <div class="bg-bg/40 border border-white/[0.06] rounded-lg p-6">
+          <p class="font-mono text-[9px] text-accent tracking-[.15em] uppercase mb-3">Social Bonus</p>
+          <p class="font-display font-bold text-fg text-base mb-2">25% for a Review</p>
+          <p class="text-muted text-sm leading-relaxed">Leave a Google review or show a budtender your comment on
+            socials.</p>
+        </div>
       </div>
-      <p class="font-mono text-[10px] text-subtle tracking-[.1em]">KEEP OUT OF REACH OF CHILDREN</p>
+
+      <!-- Wallet CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+        <a href="https://take.cards/PEM8L" target="_blank" rel="noopener" aria-label="Add to Apple Wallet">
+          <img src="https://borednbuzzed.com/wp-content/uploads/2026/02/APPLE-WALLET-2-1-1024x393.webp"
+            alt="Add to Apple Wallet" class="h-14 w-auto object-contain" loading="lazy">
+        </a>
+        <a href="https://take.cards/PEM8L" target="_blank" rel="noopener" aria-label="Add to Google Wallet">
+          <img src="https://borednbuzzed.com/wp-content/uploads/2026/02/GOOGLE-WALLET-2-1024x393.png"
+            alt="Add to Google Wallet" class="h-14 w-auto object-contain" loading="lazy">
+        </a>
+      </div>
+
     </div>
+  </section>
 
-  </div>
-</footer>
+  <!-- ─── FOOTER ────────────────────────────────────────────────── -->
+  <footer class="bg-bg pt-16 pb-10 border-t border-white/[0.06]">
+    <div class="max-w-wrap mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-12 mb-16">
 
-<script>
-  // Age gate
-  document.getElementById('age-yes').addEventListener('click', () => {
-    document.getElementById('age-gate').style.display = 'none';
-  });
+        <!-- Brand col -->
+        <div>
+          <img src="../Brand Identity/BnB Logos/BNB LOGO.png" alt="Bored and Buzzed"
+            class="h-16 w-auto object-contain mb-6" style="filter:invert(1);opacity:.88">
+          <p class="text-muted text-sm leading-relaxed max-w-xs mb-6">The Eastside Standard.<br>Kirkland's home for
+            curated cannabis.</p>
+          <div class="flex items-center gap-4">
+            <a href="#" aria-label="Instagram" class="text-muted hover:text-fg transition-colors">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="text-muted hover:text-fg transition-colors">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+            <a href="#" aria-label="TikTok" class="text-muted hover:text-fg transition-colors">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z" />
+              </svg>
+            </a>
+          </div>
+        </div>
 
-  // Category tabs
-  document.querySelectorAll('.cat-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.cat-tab').forEach(t => {
-        t.classList.remove('cat-tab-active', 'text-fg', 'border-accent');
-        t.classList.add('text-muted', 'border-transparent');
-      });
-      tab.classList.add('cat-tab-active', 'text-fg', 'border-accent');
-      tab.classList.remove('text-muted', 'border-transparent');
+        <!-- Shop -->
+        <div>
+          <p class="font-mono text-[10px] text-accent tracking-[.18em] uppercase mb-5">Shop</p>
+          <ul class="flex flex-col gap-3">
+            <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Flower</a></li>
+            <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Vapes</a></li>
+            <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Edibles</a></li>
+            <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Concentrates</a></li>
+            <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Pre-Rolls</a></li>
+            <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Deals</a></li>
+          </ul>
+        </div>
+
+        <!-- Info -->
+        <div>
+          <p class="font-mono text-[10px] text-accent tracking-[.18em] uppercase mb-5">Info</p>
+          <ul class="flex flex-col gap-3">
+            <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">About Us</a></li>
+            <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Events</a></li>
+            <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Blog</a></li>
+            <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Careers</a></li>
+            <li><a href="#" class="text-sm text-muted hover:text-fg transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Location -->
+        <div>
+          <p class="font-mono text-[10px] text-accent tracking-[.18em] uppercase mb-5">Visit</p>
+          <div class="flex flex-col gap-3">
+            <p class="text-sm text-muted leading-relaxed">11516 124th Ave NE<br>Kirkland, WA 98034</p>
+            <p class="text-sm text-muted">Sun-Thu · 8:00AM-11:00PM<br>Fri-Sat · 8:00AM-11:45PM</p>
+            <a href="tel:+14258140200" class="text-sm text-muted hover:text-fg transition-colors">(425) 814-0200</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div
+        class="border-t border-white/[0.07] pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <p class="font-mono text-[10px] text-subtle tracking-[.1em]">© 2026 BORED AND BUZZED · ALL RIGHTS RESERVED · WA
+          LICENSE #555555</p>
+        <div class="flex items-center gap-6">
+          <a href="#"
+            class="font-mono text-[10px] text-subtle hover:text-muted tracking-[.1em] uppercase transition-colors">Privacy</a>
+          <a href="#"
+            class="font-mono text-[10px] text-subtle hover:text-muted tracking-[.1em] uppercase transition-colors">Terms</a>
+          <a href="#"
+            class="font-mono text-[10px] text-subtle hover:text-muted tracking-[.1em] uppercase transition-colors">Accessibility</a>
+        </div>
+        <p class="font-mono text-[10px] text-subtle tracking-[.1em]">KEEP OUT OF REACH OF CHILDREN</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Age gate
+    document.getElementById('age-yes').addEventListener('click', () => {
+      document.getElementById('age-gate').style.display = 'none';
     });
-  });
-</script>
+
+    // Category tabs
+    document.querySelectorAll('.cat-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.cat-tab').forEach(t => {
+          t.classList.remove('cat-tab-active', 'text-fg', 'border-accent');
+          t.classList.add('text-muted', 'border-transparent');
+        });
+        tab.classList.add('cat-tab-active', 'text-fg', 'border-accent');
+        tab.classList.remove('text-muted', 'border-transparent');
+      });
+    });
+  </script>
 </body>
+
 </html>
