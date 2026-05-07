@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "895169cb25c83d1b",
+        "id": "ed1dd68ac840e7bf",
         "type": "tabs",
         "children": [
           {
-            "id": "91ed06b20dbc6613",
+            "id": "e1e3d187f275e8b5",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -176,8 +176,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "91ed06b20dbc6613",
+  "active": "e1e3d187f275e8b5",
   "lastOpenFiles": [
+    "Website/BnB-Hero-Visual.html",
+    "Reports/Competitor Analysis/Uncle Ikes/design/ikes-design/DESIGN.md",
     "Website/BnB-Website-Standalone.html",
     "scratch.py",
     "Memory/website_prototype.md",
@@ -194,10 +196,8 @@
     "Reports/Competitor Analysis/Uncle Ikes/Uncle-Ikes-Competitor-Analysis.md",
     "Reports/Competitor Analysis/Uncle Ikes/design/ikes-design/CLAUDE.md",
     "Reports/Competitor Analysis/Uncle Ikes/design/ikes-design/ikes-design.skill",
-    "Reports/Competitor Analysis/Uncle Ikes/design/ikes-design.skill",
     "Reports/Competitor Analysis/Uncle Ikes/design/ikes-design/SKILL.md",
     "Reports/Competitor Analysis/Uncle Ikes/design/ikes-design/references/DESIGN.md",
-    "Reports/Competitor Analysis/Uncle Ikes/design/ikes-design/DESIGN.md",
     "Reports/Competitor Analysis/Uncle Ikes/design/ikes-design/screens/INDEX.md",
     "Reports/Competitor Analysis/Uncle Ikes/design/ikes-design/references/VISUAL_GUIDE.md",
     "Reports/Competitor Analysis/Uncle Ikes/design/ikes-design/references/COMPONENTS.md",
