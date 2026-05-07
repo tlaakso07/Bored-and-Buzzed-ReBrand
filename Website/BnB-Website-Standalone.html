@@ -237,38 +237,36 @@
   <div class="halftone-overlay"></div>
   <div class="grain-overlay"></div>
 
-  <!-- Mood gradients (below grain, z-index 0) -->
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_100%_80%_at_100%_0%,rgba(15,38,64,0.75),transparent)] z-0"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_0%_100%,rgba(15,38,64,0.4),transparent)] z-0"></div>
-  <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-bg to-transparent z-0 pointer-events-none"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_72%_50%,rgba(201,168,76,0.028),transparent)] z-0 pointer-events-none"></div>
-
   <!-- Full-bleed overlays — section children, not inside max-w-wrap -->
   <div id="hero-mouse-glow" class="absolute inset-0 pointer-events-none z-[3]" aria-hidden="true"></div>
   <canvas id="hero-particles" class="absolute inset-0 pointer-events-none z-[3]" aria-hidden="true"></canvas>
 
   <!-- ── MAIN HERO BODY ── -->
-  <div class="relative z-10 flex-1 max-w-wrap mx-auto px-6 w-full pt-14 pb-4">
+  <div class="relative z-10 flex flex-col flex-1 max-w-wrap mx-auto px-6 w-full pb-12">
 
-        <!-- Sub content row: tagline + ape -->
-    <div class="d5 pt-8 pb-10">
+    <!-- Content anchored to bottom of hero -->
+    <div class="d5 mt-auto">
 
       <!-- Left: tagline + CTAs + location -->
-      <div id="hero-text">
-        <p class="text-muted text-xl leading-relaxed max-w-lg mb-8">
-          Kirkland's home for curated cannabis.<br class="hidden lg:block">
-          Premium selection. Real community.
-        </p>
-        <div class="flex items-center gap-4 flex-wrap mb-10">
-          <a href="#shop" class="inline-flex items-center gap-3 bg-accent text-bg font-bold px-9 py-4 rounded-full text-[13px] tracking-[.06em] uppercase hover:bg-accent-hi transition-colors active:scale-[.97]">
+      <div id="hero-text" class="flex items-end justify-between gap-8">
+
+        <!-- Left: buttons side by side — under BORED N BUZZED -->
+        <div class="flex flex-row gap-4">
+          <a href="#shop"
+            class="inline-flex items-center gap-3 bg-accent text-bg font-bold px-9 py-4 rounded-full text-[13px] tracking-[.06em] uppercase hover:bg-accent-hi transition-colors active:scale-[.97]">
             Shop the Menu
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
           </a>
-          <a href="#about" class="inline-flex items-center gap-3 border-2 border-white/25 text-fg px-9 py-4 rounded-full text-[13px] tracking-[.06em] uppercase hover:border-accent hover:text-accent transition-colors active:scale-[.97]">
+          <a href="#about"
+            class="inline-flex items-center gap-3 border-2 border-white/25 text-fg px-9 py-4 rounded-full text-[13px] tracking-[.06em] uppercase hover:border-accent hover:text-accent transition-colors active:scale-[.97]">
             Our Story
           </a>
         </div>
-        <div class="flex items-center gap-6 pt-7 border-t border-white/[0.08]">
+
+        <!-- Right: info strip — under Stay One Puff Ahead -->
+        <div class="flex items-center gap-6">
           <div>
             <p class="font-mono text-[9px] text-subtle tracking-[.18em] uppercase mb-1">Address</p>
             <p class="text-sm text-muted">11516 124th Ave NE, Kirkland</p>
@@ -278,10 +276,10 @@
             <p class="font-mono text-[9px] text-subtle tracking-[.18em] uppercase mb-1">Hours</p>
             <p class="text-sm text-muted">Sun-Thu 8AM-11PM · Fri-Sat 8AM-11:45PM</p>
           </div>
-          <div class="w-px h-7 bg-white/10 hidden sm:block"></div>
-
-          <a href="tel:+14258140200" class="hidden sm:block text-sm text-muted hover:text-fg transition-colors">(425) 814-0200</a>
+          <div class="w-px h-7 bg-white/10"></div>
+          <a href="tel:+14258140200" class="text-sm text-muted hover:text-fg transition-colors">(425) 814-0200</a>
         </div>
+
       </div>
 
     </div>
