@@ -10,7 +10,8 @@ Claude's persistent memory for the Bored and Buzzed engagement. Every file here 
 ---
 
 - [Brand Identity](brand_identity.md) — Phase 1 sprint COMPLETE (2026-05-06): positioning, tokens, voice, pillars, logo system, tagline — apply to every asset
-- [Project Setup](project_setup.md) — Infra 🟢; Phase 1 brand sprint done; Phase 1 remaining: platform audits + WSLCB compliance; Phase 2 next
+- [Project Setup](project_setup.md) — Infra 🟢; Phase 1 brand sprint done; Phase 2 website prototype IN PROGRESS; platform audits + compliance still pending
+- [Website Prototype](website_prototype.md) — v4 current (`Website/BnB-Website-Prototype-v4.html`); streetwear energy locked; Tailwind CDN for prototyping; design decisions, logo placement, what's next
 - [Ruflo AI Plugins](tools_ruflo.md) — Lite mode; swarm/goals/intelligence slash commands; upgrade path in Notes/
 - [SEO Skill Suite](tools_seo.md) — claude-seo v1.9.0 installed 2026-05-06; seo-local + seo-maps + seo-schema are the core trio for local search
 - [Trevor Laakso](user_trevor.md) — Principal at Antigravity; working style, preferences, collaboration notes

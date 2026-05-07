@@ -108,14 +108,19 @@ Symlinked: `~/.claude/projects/.../memory` → vault `Memory/` folder — confir
 Color groups panel expanded. Node size 1.3x. Reference Brands group listed before Brand Identity so amber takes priority over violet for the 70 brand nodes.
 
 ## Status
-🟢 **Phase 1 brand identity sprint COMPLETE as of Session 14 (2026-05-06).** 17 files delivered. Brand identity section of CLAUDE.md fully populated — no more TBDs.
+🟢 **Phase 1 brand identity sprint COMPLETE as of Session 14 (2026-05-06).** 17 files delivered.
 
-**Phase 1 remaining:**
+🟡 **Phase 2 website prototype IN PROGRESS as of Session 17 (2026-05-07).** v4 prototype delivered — Tailwind CDN build, streetwear energy, dual marquee, all logos placed. Design direction locked. Next: iterate v4 → production build.
+
+**Phase 1 remaining (still open):**
 - Platform audits: Weedmaps, Leafly, Google Business, Yelp (website audit done ✅)
 - WSLCB compliance research + master compliance checklist
-- Target audience deep-dive (folder created, content pending)
 
-**Phase 2 up next:** Website redesign, Weedmaps/Leafly listing overhaul, social content calendar, in-store asset suite.
+**Phase 2 in progress:**
+- Website prototype v4 ✅ — continue iterating (product photos, mobile, POS)
+- Weedmaps & Leafly listing overhaul (pending)
+- Social content calendar (pending)
+- In-store asset suite (pending)
 
 Open gaps (non-blocking):
 - Kie AI MCP — configured but never health-checked

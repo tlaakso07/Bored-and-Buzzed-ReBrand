@@ -44,8 +44,9 @@ Every decision, every asset, every word of copy lives or dies by this standard: 
 - [ ] Build master compliance checklist
 
 **Phase 2 — Build**
+- [x] Website prototype — v4 complete ✅ 2026-05-07 (Tailwind CDN, streetwear hero, dual marquee, grain/halftone texture, all 4 logos placed)
+- [ ] Website: production build (React + Vite + Tailwind npm, POS sync, real product photos)
 - [ ] Overhaul Weedmaps & Leafly listings — photos, copy, complete product info
-- [ ] Audit and redesign website — premium feel, live POS inventory sync
 - [ ] Launch bi-weekly social content calendar (daily posting target)
 - [ ] Design full in-store asset suite — signage, flyers, price cards, digital displays
 - [ ] Build review generation strategy (Google + Yelp)
@@ -224,6 +225,7 @@ Every decision, every asset, every word of copy lives or dies by this standard: 
 
 | Date | Work Completed | Next Steps |
 |---|---|---|
+| 2026-05-07 | Session 17: **Phase 2 website prototype sprint.** Website/ folder created. PRODUCT.md created (required by impeccable skill). Uncle Ike's competitor analysis used as wireframe reference. v1 → v2 (audit fixes: contrast, a11y, touch targets, focus rings) → v3 (logo integration: Coaster/Square Logo/BNB LOGO/Facebook Cover, full redesign) → v4 (Tailwind CDN rebuild, streetwear energy: massive Clash Display hero, dual scrolling marquee, SVG grain + halftone textures, gold ring fix, circular badge treatment). Current file: `Website/BnB-Website-Prototype-v4.html`. | Continue v4 iteration (real product photos, refine product grid, mobile polish) · Platform audits · WSLCB compliance |
 | 2026-05-06 | Session 16: claude-seo skill suite installed (seo, seo-local, seo-maps, seo-schema, seo-technical, seo-content, seo-cluster, seo-plan, seo-google, seo-backlinks, seo-firecrawl, seo-geo + more). SKÖRD drop post: Trevor made it by hand — all Session 15 assets deleted. Post file upload pending from Trevor. | Upload SKÖRD post file · Begin platform audits (Weedmaps/Leafly/Google/Yelp) · WSLCB compliance research |
 | 2026-05-06 | Session 15: First social content session. SKÖRD × Divine Sugar Cane vendor drop shoutout. Scraped SKÖRD site — brand intel, drops cadence, logo assets downloaded. Multiple post iterations attempted — all deleted. Trevor made the post by hand. | — |
 | 2026-05-06 | Session 14: **Phase 1 brand identity sprint COMPLETE.** Full 34-page site audit (Firecrawl). NotebookLM synthesis → core insight "The Culture's Outpost in the Suburbs." SkillUI current design system extraction. Brand voice, brand pillars, logo system + usage guide, DESIGN.md, 3-layer token architecture (JSON + CSS), Design-System.md, BnB-Brand-Kit.html. 17 files total. Brand Identity section of CLAUDE.md filled in. | Platform audits (Weedmaps, Leafly, Google, Yelp) · WSLCB compliance research · Target audience deep-dive · Phase 2 website redesign planning |
@@ -243,4 +245,4 @@ Every decision, every asset, every word of copy lives or dies by this standard: 
 
 ---
 
-*Antigravity x Bored and Buzzed · Last updated: 2026-05-06 · Session 16 · 20 design skills + SEO suite (14 skills) + 4 craft docs + 70 brand DESIGN.md references · Phase 1 brand identity sprint COMPLETE · Phase 1 remaining: platform audits + compliance · SKÖRD post: made by hand, upload pending*
+*Antigravity x Bored and Buzzed · Last updated: 2026-05-07 · Session 17 · 20 design skills + SEO suite (14 skills) + 4 craft docs + 70 brand DESIGN.md references · Phase 1 brand identity sprint COMPLETE · Phase 2 website prototype v4 IN PROGRESS · Platform audits + compliance still pending · SKÖRD post: made by hand, upload pending*
