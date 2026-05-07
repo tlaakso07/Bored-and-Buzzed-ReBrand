@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "e9dce8fecb97af3f",
+        "id": "895169cb25c83d1b",
         "type": "tabs",
         "children": [
           {
-            "id": "c41fd091f8976be8",
+            "id": "91ed06b20dbc6613",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -176,8 +176,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "c41fd091f8976be8",
+  "active": "91ed06b20dbc6613",
   "lastOpenFiles": [
+    "Brand Identity/Reference Brands.md",
     "PRODUCT.md",
     "Reports/Competitor Analysis/Uncle Ikes/BnB-Website-Prototype-v1.html",
     "Reports/Competitor Analysis/Uncle Ikes/Uncle-Ikes-Competitor-Analysis.md",
@@ -222,7 +223,6 @@
     "Reports/Competitor Design/Ikes/ikes-design/DESIGN.md",
     "Memory/tools_seo.md",
     "Notes/Phase 1 Todo List.md",
-    "Reports/Current Design System/borednbuzzed-design/references/DESIGN.md",
-    "Memory/skord_intel.md"
+    "Reports/Current Design System/borednbuzzed-design/references/DESIGN.md"
   ]
 }
