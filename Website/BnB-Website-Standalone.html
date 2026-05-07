@@ -272,6 +272,10 @@
   <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-bg to-transparent z-0 pointer-events-none"></div>
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_72%_50%,rgba(201,168,76,0.028),transparent)] z-0 pointer-events-none"></div>
 
+  <!-- Full-bleed overlays — section children, not inside max-w-wrap -->
+  <div id="hero-mouse-glow" class="absolute inset-0 pointer-events-none z-[3]" aria-hidden="true"></div>
+  <canvas id="hero-particles" class="absolute inset-0 pointer-events-none z-[3]" aria-hidden="true"></canvas>
+
   <!-- ── MAIN HERO BODY ── -->
   <div class="relative z-10 flex-1 max-w-wrap mx-auto px-6 w-full pt-14 pb-4">
 
@@ -288,9 +292,6 @@
     </div>
 
     <!-- Sub content row: tagline + ape -->
-    <div id="hero-mouse-glow" class="absolute inset-0 pointer-events-none z-[1]" aria-hidden="true"></div>
-    <canvas id="hero-particles" class="absolute inset-0 pointer-events-none z-[2]" aria-hidden="true"></canvas>
-
     <div class="d5 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center pt-8 pb-10">
 
       <!-- Left: tagline + CTAs + location -->
