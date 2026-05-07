@@ -156,6 +156,48 @@
   .proof-num{letter-spacing:-.04em}
   /* Nav icon buttons - enforce circle shape */
   nav button{border-radius:9999px!important}
+
+/* ── Hero 3D Ape System ──────────────────────────────────── */
+#hero-ape-scene { will-change: transform; display: flex; align-items: center; justify-content: center; }
+#hero-ape-wrapper { display: inline-block; animation: hero-float 10s ease-in-out infinite; }
+#hero-ape-card {
+  position: relative; display: inline-block;
+  transform-style: preserve-3d; will-change: transform; cursor: default;
+}
+#hero-ape-card img {
+  display: block; position: relative; z-index: 1;
+  box-shadow: 0 28px 90px rgba(0,0,0,.65), 0 0 0 1px rgba(201,168,76,.12);
+}
+#hero-ape-shine {
+  position: absolute; inset: 0; border-radius: 20px;
+  pointer-events: none; mix-blend-mode: screen; z-index: 2;
+}
+#hero-ape-glow {
+  position: absolute; inset: -10px; border-radius: 30px;
+  pointer-events: none; z-index: 0;
+  animation: aura-pulse 5s ease-in-out infinite;
+}
+#hero-mouse-glow { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+#hero-particles  { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+#hero-text { will-change: transform; }
+@keyframes hero-float {
+  0%,100% { transform: translateY(0px); }
+  50%      { transform: translateY(-8px); }
+}
+@keyframes aura-pulse {
+  0%,100% {
+    box-shadow: 0 0 60px 10px rgba(201,168,76,.42),
+                0 0 120px 30px rgba(201,168,76,.18),
+                0 0 28px  6px rgba(201,168,76,.28);
+    opacity: .72;
+  }
+  50% {
+    box-shadow: 0 0 75px 16px rgba(201,168,76,.50),
+                0 0 150px 40px rgba(201,168,76,.22),
+                0 0 40px  10px rgba(201,168,76,.32);
+    opacity: .88;
+  }
+}
 </style>
 </head>
 <body class="bg-bg font-sans antialiased">
@@ -227,7 +269,7 @@
 </nav>
 
 <!-- ─── HERO ──────────────────────────────────────────────────── -->
-<section class="relative flex flex-col overflow-hidden bg-bg">
+<section id="hero-section" class="relative flex flex-col overflow-hidden bg-bg">
 
   <!-- Texture layers -->
   <div class="halftone-overlay"></div>
@@ -253,14 +295,14 @@
       </div>
     </div>
 
-    <!-- hero image placeholder -->
-    <div class="d2" style="min-height:clamp(300px,40vw,500px)"></div>
+    <!-- Sub content row: tagline + ape -->
+    <div id="hero-mouse-glow" class="absolute inset-0 pointer-events-none z-[1]" aria-hidden="true"></div>
+    <canvas id="hero-particles" class="absolute inset-0 pointer-events-none z-[2]" aria-hidden="true"></canvas>
 
-    <!-- Sub content row: tagline + badge -->
-    <div class="d5 pt-8 pb-10">
+    <div class="d5 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center pt-8 pb-10">
 
       <!-- Left: tagline + CTAs + location -->
-      <div>
+      <div id="hero-text">
         <p class="text-muted text-xl leading-relaxed max-w-lg mb-8">
           Kirkland's home for curated cannabis.<br class="hidden lg:block">
           Premium selection. Real community.
@@ -285,7 +327,24 @@
             <p class="text-sm text-muted">Sun-Thu 8AM-11PM · Fri-Sat 8AM-11:45PM</p>
           </div>
           <div class="w-px h-7 bg-white/10 hidden sm:block"></div>
+
           <a href="tel:+14258140200" class="hidden sm:block text-sm text-muted hover:text-fg transition-colors">(425) 814-0200</a>
+        </div>
+      </div>
+
+      <!-- Right: 3D ape -->
+      <div class="hidden lg:flex items-center justify-center">
+        <div id="hero-ape-scene">
+          <div id="hero-ape-wrapper">
+            <div id="hero-ape-card">
+              <img src="bnb-hero-ape.png" id="hero-ape-img"
+                   alt="Bored and Buzzed Mascot"
+                   style="height:clamp(280px,34vw,460px);width:auto;max-width:100%;object-fit:contain;border-radius:20px;"
+                   loading="eager">
+              <div id="hero-ape-shine"></div>
+              <div id="hero-ape-glow"></div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1419,5 +1478,151 @@
     });
   });
 </script>
+  <script>
+  /* ── Hero 3D Interactive System ─────────────────────────────── */
+  (function(){
+    'use strict';
+
+    /* Spring physics */
+    function Spring(k,d){
+      this.k=k;this.d=d;
+      this.x=this.y=this.vx=this.vy=this.tx=this.ty=0;
+    }
+    Spring.prototype.tick=function(){
+      this.vx+=(this.tx-this.x)*this.k; this.vy+=(this.ty-this.y)*this.k;
+      this.vx*=this.d; this.vy*=this.d;
+      this.x+=this.vx; this.y+=this.vy;
+    };
+
+    var tilt  = new Spring(.025,.95);
+    var glow  = new Spring(.018,.97);
+    var drift = new Spring(.014,.97);
+    var mouse = {x:.5,y:.5,inside:false};
+    var W=1,H=1,raf=null;
+    var heroEl,card,shine,glowEl,textEl,bgEl,canvas,ctx;
+    var GOLD='rgba(201,168,76,';
+    var particles=[];
+
+    /* Particle system */
+    function Particle(){ this.reset(); }
+    Particle.prototype.reset=function(){
+      this.x=Math.random()*W;
+      this.y=H*(.25+Math.random()*.75);
+      this.vx=(Math.random()-.5)*.38;
+      this.vy=-(0.08+Math.random()*.28);
+      this.life=0;
+      this.max=90+Math.random()*210;
+      this.r=.7+Math.random()*2.1;
+    };
+    Particle.prototype.tick=function(){
+      var push=(mouse.x-.5)*.03;
+      this.x+=this.vx+push; this.y+=this.vy;
+      this.life++;
+      if(this.life>this.max) this.reset();
+    };
+    Particle.prototype.draw=function(c){
+      var t=this.life/this.max;
+      var a=t<.2?t/.2:t>.78?(1-t)/.22:1;
+      c.beginPath();
+      c.arc(this.x,this.y,this.r*(1-t*.5),0,Math.PI*2);
+      c.fillStyle=GOLD+(a*.28)+')';
+      c.fill();
+    };
+
+    function resize(){
+      if(!heroEl)return;
+      var r=heroEl.getBoundingClientRect();
+      W=r.width||innerWidth; H=r.height||600;
+      if(canvas){canvas.width=W;canvas.height=H;}
+    }
+
+    function onMove(e){
+      if(!heroEl)return;
+      var r=heroEl.getBoundingClientRect();
+      mouse.x=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+      mouse.y=Math.max(0,Math.min(1,(e.clientY-r.top)/r.height));
+      tilt.tx=glow.tx=drift.tx=mouse.x;
+      tilt.ty=glow.ty=drift.ty=mouse.y;
+    }
+    function onEnter(){ mouse.inside=true; }
+    function onLeave(){
+      mouse.inside=false;
+      tilt.tx=glow.tx=drift.tx=.5;
+      tilt.ty=glow.ty=drift.ty=.5;
+    }
+
+    function tick(){
+      raf=requestAnimationFrame(tick);
+      tilt.tick(); glow.tick(); drift.tick();
+
+      /* 3D card tilt */
+      if(card){
+        var rx=(tilt.y-.5)*6,  ry=(tilt.x-.5)*-6;
+        var sc=mouse.inside?1.01:1;
+        card.style.transform=
+          'perspective(1100px) rotateX('+rx+'deg) rotateY('+ry+'deg) scale('+sc+')';
+      }
+
+      /* Moving shine / glare */
+      if(shine){
+        var sx=glow.x*100, sy=glow.y*100;
+        shine.style.background=
+          'radial-gradient(circle at '+sx+'% '+sy+'%,'+
+          'rgba(201,168,76,.10) 0%,rgba(201,168,76,.03) 40%,transparent 65%)';
+      }
+
+      /* Ambient hero background glow follows mouse */
+      if(bgEl){
+        var bx=glow.x*100, by=glow.y*100;
+        bgEl.style.background=
+          'radial-gradient(ellipse 65% 65% at '+bx+'% '+by+'%,'+
+          'rgba(201,168,76,.06),transparent 100%)';
+      }
+
+      /* Subtle text parallax */
+      if(textEl){
+        var dx=(drift.x-.5)*-5,  dy=(drift.y-.5)*-3;
+        textEl.style.transform='translate3d('+dx+'px,'+dy+'px,0)';
+      }
+
+      /* Particle canvas */
+      if(ctx&&canvas.width){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        for(var i=0;i<particles.length;i++){
+          particles[i].tick();
+          particles[i].draw(ctx);
+        }
+      }
+    }
+
+    function init(){
+      heroEl = document.getElementById('hero-section');
+      card   = document.getElementById('hero-ape-card');
+      shine  = document.getElementById('hero-ape-shine');
+      glowEl = document.getElementById('hero-ape-glow');
+      textEl = document.getElementById('hero-text');
+      bgEl   = document.getElementById('hero-mouse-glow');
+      canvas = document.getElementById('hero-particles');
+      ctx    = canvas ? canvas.getContext('2d') : null;
+      if(!heroEl) return;
+      resize();
+      for(var i=0;i<22;i++){
+        var p=new Particle();
+        p.life=Math.random()*p.max; /* stagger */
+        particles.push(p);
+      }
+      heroEl.addEventListener('pointermove', onMove,  {passive:true});
+      heroEl.addEventListener('pointerenter',onEnter, {passive:true});
+      heroEl.addEventListener('pointerleave',onLeave, {passive:true});
+      window.addEventListener('resize', resize, {passive:true});
+      if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches)
+        raf=requestAnimationFrame(tick);
+    }
+
+    if(document.readyState==='loading')
+      document.addEventListener('DOMContentLoaded',init);
+    else init();
+  })();
+  </script>
 </body>
 </html>
