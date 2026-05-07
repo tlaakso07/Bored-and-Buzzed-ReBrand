@@ -41,7 +41,7 @@
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-  body{background:#0D0D0B;color:#F4EFE6;font-family:'DM Sans',sans-serif}
+  body{background:#0D0D0B;color:#F4EFE6;font-family:'DM Sans',sans-serif;font-size:17px;line-height:1.65}
 
   :focus-visible{outline:2px solid #C9A84C;outline-offset:2px;border-radius:2px}
 
@@ -105,9 +105,9 @@
   /* Concentric rings */
   .ring{position:absolute;border-radius:50%;border:1px solid rgba(201,168,76,var(--ro,0.06))}
 
-  /* Product card hover */
-  .pcard{transition:transform .25s ease,box-shadow .25s ease}
-  .pcard:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+  /* Product card — Apple elevated card system */
+  .pcard{transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s cubic-bezier(.16,1,.3,1);box-shadow:rgba(0,0,0,.22) 0 4px 20px,rgba(0,0,0,.12) 0 1px 4px}
+  .pcard:hover{transform:translateY(-2px) scale(1.01);box-shadow:rgba(0,0,0,.4) 0 20px 48px,rgba(0,0,0,.15) 0 4px 8px}
   .pcard:hover .pcard-img-inner{transform:scale(1.04)}
   .pcard-img-inner{transition:transform .4s cubic-bezier(.16,1,.3,1)}
 
@@ -131,7 +131,7 @@
   .deal-pct{
     font-family:'Clash Display',sans-serif;
     font-size:clamp(36px,5vw,56px);
-    font-weight:700;line-height:1;color:#C9A84C
+    font-weight:700;line-height:1;color:#C9A84C;letter-spacing:-.03em
   }
 
   /* Scrollbar-none utility */
@@ -143,6 +143,19 @@
     video{display:none}
     .marquee-inner,.marquee-inner-rev{animation:none}
   }
+
+  /* ── APPLE DESIGN PASS ── */
+  /* Pill button grammar — all interactive buttons except category strip tabs */
+  button:not(.cat-tab):not([type='checkbox']):not([type='range']){border-radius:9999px}
+  /* Press micro-interaction (Apple scale-on-tap) */
+  button:not(.cat-tab):active{transform:scale(.97);transition:transform .07s ease}
+  /* Display heading letter-spacing — Apple negative tracking */
+  h2{letter-spacing:-.03em}
+  h3{letter-spacing:-.02em}
+  /* Proof strip numbers */
+  .proof-num{letter-spacing:-.04em}
+  /* Nav icon buttons — enforce circle shape */
+  nav button{border-radius:9999px!important}
 </style>
 </head>
 <body class="bg-bg font-sans antialiased">
