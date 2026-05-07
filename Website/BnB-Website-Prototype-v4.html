@@ -437,17 +437,19 @@
   </nav>
 
   <!-- ─── HERO ──────────────────────────────────────────────────── -->
-  <section id="hero-section" class="relative flex flex-col overflow-hidden bg-bg">
+  <section id="hero-section" class="relative flex flex-col overflow-hidden bg-bg" style="min-height:clamp(480px,52vw,680px)">
 
-    <!-- Texture layers -->
-    <div class="halftone-overlay"></div>
-    <div class="grain-overlay"></div>
+    <!-- Hero photo — object-cover scales uniformly, no stretch, no distortion -->
+    <img src="bnb-hero-bg.jpg" alt=""
+         class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+         style="z-index:0;" aria-hidden="true">
 
-    <!-- Mood gradients -->
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_100%_80%_at_100%_0%,rgba(15,38,64,0.75),transparent)] z-0"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_0%_100%,rgba(15,38,64,0.4),transparent)] z-0"></div>
-    <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-bg to-transparent z-0 pointer-events-none"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_72%_50%,rgba(201,168,76,0.028),transparent)] z-0 pointer-events-none"></div>
+    <!-- Bottom fade — text zone readability -->
+    <div class="absolute bottom-0 left-0 right-0 pointer-events-none"
+         style="z-index:1;height:40%;background:linear-gradient(to top,rgba(13,13,11,.95) 0%,rgba(13,13,11,.7) 50%,transparent 100%);"></div>
+
+    <!-- Grain texture on top -->
+    <div class="grain-overlay" style="z-index:2;opacity:.04;"></div>
 
     <!-- Full-bleed overlays — must be section children, not inside max-w-wrap -->
     <div id="hero-mouse-glow" class="absolute inset-0 pointer-events-none z-[3]" aria-hidden="true"></div>
