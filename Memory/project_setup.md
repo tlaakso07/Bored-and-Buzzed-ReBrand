@@ -110,14 +110,14 @@ Color groups panel expanded. Node size 1.3x. Reference Brands group listed befor
 ## Status
 🟢 **Phase 1 brand identity sprint COMPLETE as of Session 14 (2026-05-06).** 17 files delivered.
 
-🟡 **Phase 2 website prototype IN PROGRESS as of Session 17 (2026-05-07).** v4 prototype delivered — Tailwind CDN build, streetwear energy, dual marquee, all logos placed. Design direction locked. Next: iterate v4 → production build.
+🟡 **Phase 2 website prototype IN PROGRESS as of Session 18 (2026-05-07).** v4 iterated — Apple design pass, Wyld Relaxing Collection added (4 cards), Jim Jones event photos in Culture/Events, hero cleaned up (no eyebrow strip, no graffiti logo). Hero photo (`bnb-interior.png`) ready to implement next session.
 
 **Phase 1 remaining (still open):**
 - Platform audits: Weedmaps, Leafly, Google Business, Yelp (website audit done ✅)
 - WSLCB compliance research + master compliance checklist
 
 **Phase 2 in progress:**
-- Website prototype v4 ✅ — continue iterating (product photos, mobile, POS)
+- Website prototype v4 ✅ — **next: hero photo implementation (`bnb-interior.png`)**
 - Weedmaps & Leafly listing overhaul (pending)
 - Social content calendar (pending)
 - In-store asset suite (pending)
